@@ -24,16 +24,16 @@ app.post("/send-email", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "ibellomoyasoc@gmail.com", // el correo que envia el msj
-        pass: "bmms kpef ptwi eura"      // contraseña que genera google para la app
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
       }
     });
 
     const mailOptions = {
-      from: "ibellomoyasoc@gmail.com",        // remitente real
+      from: "ibellomoyasoc@gmail.com",       
       to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
-      subject: `Formulario de contacto - Estudio Contable IB`,
-      text: `Se acaba de completar el formulario de contacto desde la página web del Estudio Contable IB.\n\nDatos de contacto recibidos:\n\nNombre: ${nombre}\nApellido: ${apellido}\nCorreo: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`,
+      subject: `Formulario de contacto - Estudio Contable IB`, //asunto
+      text: `Se completó el Formulario de Contacto desde la página web del Estudio Contable IB.\n\nDatos de contacto recibidos:\n\nNombre: ${nombre}\nApellido: ${apellido}\nCorreo: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`,
       replyTo: email 
       // cuando se responda desde ivan.bellomo@contadorib.com.ar, le va a llegar al mail del 
       // usuario que completó el formulario
