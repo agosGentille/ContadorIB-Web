@@ -6,13 +6,13 @@ import '../Styles/HeaderStyle.css';
 import logo from '../Images/logo.jpg';
 
 function Header() {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [menuOpen, setMenuOpen] = useState(false);
     const [animating, setAnimating] = useState(false);
 
     // Detectar cambios de tamaño de pantalla, más que nada para modo de desarrollo
     useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);

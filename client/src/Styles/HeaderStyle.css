@@ -61,7 +61,7 @@ html{
   position: relative; 
   text-decoration: none;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 1rem;
   padding-bottom: 4px;
 }
 
@@ -200,6 +200,29 @@ html{
   100% { transform: rotate(-180deg); }
 }
 
+@media (min-width: 768px) {
+  .header-nav {
+    visibility: visible;
+    position: static;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .header-nav ul {
+    flex-direction: row;
+    gap: 0.8rem;
+    margin-top: 0;
+  }
+  .btn-Hablanos p{
+    display: none;
+  }
+}
+
 @media (min-width: 1024px) {
   html {
     font-size: 20px; 
@@ -233,18 +256,23 @@ html{
   }
 
   .header-nav ul li a{
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 
   .header-marca p {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   .header-marca #Logo {
-    width: 50px;
+    width: 45px;
   }
 
   .material-symbols-outlined {
     font-size: 40px;
+  }
+
+  .btn-Hablanos p{
+    font-size: 0.8rem;
+    display:block;
   }
 }
