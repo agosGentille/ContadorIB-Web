@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color:#4B4B4B;
+    font-size: 15px; /*Este valor equivale a 1rem*/
+}
+
+.header-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.header-nav {
+  position: fixed; 
+  top: 10vh; /* empieza justo debajo del header */
+  right: -101%; 
+  width: 100%;
+  background-color: #fff;
+  height: 50vh;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.header-nav.open {
+  right: 0;
+}
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.header-nav ul li a {
+  position: relative; 
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1rem;
+  padding-bottom: 4px;
+}
+
+.header-nav ul li a:hover,
+.header-nav ul li a:active,
+.header-nav ul li a:focus {
+  color: #7FB8C2;
+}
+
+.header-nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #7FB8C2;
+  transition: width 0.3s ease-out;
+}
+
+.header-nav ul li a:hover::after,
+.header-nav ul li a:active::after,
+.header-nav ul li a:focus::after {
+  width: 100%;
+}
+
+.header-nav-footer{
+  margin-top: auto;
+  text-align: start;
+  color: #4B4B4B;
+}
+
+.header-nav-footer p:first-child{
+  font-family: 'Playfair Display', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #2F4A5C;
+}
+
+.header-nav-footer .matricula{
+  font-size: 0.9rem;
+}
+
+.header-nav-footer .slogan {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+.header-marca {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#Logo {
+    width: 35px;
+    height: auto;
+}
+
+.header-marca p {
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: 600;
+  color: black;
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.btn-Hablanos{
+    background-color: #ACD4CD;
+    padding: 5px;
+    border-radius: 30px;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    text-decoration: none;
+    transition: all 0.5s ease;
+}
+
+.btn-Hablanos p{
+    font-family: 'Playfair Display', sans-serif;
+    color: #333333;
+    font-size: 1rem;
+}
+
+.btn-Hablanos span{
+    color: #333333;
+    font-size: 20px;
+}
+
+.btn-Hablanos:hover{
+    background-color: #7FB8C2;
+}
+
+#header-menu {
+    display: inline-block;
+    font-size: 28px;
+    color: black;
+    cursor: pointer;
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+/* Animación de 180° hacia la derecha al abrir */
+.menu-icon.animating.open {
+  animation: rotateRight 0.3s forwards;
+}
+
+/* Animación de 180° hacia la izquierda al cerrar */
+.menu-icon.animating:not(.open) {
+  animation: rotateLeft 0.3s forwards;
+}
+
+@keyframes rotateRight {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(180deg); }
+}
+
+@keyframes rotateLeft {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-180deg); }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 20px; 
+  }
+
+  .header-sticky {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    height: 13vh;
+    padding: 0 1.5rem;
+  }  
+
+  .header-nav {
+    visibility: visible;
+    position: static;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-nav ul {
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 0;
+  }
+
+  .header-nav ul li a{
+    font-size: 1.2rem;
+  }
+
+  .header-marca p {
+    font-size: 1.4rem;
+  }
+
+  .header-marca #Logo {
+    width: 50px;
+  }
+
+  .material-symbols-outlined {
+    font-size: 40px;
+  }
+}
