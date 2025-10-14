@@ -34,7 +34,7 @@ html{
   right: -101%; 
   width: 100%;
   background-color: #fff;
-  height: 50vh;
+  height: 45vh;
   box-shadow: -2px 0 5px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
@@ -115,7 +115,6 @@ html{
 .header-marca {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 #Logo {
@@ -233,7 +232,7 @@ html{
     grid-template-columns: auto 1fr auto;
     align-items: center;
     height: 13vh;
-    padding: 0 1.5rem;
+    padding: 0 0.5rem;
   }  
 
   .header-nav {

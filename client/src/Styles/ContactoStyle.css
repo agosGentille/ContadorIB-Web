@@ -101,10 +101,11 @@ html{
     background-color: #ACD4CD;
 }
 
-.FAQ{
+#FAQ{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    text-align: center;
 }
 
 #FAQ > h2{
@@ -115,6 +116,71 @@ html{
 #FAQ > h3{
     font-family: 'Playfair Display', sans-serif;
     color: #ACD4CD;
+}
+
+.accordion{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.accordion-title {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px;
+  background: #F7F6F3;
+  border: 1px solid white;
+  border-radius: 0 10px 10px 0;
+}
+
+.status-bar {
+  width: 10px;
+  height: 35px;
+  border-radius: 3px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  background-color: #7FB8C2;
+  transition: all 0.3s ease;
+}
+
+.status-bar.open {
+  background-color: #C97A63;
+}
+
+.btnPregunta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.arrow {
+  font-family: "Material Symbols Outlined";
+  transition: transform 0.3s ease;
+}
+
+.accordion-title.open .arrow {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px; /* vertical = 0 */
+  background: #F7F6F3;
+  margin-bottom: 10px;
+  border-radius: 0 0 10px 10px;
+  font-size: 0.8rem;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.open {
+  max-height: 200px; 
+  padding: 10px 10px; /* vertical y horizontal */
 }
 
 @media (min-width: 1024px){
@@ -128,6 +194,6 @@ html{
         font-size: 0.8rem;
     }
     .btnEnviarMensaje{
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
 }

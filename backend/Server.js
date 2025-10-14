@@ -3,6 +3,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const path = require("path");
 
 const app = express();
 const PORT = 5000;
@@ -10,6 +11,13 @@ const PORT = 5000;
 // Middlewares
 app.use(cors()); // permite que React haga peticiones
 app.use(bodyParser.json());
+
+const planesRoutes = require("./Routes/PlanesRoutes.js");
+const pregRoutes = require("./Routes/PreguntasRoutes.js");
+
+app.use('/api/planes', planesRoutes);
+app.use('/api/PreguntasFrecuentes', pregRoutes);
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar mail
 app.post("/send-email", async (req, res) => {
@@ -46,6 +54,21 @@ app.post("/send-email", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Error al enviar el correo" });
   }
+});
+
+// 200
+app.get("/", (req, res) => {
+  res.status(200).send("Bienvenido a la Página Web del Estudio Contable IB!");
+});
+
+// 404
+app.use((req, res) => {
+  res.status(404).json({ error: `Ruta: ${req.originalUrl} - no encontrada` });
+});
+// 500
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Error interno" });
 });
 
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

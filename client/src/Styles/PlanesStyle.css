@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color:#4B4B4B;
+    font-size: 15px; /*Este valor equivale a 1rem*/
+}
+
+h2{
+    font-family: 'Playfair Display', sans-serif;
+    color: #2F4A5C;
+    text-align: center;
+}
+
+h3{
+    font-family: 'Playfair Display', sans-serif;
+    color: #7FB8C2;
+}
+
+.empresas, .emprendedores{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px;
+    gap: 20px;
+}
+
+.contendorPlanes{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 30px;
+    justify-content: center; 
+}
+
+.tarjeta {
+    max-width: 300px;
+    background-color: #F7F6F3;
+    border-radius: 0px 50px;
+    transition: all 0.3s ease;
+}
+
+.tarjeta:hover {
+    transform: translateY(-5px) scale(1.05); 
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.2); 
+}
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tarjeta-animada {
+  opacity: 0; /* inicial */
+  animation: fadeInUp 0.5s forwards;
+}
+
+h4{
+    font-family: 'Playfair Display', sans-serif;
+    color: #7FB8C2;
+    position: relative;
+    margin-bottom: 15px;
+}
+h4::after {
+  content: "";
+  display: block;
+  width: 40px;          
+  height: 2px;          
+  background-color: #7FB8C2;
+  margin-top: 6px; 
+  font-size: 1rem;     
+}
+.tarjeta-img{
+  width: 100%;
+  max-height: 220px;
+  border-radius: 0 50px 0 0;
+}
+.tarjeta-body{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 35px;
+}
+
+.tarjeta-list {
+  list-style: none; 
+  padding-left: 0;
+}
+
+.tarjeta-list li {
+  font-size: 0.8rem;
+}
+
+.tarjeta-list li::before {
+  font-family: 'Material Symbols Outlined';
+  content: "check_circle";
+  color: #C9A646;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+.tarjeta-link {
+  display: inline-flex;            
+  align-items: center;           
+  gap: 6px;                        
+  text-decoration: none;            
+  color: #7FB8C2;                    
+  font-weight: 500;
+  transition: color 0.3s ease;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.tarjeta-link:hover {
+  color: #5ea1ab;                    
+}
+
+.tarjeta-link .material-symbols-outlined {
+  font-size: 20px;                  
+  line-height: 1;                  
+  vertical-align: middle;           
+}
+
+.tarjeta-link::after {
+  font-family: "Material Symbols Outlined";
+  content: "arrow_forward";
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.tarjeta-link:hover::after,
+.tarjeta-link:focus::after {
+  content: "arrow_outward";
+  transform: translateX(3px);
+}
+
+@media (min-width: 1024px) {
+  
+  .tarjeta{
+    max-width: 280px;
+    background-color: #F7F6F3;
+    box-shadow: 0px 2px 8px#b9b8b8;
+    border-radius: 0px 50px;
+  }
+}
