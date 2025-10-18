@@ -2,17 +2,19 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Header from './Components/Header';
 import Footer from './Components/Footer';
+import StickyHablemos from './Components/StickyHablemos';
 
 import Home from './Pages/Home';
 import Planes from './Pages/Planes';
 import Contacto from './Pages/Contacto';
 
-import './App.css'
+import './App.css';
 
 function App() {
   return (
     <Router>
       <Header />
+      <StickyHablemos />
       <main className='componentes'>
         <Routes>
         <Route path="/" element={<Home />} />

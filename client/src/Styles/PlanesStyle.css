@@ -25,32 +25,36 @@ h3{
 }
 
 .empresas, .emprendedores{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 30px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px;
+  gap: 20px;
 }
 
 .contendorPlanes{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 30px;
-    justify-content: center; 
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 30px;
+  justify-content: center; 
 }
 
 .tarjeta {
-    max-width: 300px;
-    background-color: #F7F6F3;
-    border-radius: 0px 50px;
-    transition: all 0.3s ease;
+  position: relative;
+  height: auto;
+  width: 280px;
+  background-color: #F7F6F3;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.2); 
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 .tarjeta:hover {
     transform: translateY(-5px) scale(1.05); 
     box-shadow: 0px 10px 20px rgba(0,0,0,0.2); 
 }
+
 @keyframes fadeInUp {
   0% {
     opacity: 0;
@@ -68,10 +72,11 @@ h3{
 }
 
 h4{
-    font-family: 'Playfair Display', sans-serif;
-    color: #7FB8C2;
-    position: relative;
-    margin-bottom: 15px;
+  font-family: 'Playfair Display', sans-serif;
+  color: #7FB8C2;
+  position: relative;
+  margin-bottom: 15px;
+  
 }
 h4::after {
   content: "";
@@ -80,12 +85,28 @@ h4::after {
   height: 2px;          
   background-color: #7FB8C2;
   margin-top: 6px; 
-  font-size: 1rem;     
+  font-size: 1rem;  
+  transition: all 0.3s ease;   
+}
+.tarjeta:hover h4::after {
+  width: 60px; /* crece un poco más */
+}
+
+.contenedor-img{
+  width: 100%;
+  max-height: 200px;
+  border-radius: 2px 0;
+  overflow: hidden;
 }
 .tarjeta-img{
   width: 100%;
-  max-height: 220px;
-  border-radius: 0 50px 0 0;
+  max-height: 200px;
+  border-radius: 2px 0;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta:hover .tarjeta-img {
+  transform: scale(1.05); /* leve zoom */
 }
 .tarjeta-body{
     display: flex;
@@ -99,14 +120,14 @@ h4::after {
 }
 
 .tarjeta-list li {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .tarjeta-list li::before {
   font-family: 'Material Symbols Outlined';
   content: "check_circle";
   color: #C9A646;
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin-right: 8px;
 }
 
@@ -146,12 +167,30 @@ h4::after {
   transform: translateX(3px);
 }
 
-@media (min-width: 1024px) {
-  
-  .tarjeta{
-    max-width: 280px;
-    background-color: #F7F6F3;
-    box-shadow: 0px 2px 8px#b9b8b8;
-    border-radius: 0px 50px;
-  }
+.linea-decorativa {
+  position: absolute;
+  bottom: 0;     /* 👈 siempre en la parte inferior */
+  left: 0;
+  display: flex;
+  width: 100%;         
+  height: 6px;        
+  border-radius: 0 0 2px 2px; 
+  overflow: hidden;     
+}
+
+.barra-decorativa {
+  flex: 1;             
+}
+
+.barra-decorativa:nth-child(1) {
+  background-color: #7FB8C2;
+}
+.barra-decorativa:nth-child(2) {
+  background-color: #C9A646; 
+}
+.barra-decorativa:nth-child(3) {
+  background-color: #2F4A5C; 
+}
+.barra-decorativa:nth-child(4) {
+  background-color: #ACD4CD; 
 }

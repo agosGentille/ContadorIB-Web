@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color:#4B4B4B;
+    font-size: 15px; /*Este valor equivale a 1rem*/
+}
+
+.btn-sticky{
+    position: fixed;
+    bottom: 50px;   
+    right: 40px;    
+    z-index: 2000;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-Hablanos{ 
+    padding: 0.8rem; 
+    border-radius: 30px; 
+    align-items: center; 
+    justify-content: center; 
+    display: flex; 
+    text-decoration: none; 
+    transition: all 0.3s ease; 
+    width: 60px; 
+    height: 60px;
+    color: #ACD4CD;
+    background-color: white;
+    border: 2px solid #ACD4CD;
+}
+
+.btn-Hablanos span {
+    font-size: 2rem;
+    color: #ACD4CD;
+}
+
+.btn-Hablanos:hover {
+    text-decoration: none; 
+    background-color: #ACD4CD; 
+    border: 2px solid #ACD4CD;
+}
+
+.btn-Hablanos:hover span{
+    color: white;
+}

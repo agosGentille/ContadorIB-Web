@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import TarjetaPlanes from '../Components/PlanesCard';
 
-import '../Styles/PlanesStyle.css'
+import '../Styles/PlanesStyle.css';
 
 function Planes() {
     const [planesEmpresas, setPlanesEmpresas] = useState([]);
