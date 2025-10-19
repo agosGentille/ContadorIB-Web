@@ -14,49 +14,36 @@ function CintaClientes() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer) return;
+    const container = scrollRef.current;
+    if (!container) return;
 
-    const speed = 0.8; // velocidad
-    let animationId;
+    const speed = 0.5; // velocidad del scroll
+    let rafId;
 
-    const autoScroll = () => {
-      scrollContainer.scrollLeft += speed;
-      if (
-        scrollContainer.scrollLeft >=
-        scrollContainer.scrollWidth - scrollContainer.clientWidth
-      ) {
-        scrollContainer.scrollLeft = 0;
+    const scroll = () => {
+      container.scrollLeft += speed;
+
+      // Reinicia cuando alcanza la mitad
+      if (container.scrollLeft >= container.scrollWidth / 2) {
+        container.scrollLeft = 0;
       }
 
-      animationId = requestAnimationFrame(autoScroll);
+      rafId = requestAnimationFrame(scroll);
     };
 
-    animationId = requestAnimationFrame(autoScroll);
+    rafId = requestAnimationFrame(scroll);
 
-    // Limpieza
-    return () => cancelAnimationFrame(animationId);
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
-  const logos = [
-    Arauca,
-    Fajkar,
-    LaNubecita,
-    PhoneHub,
-    Rakkan,
-    RDComex,
-    REKO,
-    SAT,
-    PrisaStudio,
-  ];
+  const logos = [ Arauca, Fajkar, LaNubecita, PhoneHub, Rakkan, RDComex, REKO, SAT, PrisaStudio, ];
 
   return (
-    <section className="cinta-clientes">
+    <section className="cinta-clientes"  style={{ whiteSpace: "nowrap" }}>
       <h2>Empresas que Confían en Nuestro Asesoramiento</h2>
 
       <div className="cinta" ref={scrollRef}>
-        {/* 🔁 Se duplican 3 veces para suavizar el loop */}
-        {[...logos, ...logos, ...logos].map((logo, i) => (
+        {[...logos, ...logos].map((logo, i) => (
           <img key={i} src={logo} alt={`Logo ${i}`} />
         ))}
       </div>

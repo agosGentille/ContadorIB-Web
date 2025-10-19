@@ -95,13 +95,17 @@ html{
 .secc-impacto {
   padding: 2rem 1rem;
   text-align: center;
-  background-color: #7FB8C2;
-  color: white;
+  background: linear-gradient(
+  to bottom right,
+  #ACD4CD 0%,
+  #F7F6F3 100%
+);
+  color: #2F4A5C;
 }
 
 .secc-impacto h3 {
   font-family: 'Playfair Display', serif;
-  color: white;
+  color: #2F4A5C;
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
@@ -127,6 +131,10 @@ html{
   align-items: center;
   gap: 0.5rem;
   flex: 1;
+}
+
+.caracteristica-impacto span{
+  font-size: 3.5rem;
 }
 
 .caracteristica-impacto .numero {
@@ -175,8 +183,82 @@ html{
   text-align: center;
 }
 
+/* ------- Caracteristicas reunion de asesoria ------- */
+.contenedor-caracteristicas-reunion{
+  background: linear-gradient(to bottom, #7FB8C2, #ACD4CD);
+  width: 100vw;
+  color: white;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contenedor-caracteristicas-reunion::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='0.2' d='M0,160L60,181.3C120,203,240,245,360,261.3C480,277,600,267,720,245.3C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'/></svg>") no-repeat bottom;
+  background-size: cover;
+  opacity: 0.6;
+}
+
+.caracteristicas-reunion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.caracteristica-reu{margin: 0 auto;}
+
+.title-reu {
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+  color: #2F4A5C;
+}
+
+.texto-reu{font-size: 0.9rem;}
+
+/* ------------- OPINIONES GOOGLE ------------- */
+
+.secc-opiniones {
+  width: 90%;
+  padding:1rem;
+  text-align: center;      
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center;  
+  margin: 0 auto;
+}
+
+.secc-opiniones h3 {
+  font-family: 'Playfair Display', serif;
+  color: #7FB8C2;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.elfsight-app-21df6b1e-76b2-49b2-aaa6-e1d8db028b5b {
+  max-width: fit-content;  
+  height: 500px;     
+}
+
 /* ------------- CINTA EMPRESAS ------------- */
 .cinta-clientes {
+  margin-top: 4rem;
+  display: "flex";
   text-align: center;
   overflow: hidden;
   padding: 3rem 0;
@@ -211,7 +293,6 @@ html{
   transform: scale(1.1);
   filter: none;
 }
-/* ------------- OPINIONES GOOGLE ------------- */
 
 @media (min-width: 1024px) {
   .titulo-inicio{
@@ -231,10 +312,13 @@ html{
     flex-direction: row;
   }
 
+  .caracteristicas-reunion {flex-direction: row;}
+
   .divisor-caracteristicas {
     width: 2px; 
     height: auto; 
     align-self: stretch; 
     margin: 0;
   }
+  .cinta-clientes {margin-top: 2rem;}
 }

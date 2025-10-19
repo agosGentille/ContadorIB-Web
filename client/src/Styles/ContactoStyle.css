@@ -2,53 +2,53 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
 }
 
 html{
-    color:#4B4B4B;
-    font-size: 15px; /*Este valor equivale a 1rem*/
+  color:#4B4B4B;
+  font-size: 15px; /*Este valor equivale a 1rem*/
 }
 
 #FormularioDeContacto{
-    display: flex;  
-    flex-direction: column;
-    align-items: center;   /* centra horizontalmente */
-    justify-content: center; /* centra verticalmente si le das altura */
-    text-align: center;
-    width: 100%;
-    min-height: 60vh;
-    gap: 10px;
-    margin-bottom: 10vh;
+  display: flex;  
+  flex-direction: column;
+  align-items: center;   
+  justify-content: center; 
+  text-align: center;
+  width: 100%;
+  min-height: 60vh;
+  gap: 10px;
+  margin-bottom: 10vh;
 }
 
 #FormularioDeContacto > h2{
-    font-family: 'Playfair Display', sans-serif;
-    color: #2F4A5C;
+  font-family: 'Playfair Display', sans-serif;
+  color: #2F4A5C;
 }
 
 .Form{
-    display: flex;
-    flex-direction: column;
-    background-color: #F8F8F8;
-    padding: 20px;
-    width: 80%;
-    align-content: center;
-    justify-content: center;
-    text-align: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: #F8F8F8;
+  padding: 20px;
+  width: 80%;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
 }
 .inputForm{
-    color: #333333;
-    background-color: transparent;
-    border: 1px solid rgb(71, 70, 70, 0.4);
-    padding: 15px;
+  color: #333333;
+  background-color: transparent;
+  border: 1px solid rgb(71, 70, 70, 0.4);
+  padding: 15px;
 }
 .inputForm:focus{
-    border: 1px solid rgb(71, 70, 70, 0.8);
+  border: 1px solid rgb(71, 70, 70, 0.8);
 }
 .nombre-completo {
   display: flex;
@@ -67,62 +67,66 @@ html{
   gap: 5px;
 }
 #inputMensaje{
-    min-height: 100px;
-    align-items: start;
-    justify-content: start;
+  min-height: 100px;
+  align-items: start;
+  justify-content: start;
 }
 
 .mensaje p{
-    text-align: end;
-    align-items: end;
-    justify-content: end;
-    font-size: 0.7rem;
+  text-align: end;
+  align-items: end;
+  justify-content: end;
+  font-size: 0.7rem;
 }
 
 .button{
-    text-align: end;
-    justify-content: end;
+  text-align: end;
+  justify-content: end;
 }
 
 .btnEnviarMensaje{
-    padding: 15px 30px;
-    background-color: #7FB8C2;
-    border-radius: 50px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    font-family: 'Playfair Display', sans-serif;
-    letter-spacing: 1px;
-    font-weight: 500;
+  padding: 15px 30px;
+  background-color: #7FB8C2;
+  border-radius: 50px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-family: 'Playfair Display', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 500;
+  box-sizing: border-box;
 }
 
 .btnEnviarMensaje:hover{
-    background-color: #ACD4CD;
+  border: 1px solid #7FB8C2;;
+  background-color: transparent;
+  color: #7FB8C2;
+  font-weight: 600;
 }
 
 #FAQ{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
 }
 
 #FAQ > h2{
-    font-family: 'Playfair Display', sans-serif;
-    color: #7FB8C2;
+  font-family: 'Playfair Display', sans-serif;
+  color: #7FB8C2;
 }
 
 #FAQ > h3{
-    font-family: 'Playfair Display', sans-serif;
-    color: #ACD4CD;
+  font-family: 'Playfair Display', sans-serif;
+  color: #ACD4CD;
 }
 
 .accordion{
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
 }
 
 .accordion-title {

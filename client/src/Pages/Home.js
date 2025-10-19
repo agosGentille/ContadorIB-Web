@@ -7,6 +7,7 @@ import '../Styles/HomeStyle.css';
 import Timeline from '../Components/Timeline';
 import AcordeonCondiciones from '../Components/AcordeonCondiciones';
 import Calendly from '../Components/Calendly';
+import OpinionesGoogle from '../Components/OpinionesGoogle';
 import CintaEmpresas from '../Components/CintaEmpresas';
 
 function Home() {
@@ -57,7 +58,7 @@ function Home() {
     
     return(
         <>
-         <section className="Inicio">
+         <section className="Inicio" id="Inicio">
             <h2 className='titulo-inicio'>Optimiza tu negocio con servicios Contables e Impositivos.</h2>
             <p className='texto-inicio'>Deja la complejidad fiscal en manos expertas y enfócate en lo que realmente importa: <b>¡hacer crecer tu negocio!</b></p>
             <button className='btn-contactanos'>¡CONTACTANOS AHORA!</button>
@@ -82,19 +83,19 @@ function Home() {
             <p>Nos ocupamos de tus obligaciones fiscales para que puedas enfocarte en hacer crecer tu negocio. Evitá errores y cumplí con ARCA sin complicaciones.</p>
             <div className='contenedor-caracteristicas'>
                 <div className="caracteristica-impacto">
-                    <img src="" alt="Clientes" />
+                    <span className="material-symbols-outlined">group</span>
                     <p className="numero">{visible ? `+${clientes}` : '+0'} Clientes</p>
                     <p className='texto-impacto'>que confían mes a mes</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
-                    <img src="" alt="Enfocados en PYMES" />
+                    <span className="material-symbols-outlined icono-impacto">corporate_fare</span>
                     <p className="numero">{visible ? `${enfocados}%` : '0%'} Enfocados</p>
                     <p className='texto-impacto'>en PYMES y Emprendedores de Argentina</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
-                    <img src="" alt="Facturas emitidas"/>
+                    <span className="material-symbols-outlined icono-impacto">receipt_long</span>
                     <p className="numero">{visible ? `+${facturas.toLocaleString()}` : '+0'}</p>
                     <p className='texto-impacto'>facturas emitidas</p>
                 </div>
@@ -110,12 +111,36 @@ function Home() {
                 <p  id='text-asesoria'>Ideal para resolver dudas concretas y tomar decisiones rápidas desde cualquier lugar.</p>
             </div>
             <Timeline />
-            <div className='caracteristicas-reunion'>
-
+            <div className='contenedor-caracteristicas-reunion'>
+               <div className='caracteristicas-reunion'>
+                    <div className="caracteristica-reu">
+                        <p className="title-reu">Duración</p>
+                        <p className='texto-reu'>30 Minutos</p>
+                    </div>
+                    <span className='divisor-caracteristicas'></span>
+                    <div className="caracteristica-reu">
+                        <p className="title-reu">100% online</p>
+                        <p className='texto-reu'>Zoom/Google Meet</p>
+                    </div>
+                    <span className='divisor-caracteristicas'></span>
+                    <div className="caracteristica-reu">
+                        <p className="title-reu">$50.000 ARS</p>
+                        <p className='texto-reu'>Precio final</p>
+                    </div>
+                </div> 
+                <p><b>Pago Anticipado para confirmar la reserva.</b></p>
+                <p>* Transferencia bancaria al Alias ivan.bellomo </p>
+                <p>Se emite Factura C</p>
             </div>
+            
             <AcordeonCondiciones />
+            {/*
             <Calendly/>
+            */}
          </section>
+         {/*
+         <OpinionesGoogle />
+         */}
          <CintaEmpresas />
         </>
     );

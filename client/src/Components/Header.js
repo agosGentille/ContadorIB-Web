@@ -6,9 +6,9 @@ import '../Styles/HeaderStyle.css';
 import logo from '../Images/logo.jpg';
 
 function Header() {
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [animating, setAnimating] = useState(false);
 
     // Detectar cambios de tamaño de pantalla, más que nada para modo de desarrollo
     useEffect(() => {
@@ -18,47 +18,60 @@ function Header() {
     }, []);
 
     const toggleMenu = () => {
-        setAnimating(true); // activar animación
-        setTimeout(() => setAnimating(false), 500); // duración animación
         setMenuOpen(prev => !prev);
     };
 
+    useEffect(() => {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
+    const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+
     return(
         <header className='header-sticky'>
-            <div className='header-marca'>
-                <img src={logo} alt='Logo Estudio Contable IB' id='Logo'/>
-                <p className="estudio">Estudio Contable IB</p>
+            <div className='header-menu'>
+                <span onClick={toggleMenu} className={`material-symbols-outlined menu-icon ${menuOpen ? 'open' : ''}`}>
+                    menu
+                </span>
             </div>
+            <div className='header-marca'>
+                <HashLink smooth to="/#Inicio"><img src={logo} alt='Logo Estudio Contable IB' id='Logo'/></HashLink>
+            </div> 
             <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
+                <span onClick={toggleMenu} className={`material-symbols-outlined btnClose ${menuOpen ? 'open' : ''}`}>close_small</span>
                 <div className='header-nav-inner'>
                     <ul>
-                    <li><HashLink smooth to="/#Servicios">Servicios</HashLink></li>
-                    <li><Link to="/planes">Planes</Link></li>
-                    <li><HashLink smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
-                    <li><HashLink smooth to="/contacto#FAQ">Preguntas Frecuentes</HashLink></li>
-                    <li><HashLink smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/#Servicios">Servicios</HashLink></li>
+                    <li><Link onClick={toggleMenu} to="/planes">Planes</Link></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/contacto#FAQ">Preguntas Frecuentes</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
                 </ul>
                 </div>
-                {isMobile ?  
-                <div className="header-nav-footer">
-                    <p>Ivan Bellomo – Contador Publico (UBA)</p>
-                    <p className="matricula">CPCECABA T:449 F:167</p>
-                    <p className="slogan">Asesoramiento contable integral para tu negocio</p>
-                </div>
-                : "" }
             </nav>
-            <div className='header-right'>
-                {/* Ícono de menú o cerrar con */}
-                {isMobile && (
-                    <span
-                    className={`material-symbols-outlined menu-icon ${menuOpen ? 'open' : ''} ${animating ? 'animating' : ''}`}
-                    onClick={toggleMenu}
-                    >
-                    {menuOpen ? 'close' : 'menu'}
-                    </span>
-                )}
+             <div 
+                className={`nav-overlay ${menuOpen ? "active" : ""}`} 
+                onClick={toggleMenu}
+            ></div> 
+            <div className="header-actions">
+                <a 
+                    href="https://wa.me/541131214776?text=Hola,%20Contador%20Iv%C3%A1n%20Bellomo.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20servicios%20contables%20que%20ofrecen." 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn-Hablanos"
+                >
+                    <span translate="no" className="material-symbols-outlined">call</span>
+                </a>
 
-            </div>        
+                <div className="switch-dark-light" onClick={toggleTheme}>
+                    {theme === 'light' ? (
+                    <span className="material-symbols-outlined" style={{ color: 'white' }}>light_mode</span>
+                    ) : (
+                    <span className="material-symbols-outlined" style={{ color: '#333' }}>dark_mode</span>
+                    )}
+                </div>
+            </div>
         </header>
     );
 }

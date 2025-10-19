@@ -5,9 +5,11 @@ function PlanesCard({planes}){
         <>
       {planes.map((plan, index) => (
         <div className="tarjeta tarjeta-animada" key={plan.id} style={{ animationDelay: `${index * 0.2}s` }}>
+          {/* 
           <div className='contenedor-img'>
             <img src={plan.imagen} alt={plan.titulo} className="tarjeta-img" />
           </div>
+          */}
           <div className="tarjeta-body">
             <h4 className="tarjeta-title">{plan.titulo}</h4>
             <ul className="tarjeta-list">

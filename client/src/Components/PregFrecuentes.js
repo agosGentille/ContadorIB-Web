@@ -19,7 +19,7 @@ const PreguntasFrecuentes = ({ preguntas }) => {
                 <span className={`status-bar ${openIndex === index ? "open" : "closed"}`}>  </span>
                 <span className="btnPregunta">
                     {item.pregunta}
-                    <span className="arrow">keyboard_arrow_down</span>
+                    <span className="arrow" translate="no">keyboard_arrow_down</span>
                 </span>
             </div>
             <div className={`accordion-content ${openIndex === index ? "open" : ""}`} style={{

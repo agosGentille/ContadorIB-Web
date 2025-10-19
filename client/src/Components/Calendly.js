@@ -18,6 +18,7 @@ function Calendly (){
                 data-url="https://calendly.com/ivan-bellomo-contadorib/30min?hide_event_type_details=1&hide_gdpr_banner=1"
                 data-locale="es"
             ></div>
+
         </div>
     );
 }

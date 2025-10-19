@@ -14,7 +14,7 @@ function Footer() {
             <div className="footer-header">
                 <p className="contador">Contador Iván Bellomo</p>
                 <div className='Logo-Alineado-Izquierda'>
-                    <img src={logo} alt='Logo Estudio Contable IB' id='Logo'/>
+                    <img src={logo} alt='Logo Estudio Contable IB' id='logo-footer'/>
                 </div>
             </div>
             <div className='footer-info'>

@@ -29,9 +29,9 @@ footer {
   margin-top: 10px;
 }
 
-.footer-header img{
-    width: 40px;
-    border-radius: 50px;
+#logo-footer{
+  width: 40px;
+  border-radius: 50px;
 }
 
 .footer-info{
@@ -72,7 +72,7 @@ footer {
 .contacto::after {
   content: "";
   position: absolute;
-  left: 0;                 /* línea arranca desde la izquierda del texto */
+  left: 0;                 
   bottom: 0;
   height: 2px;
   width: 100%;
@@ -150,3 +150,6 @@ footer {
 }
 
 
+@media (min-width: 1024px){
+  #logo-footer{width: 50px;}
+}

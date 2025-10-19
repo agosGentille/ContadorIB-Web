@@ -12,6 +12,9 @@ const PORT = 5000;
 app.use(cors()); // permite que React haga peticiones
 app.use(bodyParser.json());
 
+const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY; // tu clave de Google Cloud
+const PLACE_ID = process.env.PLACE_ID; // el place_id de tu negocio
+
 const planesRoutes = require("./Routes/PlanesRoutes.js");
 const pregRoutes = require("./Routes/PreguntasRoutes.js");
 
@@ -53,6 +56,25 @@ app.post("/send-email", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al enviar el correo" });
+  }
+});
+
+//para obtener opiniones de google
+app.get('/api/reviews', async (req, res) => {
+  try {
+    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${GOOGLE_API_KEY}`;
+    const response = await axios.get(url);
+    const allReviews = response.data.result.reviews || [];
+
+    // Filtrar solo reseñas con 5 estrellas y tomar las 10 más recientes
+    const topReviews = allReviews
+      .filter(r => r.rating === 5)
+      .slice(0, 10);
+
+    res.json(topReviews);
+  } catch (error) {
+    console.error('Error al obtener reseñas:', error);
+    res.status(500).json({ error: 'Error al obtener reseñas' });
   }
 });
 

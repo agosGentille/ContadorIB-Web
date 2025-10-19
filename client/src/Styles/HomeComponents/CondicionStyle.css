@@ -36,9 +36,11 @@ html{
   width: 100%;
   cursor: pointer;
   padding: 10px;
-  background: #7FB8C2;
+  background: #F7F6F3;
   border: 1px solid white;
   color: white;
+  color:#333333;
+  transition: color 0.3s ease;
 }
 
 .acordeon-condicion {
@@ -67,6 +69,7 @@ html{
 
 .acordeon-title.open{
     background-color: #C9A646;
+    color: white;
 }
 
 .acordeon-content {

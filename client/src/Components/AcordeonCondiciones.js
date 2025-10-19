@@ -54,7 +54,7 @@ function AcordeonCondiciones (){
             >
                 <span className={`acordeon-condicion ${openIndex === index ? "open" : "closed"}`}>
                     {item.titulo}
-                    <span className="more-less material-symbols-outlined">
+                    <span translate="no" className="more-less material-symbols-outlined">
                         {openIndex === index ? "check_indeterminate_small" : "add"}
                     </span>
                 </span>
