@@ -15,33 +15,32 @@ html{
 
 .timeline {
   position: relative;
+  width: 80vw;
   max-width: 900px;
   margin: 2rem auto;
   padding: 2rem 0;
+  align-items: center;
+  justify-content: center;
 }
 
 #linea-vertical {
   position: absolute;
-  left: 50%;
-  top: 0;
-  transform: translateX(-50%);
+  left: 15px;
+  transform: none;
   width: 2px;
   height: 100%;
   background-color: #ACD4CD;
+  top: 0;
+  bottom: 0;
 }
 
-.elemento-derecha, .elemento-izquierda {
+.elemento {
   position: relative;
   padding: 1rem 2rem;
   box-sizing: border-box;
   width: 100%;
   left: 0;
   text-align: left;
-  margin-bottom: 2rem;
-}
-
-.elemento-derecha {
-  left: 60%;
 }
 
 .punto {
@@ -52,8 +51,9 @@ html{
   background-color: #2F4A5C;
   border-radius: 50%;
   border: 3px solid white;
-  left: auto;
-  right: -8px;
+  z-index: 2;
+  left: 8px;
+  transform: none;
 }
 
 .caja-de-texto {
@@ -64,21 +64,79 @@ html{
   max-width: 90%;
 }
 
-.titulo-elemento{
+.titulo-elemento {
   color: #2F4A5C;
   font-family: 'Playfair Display', sans-serif;
   font-weight: 600;
 }
 
-@media screen and (min-width: 1024px) {
-  .elemento-derecha, .elemento-izquierda {
+.texto-elemento {
+  font-family: sans-serif;
+  color: #4B4B4B;
+}
+
+/* Animaciones */
+.elemento .punto,
+.elemento .caja-de-texto {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.elemento.visible .punto {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.elemento.visible .caja-de-texto {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s; 
+}
+
+@media (min-width: 1024px) {
+
+  .timeline {width: 100%;}
+  .elemento {
     width: 50%;
+    position: relative;
+    margin-bottom: -0.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
-  .punto {
-    position: absolute;
-    top: 1rem;
-    left: auto;
-    right: -8px;
+  .elemento.elemento-izquierda {
+    left: 0;
+    padding-right: 2.5rem;
   }
+
+  .elemento.elemento-izquierda .punto {
+    right: -8px;    
+    left: auto;
+    transform: none;
+  }
+
+  .elemento.elemento-derecha {
+    left: 50%;
+    padding-left: 2.5rem;
+  }
+
+  .elemento.elemento-derecha .punto {
+    left: -8px;     
+    right: auto;
+    transform: none;
+  }
+
+  .elemento-derecha .caja-de-texto {
+    margin-right: 0;
+    margin-left: auto; 
+  }
+
+  .caja-de-texto {
+    max-width: 85%;
+    display: inline-block;
+  }
+
+  #linea-vertical {left: 50%;}
 }
