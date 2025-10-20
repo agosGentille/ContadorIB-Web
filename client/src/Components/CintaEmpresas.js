@@ -10,45 +10,26 @@ import REKO from '../Images/Logo Empresas/REKO.PNG';
 import SAT from '../Images/Logo Empresas/SAT.PNG';
 import PrisaStudio from '../Images/Logo Empresas/PRISASTUDIO.PNG';
 
-function CintaClientes() {
+function CintaEmpresas() {
   const scrollRef = useRef(null);
-
-  useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const speed = 0.5; // velocidad del scroll
-    let rafId;
-
-    const scroll = () => {
-      container.scrollLeft += speed;
-
-      // Reinicia cuando alcanza la mitad
-      if (container.scrollLeft >= container.scrollWidth / 2) {
-        container.scrollLeft = 0;
-      }
-
-      rafId = requestAnimationFrame(scroll);
-    };
-
-    rafId = requestAnimationFrame(scroll);
-
-    return () => cancelAnimationFrame(rafId);
-  }, []);
 
   const logos = [ Arauca, Fajkar, LaNubecita, PhoneHub, Rakkan, RDComex, REKO, SAT, PrisaStudio, ];
 
-  return (
-    <section className="cinta-clientes"  style={{ whiteSpace: "nowrap" }}>
-      <h2>Empresas que Confían en Nuestro Asesoramiento</h2>
 
-      <div className="cinta" ref={scrollRef}>
-        {[...logos, ...logos].map((logo, i) => (
-          <img key={i} src={logo} alt={`Logo ${i}`} />
-        ))}
+
+  return (
+    <section className="secc-cinta"  style={{ whiteSpace: "nowrap" }}>
+      <h2>Empresas que Confían en Nuestro Asesoramiento</h2>
+      <div className="contenedor-cinta">
+        <div className="cinta-logos" ref={scrollRef}>
+          {[...logos, ...logos].map((logo, i) => (
+            <img key={i} src={logo} alt={`Logo ${i}`} className="logo-empresa"/>
+          ))}
+        </div>
       </div>
+      
     </section>
   );
 }
 
-export default CintaClientes;
+export default CintaEmpresas;

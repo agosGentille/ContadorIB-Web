@@ -17,11 +17,13 @@ html{
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: auto;
-  padding: 4rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
   background: #F7F6F3;
   gap:20px;
+  overflow: hidden;
 }
 
 .Inicio::after {
@@ -30,7 +32,7 @@ html{
   bottom: -50px;
   left: 0;
   width: 100%;
-  height: 100px; 
+  height: 60px; 
   background: white; 
   border-radius: 50%;
 }
@@ -64,29 +66,122 @@ html{
 }
 
 /* ------------- SOBRE NOSOTROS ------------- */
-
+.Sobre-Nosotros{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 2rem 2rem 2rem;
+}
 .imagen-Ivan{
-    position: relative;
+  position: relative; 
+  width: 100%;
+  margin: 0 auto;
 }
 
 #img-ivan{
-    width: 10vw;
+  width: 100%;
+  border-radius: 200px 200px 0 0;
+  display: block;
 }
 
 .monedita{
-    width: 40px;
-    background-color: white;
-    border-radius: 50px;
-    padding: 2px;
-    /*animation: girar 2s linear infinite;*/
+  width: 60px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 2px;
+  animation: girar 1s linear infinite;
+  position: relative;
+}
+
+#moneda-izquierda {
+  position: absolute;
+  top: 60px;    
+  left: 10px;   
+  z-index: 2;
+}
+
+#moneda-derecha {
+  position: absolute;
+  bottom: -10px;  
+  right: -20px;  
+  z-index: 2;
+}
+
+.cartel-cdor{
+  position: absolute;
+  background-color: #7FB8C2;
+  color: white;
+  border-radius: 50px;
+  padding: 0.8rem;
+  top: 60px;
+  right: -15px;
+  animation: aparecerDesdeDerecha 0.8s ease-out 0.5s both;
+}
+
+.texto-sobre-nosotros{
+  display: flex;
+  flex-direction: column;
+  background-color: #F7F6F3;
+  gap: 10px;
+  padding: 1rem;
+}
+
+.texto-sobre-nosotros h3{
+  color: #7FB8C2;
+  margin-bottom: 5px;
+  font-size: 1.4rem;
+}
+
+.texto-sobre-nosotros h3::after{
+  content: "";
+  display: block;
+  width: 40px;          
+  height: 2px;          
+  background-color: rgb(201, 122, 99, 0.8);
+  margin-top: 6px; 
+  font-size: 1rem;  
+}
+
+.texto-sobre-nosotros p:first-of-type,.texto-sobre-nosotros p:nth-of-type(2){
+  font-size: 0.8rem;
+
+}
+
+.texto-sobre-nosotros p:last-of-type{
+  color: #C97A63;
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 @keyframes girar {
-  from {
+  0% {
     transform: rotate(0deg);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(15deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes aparecerDesdeDerecha {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
@@ -163,11 +258,12 @@ html{
 .asesoria{
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   height: auto;
   padding: 5rem;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 #title-asesoria{
   color: #7FB8C2;
@@ -256,56 +352,100 @@ html{
 }
 
 /* ------------- CINTA EMPRESAS ------------- */
-.cinta-clientes {
+.secc-cinta {
   margin-top: 4rem;
-  display: "flex";
+  display: flex;
+  flex-direction: column;
   text-align: center;
+
   overflow: hidden;
   padding: 3rem 0;
+  width: 100%;
 }
 
-.cinta-clientes h2 {
-  font-size: 1.6rem;
+.secc-cinta h2 {
+  font-size: 1.2rem;
   font-weight: 600;
   color: #333;
   margin-bottom: 2rem;
 }
 
-.cinta {
-  display: flex;
+.contenedor-cinta {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.cinta-logos {
+  display: inline-flex;
   gap: 3rem;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  padding: 1rem;
-  align-items: center;
-  justify-content: flex-start;
+  padding: 1rem 0;
+  animation: desplazar-logos 30s linear infinite;
 }
 
-.cinta img {
+.logo-empresa {
   height: 60px;
+  width: auto;
   object-fit: contain;
-  user-select: none;
-  transition: transform 0.3s ease, filter 0.3s ease;
   filter: grayscale(100%) opacity(0.8);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
-.cinta img:hover {
+.logo-empresa:hover {
   transform: scale(1.1);
   filter: none;
 }
 
-@media (min-width: 1024px) {
+@keyframes desplazar-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: 768px) {
+  .Inicio{padding: 4rem;}
+  .Inicio::after{height: 100px; }
   .titulo-inicio{
     color: #7FB8C2;
     font-size: 2.2rem;
   }
   .texto-inicio{font-size: 1.1rem;}
 
-  .monedita{width: 50px;}
+  .Sobre-Nosotros{flex-direction: row;}
+
+  #img-ivan{
+    height: 120%;
+    border-radius: 200px 200px 0 0;
+    position: absolute;
+    top: -55px;
+    max-width: 380px;
+  }
+
+  .monedita{width: 55px;}
+
+  #moneda-izquierda {top:40px; left:-15px;}
+
+  .cartel-cdor{font-size:0.9rem; top:-25px; right:-80px; padding: 0.5rem;}
+
+  .texto-sobre-nosotros{
+    display: flex;
+    flex-direction: column;
+    background-color: #F7F6F3;
+    gap: 10px;
+    padding: 1rem;
+    margin-left: -30px; 
+    padding-left: 40px; 
+    position: relative;
+    z-index: -1;
+  }
 
   #text-asesoria{max-width: 40vw;}
   
-  .cinta img {height: 80px;}
+  .logo-empresa {height: 80px;}
 
   .contenedor-caracteristicas {
     gap: 3rem;
@@ -320,5 +460,17 @@ html{
     align-self: stretch; 
     margin: 0;
   }
-  .cinta-clientes {margin-top: 2rem;}
+  .secc-cinta {margin-top: 2rem;}
+  .secc-cinta h2 {font-size: 1.6rem;}
+}
+
+@media (min-width: 1280px) {
+  .texto-sobre-nosotros{
+    margin-left: -150px; 
+    padding-left: 80px; 
+  }
+
+  #moneda-derecha {right: 60px;}
+
+  .cartel-cdor{font-size:0.9rem; top:-25px; right:10px; padding: 0.5rem;}
 }

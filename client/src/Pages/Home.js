@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 
-import fotoIvan from '../Images/logo.jpg';
+import fotoIvan from '../Images/foto_ivan.jpg';
 import imgMonedita from '../Images/moneda_icono.png';
 import '../Styles/HomeStyle.css';
 
@@ -11,35 +11,51 @@ import OpinionesGoogle from '../Components/OpinionesGoogle';
 import CintaEmpresas from '../Components/CintaEmpresas';
 
 function Home() {
-    const [visible, setVisible] = useState(false);
-    const ref = useRef(null);
+    const [visibleSobreNosotros, setVisibleSobreNosotros] = useState(false);
+    const [visibleImpacto, setVisibleImpacto] = useState(false);
+    const refSobreNosotros = useRef(null);
+    const refImpacto = useRef(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (entry.isIntersecting) {
-            setVisible(true);
-            }
-        },
-        { threshold: 0.4 } // Se activa cuando el 40% de la sección es visible
+        const observerSobreNosotros = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisibleSobreNosotros(true);
+                }
+            },
+            { threshold: 0.4 }
+        );
+        const observerImpacto = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisibleImpacto(true);
+                }
+            },
+            { threshold: 0.4 }
         );
 
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
+        if (refSobreNosotros.current) observerSobreNosotros.observe(refSobreNosotros.current);
+        if (refImpacto.current) observerImpacto.observe(refImpacto.current);
+
+        return () => {
+            observerSobreNosotros.disconnect();
+            observerImpacto.disconnect();
+        };
     }, []);
 
     const useCounter = (endValue, speed = 20) => {
-        const [count, setCount] = useState(0);
+        const [count, setCount] = useState(0);  // Si aún no se ve el elemento, no empieza a contar
 
         useEffect(() => {
-        if (!visible) return;
+        if (!visibleImpacto) return;
         let start = 0;
-        const increment = endValue / 80; 
+        const increment = endValue / 80; // ajusta la velocidad del conteo
 
+        // Intervalo que actualiza el contador de forma progresiva
         const timer = setInterval(() => {
             start += increment;
             if (start >= endValue) {
-            clearInterval(timer);
+            clearInterval(timer);// Si llega al valor final lo detiene 
             setCount(endValue);
             } else {
             setCount(Math.ceil(start));
@@ -47,7 +63,7 @@ function Home() {
         }, speed);
 
         return () => clearInterval(timer);
-        }, [visible, endValue, speed]);
+        }, [visibleImpacto, endValue, speed]);
 
         return count;
     };
@@ -64,12 +80,12 @@ function Home() {
             <button className='btn-contactanos'>¡CONTACTANOS AHORA!</button>
          </section>
 
-         <section className="Sobre-Nosotros" id="SobreNosotros">
+         <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
             <div className="imagen-Ivan">
                 <img src={fotoIvan} alt="Foto Cdor. Iván Bellomo" id="img-ivan"/>
                 <img src={imgMonedita} alt="icono moneda" className="monedita" id="moneda-derecha"/>
                 <img src={imgMonedita} alt="icono moneda" className="monedita" id="moneda-izquierda"/>
-                <span className='cartel-cdor'>Cdor. Iván Bellomo</span>
+                {visibleSobreNosotros ?  <span className='cartel-cdor'>Cdor. Iván Bellomo</span> : ""}
             </div>
             <div className='texto-sobre-nosotros'>
                 <h3>Sobre Nosotros</h3>
@@ -78,25 +94,25 @@ function Home() {
                 <p>¡Estamos para ayudarte!</p>
             </div>
          </section>
-         <section className='secc-impacto' ref={ref}>
+         <section className='secc-impacto' ref={refImpacto}>
             <h3>Contabilidad clara, sin estrés.</h3>
             <p>Nos ocupamos de tus obligaciones fiscales para que puedas enfocarte en hacer crecer tu negocio. Evitá errores y cumplí con ARCA sin complicaciones.</p>
             <div className='contenedor-caracteristicas'>
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined">group</span>
-                    <p className="numero">{visible ? `+${clientes}` : '+0'} Clientes</p>
+                    <p className="numero">{visibleImpacto ? `+${clientes}` : '+0'} Clientes</p>
                     <p className='texto-impacto'>que confían mes a mes</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined icono-impacto">corporate_fare</span>
-                    <p className="numero">{visible ? `${enfocados}%` : '0%'} Enfocados</p>
+                    <p className="numero">{visibleImpacto ? `${enfocados}%` : '0%'} Enfocados</p>
                     <p className='texto-impacto'>en PYMES y Emprendedores de Argentina</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined icono-impacto">receipt_long</span>
-                    <p className="numero">{visible ? `+${facturas.toLocaleString()}` : '+0'}</p>
+                    <p className="numero">{visibleImpacto ? `+${facturas.toLocaleString()}` : '+0'}</p>
                     <p className='texto-impacto'>facturas emitidas</p>
                 </div>
             </div>
