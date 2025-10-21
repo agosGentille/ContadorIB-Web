@@ -66,9 +66,9 @@ function Header() {
 
                 <div className="switch-dark-light" onClick={toggleTheme}>
                     {theme === 'light' ? (
-                    <span className="material-symbols-outlined" style={{ color: 'white' }}>light_mode</span>
+                    <span className="material-symbols-outlined" style={{ color: '#333' }}>light_mode</span>
                     ) : (
-                    <span className="material-symbols-outlined" style={{ color: '#333' }}>dark_mode</span>
+                    <span className="material-symbols-outlined" style={{ color: 'white' }}>dark_mode</span>
                     )}
                 </div>
             </div>

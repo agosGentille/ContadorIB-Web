@@ -9,7 +9,7 @@
 }
 
 html{
-  color:#4B4B4B;
+  color:var(--color-texto-secundario);
   font-size: 15px; /*Este valor equivale a 1rem*/
 }
 
@@ -27,15 +27,15 @@ html{
 
 #FormularioDeContacto > h2{
   font-family: 'Playfair Display', sans-serif;
-  color: #2F4A5C;
+  color: var(--color-texto);
 }
 
 .Form{
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #F8F8F8 0%, #FFFFFF 100%);
+  background: var(--bg-footer);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 1px solid rgba(127, 184, 194, 0.1);
+  border: var(--color-borde);
   padding: 20px;
   width: 80%;
   align-content: center;
@@ -44,7 +44,7 @@ html{
   gap: 20px;
 }
 .inputForm{
-  color: #333333;
+  color: var(--color-texto);
   background-color: transparent;
   border: 1px solid rgb(71, 70, 70, 0.4);
   padding: 15px;
@@ -52,7 +52,7 @@ html{
 .inputForm:focus{
   border: 1px solid #7FB8C2;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(127, 184, 194, 0.1); 
+  box-shadow: var(--sombra-acento); 
 }
 
 .nombre-completo {
@@ -96,7 +96,7 @@ html{
 
 .btnEnviarMensaje{
   padding: 12px 35px; /* Padding más equilibrado */
-  background: linear-gradient(135deg, #7FB8C2, #5CA1B0); /* Gradiente sutil */
+  background: var(--bg-boton); /* Gradiente sutil */
   border-radius: 25px; /* Más redondeado */
   color: white;
   border: 2px solid transparent; /* Borde transparente por defecto */
@@ -146,8 +146,8 @@ html{
   width: 100%;
   cursor: pointer;
   padding: 10px;
-  background: #F7F6F3;
-  border: 1px solid white;
+  background: var(--color-fondo-secundario);
+  border: var(--color-borde-acordeon);
   border-radius: 0 10px 10px 0;
 }
 
@@ -185,7 +185,7 @@ html{
   max-height: 0;
   overflow: hidden;
   padding: 0 10px; 
-  background: #F7F6F3;
+  background: var(--color-fondo-secundario);
   margin-bottom: 10px;
   border-radius: 0 0 10px 10px;
   font-size: 0.8rem;
@@ -220,13 +220,13 @@ html{
     text-align: center;
     width: 100%;
     padding: 40px 20px;
-    background: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
+    background: var(--color-fondo-secundario);
     gap: 15px;
 }
 
 #Mapa > h2 {
     font-family: 'Playfair Display', serif;
-    color: #2F4A5C;
+    color: var(--color-texto);
     margin-bottom: 5px;
 }
 
@@ -251,8 +251,8 @@ html{
     height: 300px;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 1px solid rgba(127, 184, 194, 0.2);
+    box-shadow: var(--sombra-suave);
+    border: var(--color-borde);
 }
 
 .info-ubicacion {
@@ -268,10 +268,10 @@ html{
     align-items: flex-start;
     gap: 15px;
     padding: 20px;
-    background: white;
+    background: var(--color-fondo);
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    border: 1px solid rgba(127, 184, 194, 0.1);
+    box-shadow: var(--sombra-suave);
+    border: var(--color-borde);
     transition: all 0.3s ease;
 }
 
@@ -288,14 +288,14 @@ html{
 }
 
 .item-info h4 {
-    color: #2F4A5C;
+    color: var(--color-texto);
     font-family: 'Playfair Display', serif;
     margin-bottom: 5px;
     font-size: 1rem;
 }
 
 .item-info p {
-    color: #666;
+    color: var(--color-texto-secundario);
     font-size: 0.9rem;
     line-height: 1.4;
 }

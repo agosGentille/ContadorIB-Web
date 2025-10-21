@@ -313,12 +313,12 @@ function Home() {
             </div>
             
             <AcordeonCondiciones />
-            
+            {/* 
             <Calendly/>
-            *
+            */}
          </section>
          
-         <OpinionesGoogle />
+         {/* <OpinionesGoogle />*/}
          
          <CintaEmpresas />
         </>

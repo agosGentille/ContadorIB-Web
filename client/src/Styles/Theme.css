@@ -1,0 +1,68 @@
+/* 🌞 Light mode (por defecto) */
+:root {
+  /* Colores base */
+  --color-fondo: #FFFFFF;
+  --color-fondo-secundario: #F7F6F3;
+  --color-texto: #2F4A5C;
+  --color-texto-secundario: #4B4B4B;
+
+  /* Acentos y detalles */
+  --color-acento: #7FB8C2;
+  --color-acento-secundario: #5CA1B0;
+  --color-destacado: #C97A63;
+
+  /* Bordes y sombras */
+  --color-borde: 1px solid rgba(127, 184, 194, 0.2);
+  --color-borde-acordeon: 1px solid white;
+  --sombra-suave: 0 3px 15px rgba(0,0,0,0.08);
+  --sombra-acento: 0 20px 40px rgba(127, 184, 194, 0.15);
+
+  /* Fondos especiales */
+  --bg-header: linear-gradient(135deg, #FFFFFF 0%, #F7F6F3 100%);
+  --bg-footer: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
+  --bg-boton: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  --bg-boton-hover: linear-gradient(135deg, #5CA1B0, #7FB8C2);
+
+  /* Hover y transiciones */
+  --fondo-hover: rgba(127, 184, 194, 0.08);
+
+  /* Switch */
+  --switch-bg: rgba(127, 184, 194, 0.1);
+
+  --filtro-iconos: invert(30%); 
+}
+
+/* 🌙 Dark mode */
+[data-theme="dark"] {
+  --color-fondo: #0F172A;
+  --color-fondo-secundario: #1E293B;
+  --color-texto: #E2E8F0;
+  --color-texto-secundario: #CBD5E1;
+
+  --color-acento: #A2D2D9;
+  --color-acento-secundario: #7FB8C2;
+  --color-destacado: #C97A63;
+
+  --color-borde: 1px solid rgba(248, 247, 247, 0.1);
+  --color-borde-acordeon: 1px solid rgba(0, 0, 0, 0.2);
+  --sombra-suave: 0 3px 15px rgba(255, 255, 255, 0.05);
+  --sombra-acento: 0 20px 40px rgba(162, 210, 217, 0.3);
+
+  --bg-header: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  --bg-footer: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  --bg-boton: linear-gradient(135deg, #5CA1B0, #7FB8C2);
+  --bg-boton-hover: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+
+  --fondo-hover: rgba(255, 255, 255, 0.05);
+  --switch-bg: rgba(255, 255, 255, 0.1);
+  --filtro-iconos: invert(100%);
+}
+
+body {
+  background: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
