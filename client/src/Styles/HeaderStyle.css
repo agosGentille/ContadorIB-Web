@@ -18,90 +18,129 @@ html{
   top: 0;
   left: 0;
   width: 100%;
-  height: 10vh;
-  padding: 0 1rem;
+  height: 70px; /* Mejor usar px fijo que vh */
+  padding: 0 1.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Cambiado para mejor distribución */
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F7F6F3 100%);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.08);
   z-index: 1000;
-  overflow: hidden;
+  border-bottom: 1px solid rgba(127, 184, 194, 0.2);
+}
+
+.header-marca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1; /* Para centrar mejor */
+}
+
+#Logo {
+  width: 50px; /* Tamaño más consistente */
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #7FB8C2;
+  padding: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(127, 184, 194, 0.2);
+}
+
+#Logo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(127, 184, 194, 0.3);
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Empuja el logo al centro */
+}
+
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: #2F4A5C;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.menu-icon:hover {
+  color: #7FB8C2;
+  background: rgba(127, 184, 194, 0.1);
+  transform: scale(1.1);
 }
 
 .header-nav {
   position: fixed;
-  top: 2vh;               
-  bottom: 2vh;            
-  left: -100%;        
-  width: 70vw;           
-  max-width: 900px;        
-  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 320px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
   display: flex;
   flex-direction: column;
   padding: 2rem 1.5rem;
-  transition: left 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  z-index: 1000;
-  border-radius: 2px;
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1001;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(127, 184, 194, 0.2);
 }
 
 .header-nav.open {
-   left: 2vw; 
-}
-
-.nav-overlay {
-  position: fixed;
-  top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.3);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  z-index: 999;
 }
 
-.nav-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.btnClose{
-  font-size: 15px;
-  border: 1px solid #a8a7a7;
-  border-radius: 50px;
-  padding: 10px;
-  width: fit-content;
+.btnClose {
+  font-size: 24px;
+  border: 2px solid #E2E8F0;
+  border-radius: 50%;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
-  margin-bottom: 5vw;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  align-self: flex-end;
+}
+
+.btnClose:hover {
+  border-color: #7FB8C2;
+  color: #7FB8C2;
+  transform: rotate(90deg);
 }
 
 .header-nav ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
   padding: 0;
   margin: 0;
-  text-align: left; 
 }
 
 .header-nav ul li a {
-  position: relative; 
+  position: relative;
   text-decoration: none;
-  color: #333;
-  font-size: 1.2rem;
-  padding-bottom: 4px;
-  font-family: 'Playfair Display', sans-serif;
-  letter-spacing: 1px;
+  color: #2F4A5C;
+  font-size: 1.1rem;
+  padding: 0.8rem 1rem;
+  font-family: 'Playfair Display', serif;
   font-weight: 500;
+  letter-spacing: 0.5px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: block;
 }
 
-.header-nav ul li a:hover,
-.header-nav ul li a:active,
-.header-nav ul li a:focus {
+.header-nav ul li a:hover {
   color: #7FB8C2;
+  background: rgba(127, 184, 194, 0.08);
+  transform: translateX(5px);
 }
 
 .header-nav ul li a::after {
@@ -111,82 +150,22 @@ html{
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: #7FB8C2;
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD);
   transition: width 0.3s ease-out;
 }
 
-.header-nav ul li a:hover::after,
-.header-nav ul li a:active::after,
-.header-nav ul li a:focus::after {
+.header-nav ul li a:hover::after {
   width: 100%;
 }
 
-.header-nav-footer{
-  margin-top: auto;
-  text-align: start;
-  color: #4B4B4B;
-}
-
-.header-nav-footer p:first-child{
-  font-family: 'Playfair Display', sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #2F4A5C;
-}
-
-.header-nav-footer .matricula{
-  font-size: 0.9rem;
-}
-
-.header-nav-footer .slogan {
-  font-size: 0.8rem;
-  font-style: italic;
-  color: #777;
-  margin-top: 0.3rem;
-}
-
-.header-marca {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#Logo {
-  width: 8vw;
-  min-width: 60px;
-  height: auto;
-}
-
-.header-menu {
-  display: inline-block;
-  font-size: 28px;
-  color: black;
-  cursor: pointer;
-  margin-left: 2vw;
-  position: absolute;
-  left: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.menu-icon {
-  font-size: 28px;
-  cursor: pointer;
-  display: inline-block;
-}
-
 .header-actions {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
   display: flex;
   align-items: center;
-  gap: 0.5rem; 
+  gap: 0.8rem;
+  margin-left: auto; /* Empuja las acciones a la derecha */
 }
 
 .switch-dark-light {
-  position: static; /* quitamos el absolute para que se alinee dentro del flex */
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -194,72 +173,94 @@ html{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  background: rgba(127, 184, 194, 0.1);
+  border: 1px solid rgba(127, 184, 194, 0.2);
 }
 
 .switch-dark-light:hover {
-  background-color: rgba(127, 184, 194, 0.2); 
-  box-shadow: 0 0 10px rgba(127, 184, 194, 0.4);
+  background: rgba(127, 184, 194, 0.2);
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
+  transform: scale(1.05);
 }
 
 .switch-dark-light span {
-  font-size: 26px;
-  color: #4b4b4b;
-  transition: transform 0.3s ease, color 0.3s ease;
+  font-size: 22px;
+  color: #2F4A5C;
+  transition: all 0.3s ease;
 }
 
-.switch-dark-light:hover span {
-  transform: rotate(20deg) scale(1.1);
-  color: #7FB8C2;
-}
-
-.btn-Hablanos{ 
-  border-radius: 30px; 
+.btn-Hablanos {
+  border-radius: 50%;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  text-decoration: none; 
-  transition: all 0.3s ease; 
-  color: #ACD4CD;
-  background-color: white;
-  border: 2px solid #ACD4CD;
-  padding: 5px;
-  margin-left: 5px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  border: none;
+  padding: 10px;
+  width: 45px;
+  height: 45px;
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
 }
 
 .btn-Hablanos span {
-  font-size: 1.5rem;
-  color: #ACD4CD;
+  font-size: 20px;
+  color: white;
 }
 
 .btn-Hablanos:hover {
-    text-decoration: none; 
-    background-color: #ACD4CD; 
-    border: 2px solid #ACD4CD;
+  background: linear-gradient(135deg, #5CA1B0, #7FB8C2);
+  transform: scale(1.05) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(127, 184, 194, 0.4);
 }
 
-.btn-Hablanos:hover span{
-    color: white;
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.nav-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (min-width: 1024px) {
-  .header-nav {    
-    width: 40vw;           
-    max-width: 500px;        
-    padding: 2rem 1.5rem;
+  .header-sticky {
+    height: 80px;
+    padding: 0 2rem;
   }
-
+  
+  .header-nav {
+    width: 380px;
+  }
+  
+  #Logo {
+    width: 55px;
+    height: 55px;
+  }
+  
   .menu-icon {
     font-size: 1.8rem;
   }
-  .header-sticky {
-    height: 8vw;
+  
+  .header-actions {
+    gap: 1rem;
   }
   
-  .btnClose{
-    font-size: 20px;
-    margin-bottom: 3vw;
+  .switch-dark-light,
+  .btn-Hablanos {
+    width: 48px;
+    height: 48px;
   }
-
-  .header-actions {right: 2rem;}
 }

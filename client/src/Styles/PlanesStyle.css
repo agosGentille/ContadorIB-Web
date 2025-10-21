@@ -10,156 +10,125 @@
 
 html{
     color:#4B4B4B;
-    font-size: 15px; /*Este valor equivale a 1rem*/
-}
-
-h2{
-  margin-top: 2rem;
-    font-family: 'Playfair Display', sans-serif;
-    color: #2F4A5C;
-    text-align: center;
-}
-
-h3{
-    font-family: 'Playfair Display', sans-serif;
-    color: #333;
+    font-size: 15px; 
 }
 
 .empresas, .emprendedores{
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 30px;
-  gap: 20px;
+  padding: 40px 30px; 
+  gap: 25px;
 }
 
 .contendorPlanes{
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 30px;
+  gap: 30px; 
   justify-content: center; 
+  align-items: stretch; 
 }
 
 .tarjeta {
   position: relative;
   height: auto;
-  width: 280px;
-  background-color: white;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.2); 
-  border-radius: 2px;
-  transition: all 0.3s ease;
-  background-color: #F7F6F3;
+  min-height: 380px; 
+  width: 300px; 
+  background: linear-gradient(135deg, #FFFFFF 0%, #FCFCFC 100%);
+  box-shadow: 0 3px 15px rgba(0,0,0,0.08); 
+  border-radius: 12px; 
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 1px solid rgba(127, 184, 194, 0.1);
+  overflow: hidden;
 }
 
 .tarjeta:hover {
-    transform: translateY(-20px) scale(1.05); /* se levanta y agranda */
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2); 
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.tarjeta-animada {
-  opacity: 0; /* inicial */
-  animation: fadeInUp 0.5s forwards;
+  transform: translateY(-12px) scale(1.02); 
+  box-shadow: 0 20px 40px rgba(127, 184, 194, 0.15);
+  border-color: rgba(127, 184, 194, 0.3);
 }
 
 h4{
-  font-family: 'Playfair Display', sans-serif;
-  color: #7FB8C2;
+  font-family: 'Playfair Display', serif; 
+  color: #2F4A5C; 
   position: relative;
-  margin-bottom: 15px;
-  transition: transform 0.5s ease;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.4s ease;
 }
-.tarjeta:hover h4 {
-  transform: translateY(-3px);
-}
+
 h4::after {
   content: "";
   display: block;
-  width: 40px;          
-  height: 2px;          
-  background-color: #7FB8C2;
-  margin-top: 6px; 
-  font-size: 1rem;  
-  transition: all 0.3s ease;   
-}
-.tarjeta:hover h4::after {
-  width: 60px; /* crece un poco más */
+  width: 50px;          
+  height: 3px;          
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD); 
+  margin-top: 8px; 
+  border-radius: 2px;
+  transition: all 0.4s ease;   
 }
 
-.tarjeta:hover .tarjeta-img {
-  transform: scale(1.05); 
+.tarjeta:hover h4::after {
+  width: 80px; 
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD); 
 }
 
 .tarjeta-body{
-    display: flex;
-    flex-direction: column;
-    padding: 15px 35px;
-    transition: transform 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 25px; 
+  transition: transform 0.4s ease;
+  flex-grow: 1; 
 }
-.tarjeta:hover .tarjeta-body {transform: translateY(-3px);}
 
 .tarjeta-list {
   list-style: none; 
   padding-left: 0;
+  margin-bottom: 15px;
 }
 
 .tarjeta-list li {
-  margin-bottom: 10px;
-  font-size: 0.7rem;
+  margin-bottom: 12px; 
+  font-size: 0.8rem; 
+  line-height: 1.4; 
+  color: #555; 
+  display: flex;
+  align-items: flex-start;
 }
 
 .tarjeta-list li::before {
   font-family: 'Material Symbols Outlined';
   content: "check";
   color: #C9A646;
-  font-size: 0.7rem;
-  margin-right: 8px;
+  font-size: 0.9rem; 
+  margin-right: 10px;
+  margin-top: 1px;
+  flex-shrink: 0;
 }
 
 .tarjeta-link {
   display: inline-flex;            
-  align-items: center;           
-  gap: 6px;                        
+  align-items: center;                              
   text-decoration: none;            
-  color: #C97A63;                    
-  font-weight: 500;
-  transition: color 0.3s ease;
-  font-size: 0.8rem;
+  color: #7FB8C2;                   
   font-weight: 600;
-  margin-top: 10px;
-  transition: transform 0.5s ease, color 0.5s ease;
-}
-.tarjeta:hover .tarjeta-link {transform: translateY(-3px);}
-.tarjeta-link:hover {color: #bd6b53;                    }
-
-.tarjeta-link .material-symbols-outlined {
-  font-size: 20px;                  
-  line-height: 1;                  
-  vertical-align: middle;           
-}
-
-.tarjeta-link::after {
-  font-family: "Material Symbols Outlined";
-  content: "arrow_forward";
-  font-size: 20px;
+  font-size: 0.8rem;
+  margin-top: auto; 
+  padding: 8px 16px;
+  border: 1px solid rgba(127, 184, 194, 0.3);
+  border-radius: 20px;
   transition: all 0.3s ease;
+  background: rgba(127, 184, 194, 0.05);
 }
 
-.tarjeta-link:hover::after,
-.tarjeta-link:focus::after {
-  content: "arrow_outward";
-  transform: translateX(3px);
+.tarjeta-link:hover {
+  color: white;
+  background: #7FB8C2;
+  border-color: #7FB8C2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
 }
 
 .linea-decorativa {
@@ -168,24 +137,58 @@ h4::after {
   left: 0;
   display: flex;
   width: 100%;         
-  height: 6px;        
-  border-radius: 0 0 2px 2px; 
+  height: 4px;       
+  border-radius: 0 0 12px 12px; 
   overflow: hidden;     
 }
 
 .barra-decorativa {
   flex: 1;             
+  transition: all 0.3s ease;
 }
 
-.barra-decorativa:nth-child(1) {
-  background-color: #7FB8C2;
+.tarjeta:hover .barra-decorativa {
+  height: 5px; 
 }
-.barra-decorativa:nth-child(2) {
-  background-color: #C9A646; 
+
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD, #C9A646, #C97A63);
+  opacity: 0.8;
 }
-.barra-decorativa:nth-child(3) {
-  background-color: #2F4A5C; 
+
+h2 {
+  margin-top: 3rem;
+  font-family: 'Playfair Display', serif;
+  color: #2F4A5C;
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
 }
-.barra-decorativa:nth-child(4) {
-  background-color: #ACD4CD; 
+
+h3 {
+  font-family: 'Playfair Display', serif;
+  color: #7FB8C2;
+  font-size: 1.4rem;
+  text-align: center;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: #ACD4CD;
+  border-radius: 1px;
 }

@@ -33,7 +33,9 @@ html{
 .Form{
   display: flex;
   flex-direction: column;
-  background-color: #F8F8F8;
+  background: linear-gradient(135deg, #F8F8F8 0%, #FFFFFF 100%);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(127, 184, 194, 0.1);
   padding: 20px;
   width: 80%;
   align-content: center;
@@ -48,8 +50,11 @@ html{
   padding: 15px;
 }
 .inputForm:focus{
-  border: 1px solid rgb(71, 70, 70, 0.8);
+  border: 1px solid #7FB8C2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(127, 184, 194, 0.1); 
 }
+
 .nombre-completo {
   display: flex;
   flex-direction: row;
@@ -84,25 +89,31 @@ html{
   justify-content: end;
 }
 
+.button{
+  text-align: end;
+  margin-top: 10px; /* Espacio adicional */
+}
+
 .btnEnviarMensaje{
-  padding: 15px 30px;
-  background-color: #7FB8C2;
-  border-radius: 50px;
+  padding: 12px 35px; /* Padding más equilibrado */
+  background: linear-gradient(135deg, #7FB8C2, #5CA1B0); /* Gradiente sutil */
+  border-radius: 25px; /* Más redondeado */
   color: white;
-  border: none;
+  border: 2px solid transparent; /* Borde transparente por defecto */
   cursor: pointer;
-  transition: all 0.5s ease;
-  font-family: 'Playfair Display', sans-serif;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
   letter-spacing: 1px;
   font-weight: 500;
-  box-sizing: border-box;
+  font-size: 0.9rem;
 }
 
 .btnEnviarMensaje:hover{
-  border: 1px solid #7FB8C2;;
-  background-color: transparent;
+  background: transparent;
   color: #7FB8C2;
-  font-weight: 600;
+  border: 2px solid #7FB8C2;
+  transform: translateY(-2px); /* Efecto elevación */
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
 }
 
 #FAQ{
@@ -141,19 +152,18 @@ html{
 }
 
 .status-bar {
-  width: 10px;
-  height: 35px;
-  border-radius: 3px;
-  margin-right: 10px;
+  width: 4px; /* Un poco más delgado */
+  height: 25px;
+  border-radius: 2px;
+  margin-right: 15px; /* Más espacio */
   flex-shrink: 0;
-  background-color: #7FB8C2;
+  background: linear-gradient(180deg, #7FB8C2, #ACD4CD); /* Gradiente */
   transition: all 0.3s ease;
 }
 
 .status-bar.open {
-  background-color: #C97A63;
+  background: linear-gradient(180deg, #C97A63, #C9A646); /* Gradiente diferente cuando está abierto */
 }
-
 .btnPregunta {
   display: flex;
   align-items: center;
@@ -199,5 +209,145 @@ html{
     }
     .btnEnviarMensaje{
         font-size: 0.8rem;
+    }
+}
+
+/*------------ Secc MAPA -----------*/
+#Mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
+    gap: 15px;
+}
+
+#Mapa > h2 {
+    font-family: 'Playfair Display', serif;
+    color: #2F4A5C;
+    margin-bottom: 5px;
+}
+
+#Mapa > h3 {
+    font-family: 'Playfair Display', serif;
+    color: #7FB8C2;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.contenedor-mapa {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1000px;
+    gap: 30px;
+    align-items: center;
+}
+
+.mapa-frame {
+    width: 100%;
+    height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 1px solid rgba(127, 184, 194, 0.2);
+}
+
+.info-ubicacion {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.item-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border: 1px solid rgba(127, 184, 194, 0.1);
+    transition: all 0.3s ease;
+}
+
+.item-info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px rgba(127, 184, 194, 0.15);
+}
+
+.item-info .material-symbols-outlined {
+    color: #7FB8C2;
+    font-size: 1.3rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.item-info h4 {
+    color: #2F4A5C;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.item-info p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.btn-direcciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    margin-top: 10px;
+}
+
+.btn-direcciones:hover {
+  background: transparent;
+  color: #7FB8C2;
+  border: 2px solid #7FB8C2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .contenedor-mapa {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    
+    .mapa-frame {
+        flex: 2;
+        height: 350px;
+    }
+    
+    .info-ubicacion {
+        flex: 1;
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #Mapa {
+        padding: 60px 20px;
+    }
+    
+    .mapa-frame {
+        height: 400px;
     }
 }

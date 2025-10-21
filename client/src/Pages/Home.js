@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { HashLink  } from 'react-router-hash-link';
 
 import fotoIvan from '../Images/foto_ivan.jpg';
 import imgMonedita from '../Images/moneda_icono.png';
@@ -16,6 +17,9 @@ function Home() {
     const refSobreNosotros = useRef(null);
     const refImpacto = useRef(null);
 
+    const [visibleServicios, setVisibleServicios] = useState(false);
+    const refServicios = useRef(null);
+    
     useEffect(() => {
         const observerSobreNosotros = new IntersectionObserver(
             ([entry]) => {
@@ -33,9 +37,18 @@ function Home() {
             },
             { threshold: 0.4 }
         );
+        const observerServicios = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisibleServicios(true);
+                }
+            },
+            { threshold: 0.3 }
+        );
 
         if (refSobreNosotros.current) observerSobreNosotros.observe(refSobreNosotros.current);
         if (refImpacto.current) observerImpacto.observe(refImpacto.current);
+        if (refServicios.current) observerServicios.observe(refServicios.current);
 
         return () => {
             observerSobreNosotros.disconnect();
@@ -50,7 +63,6 @@ function Home() {
         if (!visibleImpacto) return;
         let start = 0;
         const increment = endValue / 80; // ajusta la velocidad del conteo
-
         // Intervalo que actualiza el contador de forma progresiva
         const timer = setInterval(() => {
             start += increment;
@@ -81,19 +93,64 @@ function Home() {
          </section>
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
-            <div className="imagen-Ivan">
-                <img src={fotoIvan} alt="Foto Cdor. Iván Bellomo" id="img-ivan"/>
-                <img src={imgMonedita} alt="icono moneda" className="monedita" id="moneda-derecha"/>
-                <img src={imgMonedita} alt="icono moneda" className="monedita" id="moneda-izquierda"/>
-                {visibleSobreNosotros ?  <span className='cartel-cdor'>Cdor. Iván Bellomo</span> : ""}
+            <div className="contenedor-sobrenosotros">
+                <div className="columna-imagen">
+                <div className="contenedor-imagen-ivan">
+                    <img src={fotoIvan} alt="Foto Cdor. Iván Bellomo" className="img-ivan"/>
+                    <div className="decoracion-imagen">
+                    <img src={imgMonedita} alt="icono moneda" className="moneda moneda-superior"/>
+                    <img src={imgMonedita} alt="icono moneda" className="moneda moneda-inferior"/>
+                    </div>
+                    {visibleSobreNosotros && (
+                    <div className="badge-profesional">
+                        <span className="badge-texto">Cdor. Iván Bellomo</span>
+                        <div className="badge-linea"></div>
+                    </div>
+                    )}
+                </div>
+                </div>
+                <div className="columna-texto">
+                <div className="encabezado-seccion">
+                    <h2 className="titulo-seccion">Sobre Nosotros</h2>
+                    <div className="subrayado-titulo"></div>
+                </div>
+                
+                <div className="contenido-textual">
+                    <p className="parrafo-destacado">
+                    Somos un estudio contable liderado por <strong>Iván Bellomo</strong>, Contador Público matriculado en el Consejo Profesional de CABA.
+                    </p>
+                    
+                    <div className="card-informacion">
+                    <p>Con amplia experiencia en materia tributaria y contable, ofrecemos asesoramiento integral a emprendimientos y empresas, tanto en Argentina como en el exterior.</p>
+                    </div>
+
+                    <div className="card-informacion">
+                    <p>Trabajamos de manera personalizada y cercana, diseñando soluciones a medida que optimizan tus recursos y potencian tu crecimiento.</p>
+                    </div>
+
+                    <div className="valores-destacados">
+                    <div className="valor-item">
+                        <span className="icono-valor">✓</span>
+                        <span>Confianza</span>
+                    </div>
+                    <div className="valor-item">
+                        <span className="icono-valor">✓</span>
+                        <span>Eficiencia</span>
+                    </div>
+                    <div className="valor-item">
+                        <span className="icono-valor">✓</span>
+                        <span>Acompañamiento</span>
+                    </div>
+                    </div>
+
+                    <div className="llamado-accion">
+                    <p className="texto-destacado">¡Estamos para ayudarte!</p>
+                    <div className="decoracion-llamado"></div>
+                    </div>
+                </div>
+                </div>
             </div>
-            <div className='texto-sobre-nosotros'>
-                <h3>Sobre Nosotros</h3>
-                <p>Somos un estudio contable liderado por Iván Bellomo, Contador Público matriculado en el Consejo Profesional de CABA. Con amplia experiencia en materia tributaria y contable, ofrecemos asesoramiento integral a emprendimientos y empresas, tanto en Argentina como en el exterior.</p>
-                <p>Trabajamos de manera personalizada y cercana, diseñando soluciones a medida que optimizan tus recursos y potencian tu crecimiento. Nuestro compromiso es brindarte confianza, eficiencia y acompañamiento profesional en cada etapa de tu desarrollo.</p>
-                <p>¡Estamos para ayudarte!</p>
-            </div>
-         </section>
+            </section>
          <section className='secc-impacto' ref={refImpacto}>
             <h3>Contabilidad clara, sin estrés.</h3>
             <p>Nos ocupamos de tus obligaciones fiscales para que puedas enfocarte en hacer crecer tu negocio. Evitá errores y cumplí con ARCA sin complicaciones.</p>
@@ -117,9 +174,115 @@ function Home() {
                 </div>
             </div>
          </section>
-         <section className='servicios' id="Servicios">
+         <section className='servicios' id="Servicios" ref={refServicios}>
+            <div className="contenedor-servicios">
+                <div className="encabezado-servicios">
+                <h2 className="titulo-servicios">Servicios Contables para Optimizar tu Negocio</h2>
+                <div className="subrayado-servicios"></div>
+                <p className="descripcion-servicios">
+                    Soluciones integrales diseñadas para simplificar tu gestión fiscal y potenciar tu crecimiento
+                </p>
+                </div>
 
-         </section>
+                <div className="grid-servicios">
+                {/* Columna 1 */}
+                <div className="columna-servicios">
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">assignment_add</span>
+                    </div>
+                    <h3>Inscripción en Impuestos</h3>
+                    <p>Monotributo, Responsable inscripto y sociedades</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">calculate</span>
+                    </div>
+                    <h3>Liquidación de Impuestos</h3>
+                    <p>Nacionales, provinciales, mensuales y anuales</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">corporate_fare</span>
+                    </div>
+                    <h3>Constitución de Sociedades</h3>
+                    <p>Asesoramiento completo para tu emprendimiento</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">payments</span>
+                    </div>
+                    <h3>Planes de Facilidades/Moratorias</h3>
+                    <p>Regularizá tu situación fiscal de manera accesible</p>
+                    </div>
+                </div>
+
+                <div className="columna-servicios">
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">lock_open</span>
+                    </div>
+                    <h3>Levantamiento de Embargos</h3>
+                    <p>Solucionamos tus problemas fiscales pendientes</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">trending_up</span>
+                    </div>
+                    <h3>Planificación Fiscal</h3>
+                    <p>Estrategias para optimizar tu carga tributaria</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">account_balance</span>
+                    </div>
+                    <h3>Armado de Balances</h3>
+                    <p>Presentaciones precisas y oportunas</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">receipt_long</span>
+                    </div>
+                    <h3>Certificaciones</h3>
+                    <p>Documentación oficial para tus trámites</p>
+                    </div>
+                </div>
+
+                <div className="columna-servicios">
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">groups</span>
+                    </div>
+                    <h3>Liquidación de Sueldos</h3>
+                    <p>Y gestión para casas particulares</p>
+                    </div>
+
+                    <div className="card-servicio">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">description</span>
+                    </div>
+                    <h3>Gestión de Facturación</h3>
+                    <p>A consumidor final o masiva de cobros</p>
+                    </div>
+
+                    <div className="card-servicio destacado">
+                    <div className="icono-servicio">
+                        <span className="material-symbols-outlined">person_check</span>
+                    </div>
+                    <h3>Asesoramiento Personalizado</h3>
+                    <p>Solución específica para tu caso particular</p>
+                    <HashLink smooth to="/contacto#FormularioDeContacto" className="btn-solicitar-info">Solicitar detalles</HashLink>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
          <section className='asesoria'>
             <div>
                 <h2 id='title-asesoria'>Asesoría Fiscal Express</h2>
@@ -150,13 +313,13 @@ function Home() {
             </div>
             
             <AcordeonCondiciones />
-            {/*
+            
             <Calendly/>
-            */}
+            *
          </section>
-         {/*
+         
          <OpinionesGoogle />
-         */}
+         
          <CintaEmpresas />
         </>
     );

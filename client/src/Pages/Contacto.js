@@ -4,6 +4,7 @@ import '../Styles/ContactoStyle.css';
 
 import FormularioContacto from '../Components/FormContacto';
 import PreguntasFrecuentes from '../Components/PregFrecuentes';
+import MapaUbicacion from '../Components/MapaUbicacion';
 
 function Contacto() {
     const [preguntas, setPreguntas] = useState([]);
@@ -28,6 +29,12 @@ function Contacto() {
          <section id='FormularioDeContacto'>
             <h2>Dejanos tu contacto y te enviamos la información de nuestros servicios.</h2>
             <FormularioContacto/>
+         </section>
+
+         <section id='Mapa'>
+            <h2>Nuestra Ubicación</h2>
+            <h3>Visitanos en Nuestro Estudio</h3>
+            <MapaUbicacion/>
          </section>
 
          <section id='FAQ'>

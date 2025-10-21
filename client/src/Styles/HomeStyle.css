@@ -66,123 +66,204 @@ html{
 }
 
 /* ------------- SOBRE NOSOTROS ------------- */
-.Sobre-Nosotros{
+.Sobre-Nosotros {
+  padding: 4rem 2rem;
+  margin-top: -50px;
+}
+
+.contenedor-sobrenosotros {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  padding: 0 2rem 2rem 2rem;
-}
-.imagen-Ivan{
-  position: relative; 
-  width: 100%;
+  gap: 3rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-#img-ivan{
-  width: 100%;
-  border-radius: 200px 200px 0 0;
-  display: block;
+.columna-imagen {
+  display: flex;
+  justify-content: center;
 }
 
-.monedita{
-  width: 60px;
+.contenedor-imagen-ivan {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.img-ivan {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #7FB8C2;
+  box-shadow: 0 10px 30px rgba(127, 184, 194, 0.2);
+}
+
+.decoracion-imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.moneda {
+  position: absolute;
+  width: 50px;
   background-color: white;
-  border-radius: 50px;
-  padding: 2px;
-  animation: girar 1s linear infinite;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.moneda-superior {
+  top: -10px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.moneda-inferior {
+  bottom: -10px;
+  right: -10px;
+  animation-delay: 1.5s;
+}
+
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(10deg); }
+}
+
+.badge-profesional {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  box-shadow: 0 5px 15px rgba(127, 184, 194, 0.3);
+  animation: aparecerBadge 0.8s ease-out;
+}
+
+.badge-texto {
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.badge-linea {
+  width: 30px;
+  height: 2px;
+  background: #C97A63;
+  margin: 5px auto 0;
+  border-radius: 2px;
+}
+
+@keyframes aparecerBadge {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.columna-texto {
+  flex: 1;
+}
+
+.encabezado-seccion {
+  margin-bottom: 2rem;
+}
+
+.titulo-seccion {
+  color: #7FB8C2;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.subrayado-titulo {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #C97A63, #7FB8C2);
+  border-radius: 2px;
+}
+
+.parrafo-destacado {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4B4B4B;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.card-informacion {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border-left: 4px solid #ACD4CD;
+}
+
+.card-informacion p {
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.6;
+  color: #666;
+}
+
+.valores-destacados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.valor-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #F8FAFC;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.icono-valor {
+  color: #C97A63;
+  font-weight: bold;
+}
+
+.llamado-accion {
+  text-align: center;
+  margin-top: 2rem;
   position: relative;
 }
 
-#moneda-izquierda {
-  position: absolute;
-  top: 60px;    
-  left: 10px;   
-  z-index: 2;
-}
-
-#moneda-derecha {
-  position: absolute;
-  bottom: -10px;  
-  right: -20px;  
-  z-index: 2;
-}
-
-.cartel-cdor{
-  position: absolute;
-  background-color: #7FB8C2;
-  color: white;
-  border-radius: 50px;
-  padding: 0.8rem;
-  top: 60px;
-  right: -15px;
-  animation: aparecerDesdeDerecha 0.8s ease-out 0.5s both;
-}
-
-.texto-sobre-nosotros{
-  display: flex;
-  flex-direction: column;
-  background-color: #F7F6F3;
-  gap: 10px;
-  padding: 1rem;
-}
-
-.texto-sobre-nosotros h3{
-  color: #7FB8C2;
-  margin-bottom: 5px;
-  font-size: 1.4rem;
-}
-
-.texto-sobre-nosotros h3::after{
-  content: "";
-  display: block;
-  width: 40px;          
-  height: 2px;          
-  background-color: rgb(201, 122, 99, 0.8);
-  margin-top: 6px; 
-  font-size: 1rem;  
-}
-
-.texto-sobre-nosotros p:first-of-type,.texto-sobre-nosotros p:nth-of-type(2){
-  font-size: 0.8rem;
-
-}
-
-.texto-sobre-nosotros p:last-of-type{
+.texto-destacado {
   color: #C97A63;
-  font-family: 'Playfair Display', sans-serif;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
   font-weight: 600;
-  letter-spacing: 1px;
-  margin-top: 5px;
-  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
-@keyframes girar {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(15deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  75% {
-    transform: rotate(-15deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes aparecerDesdeDerecha {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.decoracion-llamado {
+  width: 40px;
+  height: 2px;
+  background: #C97A63;
+  margin: 0 auto;
+  border-radius: 2px;
 }
 
 /* ------------- CONTABILIDAD - IMPACTO ------------- */
@@ -191,16 +272,14 @@ html{
   padding: 2rem 1rem;
   text-align: center;
   background: linear-gradient(
-  to bottom right,
-  #ACD4CD 0%,
-  #F7F6F3 100%
-);
-  color: #2F4A5C;
+    to bottom right,
+    #2F4A5C 0%,      
+    #7FB8C2 100%     
+  );
 }
-
 .secc-impacto h3 {
   font-family: 'Playfair Display', serif;
-  color: #2F4A5C;
+  color: white; 
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
 }
@@ -209,6 +288,7 @@ html{
   max-width: 700px;
   margin: 0 auto 2rem;
   font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .contenedor-caracteristicas {
@@ -224,26 +304,37 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.8rem; /* Más espacio entre elementos */
   flex: 1;
+  padding: 1rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
+
+.caracteristica-impacto:hover {transform: translateY(-5px);}
 
 .caracteristica-impacto span{
   font-size: 3.5rem;
+  color: #ACD4CD; 
+  transition: all 0.3s ease;
 }
+
+.caracteristica-impacto:hover span {transform: scale(1.1);}
 
 .caracteristica-impacto .numero {
   font-size: 1.4rem;
   font-weight: 700;
   transition: all 0.3s ease;
+  color: white;
 }
 
 .texto-impacto{
   font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .divisor-caracteristicas{
-  background-color: white; 
+  background: linear-gradient(90deg, transparent, white, transparent);
   opacity: 0.7;
   width: 50%;
   height: 2px; 
@@ -253,6 +344,205 @@ html{
 }
 
 /* ------------- SERVICIOS ------------- */
+.servicios {
+  padding: 2rem;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  position: relative;
+}
+
+.contenedor-servicios {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.encabezado-servicios {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.titulo-servicios {
+  color: #7FB8C2;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.subrayado-servicios {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #C97A63, #7FB8C2);
+  margin: 0 auto 1.5rem;
+  border-radius: 2px;
+}
+
+.descripcion-servicios {
+  color: #666;
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid-servicios {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.columna-servicios {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card-servicio {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #F1F5F9;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-servicio::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #7FB8C2, #ACD4CD);
+  transition: width 0.3s ease;
+}
+
+.card-servicio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(127, 184, 194, 0.15);
+}
+
+.card-servicio:hover::before {
+  width: 6px;
+}
+
+.icono-servicio {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #7FB8C2, #ACD4CD);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.icono-servicio .material-symbols-outlined {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-servicio h3 {
+  color: #2F4A5C;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.card-servicio p {
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.8rem;
+}
+
+.card-servicio.destacado {
+  background: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-servicio.destacado::before {
+  display: none;
+}
+
+.card-servicio.destacado::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: rotate(45deg);
+  transition: all 0.6s ease;
+}
+
+.card-servicio.destacado:hover::after {
+  animation: brillo 1.5s ease-in-out;
+}
+
+@keyframes brillo {
+  0% { transform: rotate(45deg) translateX(-100%); }
+  100% { transform: rotate(45deg) translateX(100%); }
+}
+
+.card-servicio.destacado h3,
+.card-servicio.destacado p {
+  color: white;
+}
+
+.card-servicio.destacado .icono-servicio {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+}
+
+.btn-solicitar-info {
+  background: white;
+  color: #7FB8C2;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+.btn-solicitar-info:hover {
+  background: #F7F6F3;
+  transform: translateX(5px);
+}
+
+@media (min-width: 768px) {
+  .grid-servicios {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-servicios {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .titulo-servicios {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .servicios {
+    padding: 2rem;
+  }
+}
 
 /* ------------- ASESORÍAS ------------- */
 .asesoria{
@@ -260,7 +550,7 @@ html{
   flex-direction: column;
   width: 100%;
   height: auto;
-  padding: 5rem;
+  padding: 1rem 5rem;
   align-items: center;
   justify-content: center;
   overflow: hidden;
@@ -415,32 +705,25 @@ html{
   }
   .texto-inicio{font-size: 1.1rem;}
 
-  .Sobre-Nosotros{flex-direction: row;}
-
-  #img-ivan{
-    height: 120%;
-    border-radius: 200px 200px 0 0;
-    position: absolute;
-    top: -55px;
-    max-width: 380px;
+    .Sobre-Nosotros{margin-top: -150px;}
+  
+  .contenedor-sobrenosotros {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
   }
-
-  .monedita{width: 55px;}
-
-  #moneda-izquierda {top:40px; left:-15px;}
-
-  .cartel-cdor{font-size:0.9rem; top:-25px; right:-80px; padding: 0.5rem;}
-
-  .texto-sobre-nosotros{
-    display: flex;
-    flex-direction: column;
-    background-color: #F7F6F3;
-    gap: 10px;
-    padding: 1rem;
-    margin-left: -30px; 
-    padding-left: 40px; 
-    position: relative;
-    z-index: -1;
+  
+  .columna-imagen {
+    flex: 0 0 300px;
+  }
+  
+  .contenedor-imagen-ivan {
+    width: 300px;
+    height: 300px;
+  }
+  
+  .badge-profesional {
+    bottom: -15px;
   }
 
   #text-asesoria{max-width: 40vw;}
@@ -465,12 +748,12 @@ html{
 }
 
 @media (min-width: 1280px) {
-  .texto-sobre-nosotros{
-    margin-left: -150px; 
-    padding-left: 80px; 
+    .Sobre-Nosotros {
+    padding: 6rem 2rem;
   }
-
-  #moneda-derecha {right: 60px;}
-
-  .cartel-cdor{font-size:0.9rem; top:-25px; right:10px; padding: 0.5rem;}
+  
+  .contenedor-imagen-ivan {
+    width: 350px;
+    height: 350px;
+  }
 }

@@ -49,10 +49,11 @@ function Footer() {
                             <li><Link to="/planes">Planes</Link></li>
                         </ul>
                     </div>
+                    {/* 
                     <a href='https://www.google.com/maps/place/Contador+IB/data=!4m2!3m1!1s0x0:0xdcfe02340fca3636?sa=X&ved=1t:2428&ictx=111' 
                     target="_blank" rel="noopener noreferrer" className='ubi'>
                         <b>Tigre</b>, Buenos Aires - Argentina
-                    </a>
+                    </a>*/}
                 </div>
             </div>
             <p className='centrado'>&copy; 2025, Estudio Contable IB. Todos los derechos reservados.</p>
