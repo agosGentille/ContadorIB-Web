@@ -22,7 +22,7 @@ function MapaUbicacion() {
                     <span className="material-symbols-outlined">location_on</span>
                     <div>
                         <h4>Estudio Contable IB</h4>
-                        <p>Av. Dardo Rocha 1038</p>
+                        <p>Av. del Golf 2100</p>
                         <p>Tigre, Buenos Aires</p>
                     </div>
                 </div>
@@ -31,13 +31,12 @@ function MapaUbicacion() {
                     <span className="material-symbols-outlined">schedule</span>
                     <div>
                         <h4>Horarios de Atención</h4>
-                        <p>Lunes a Viernes: 9:00 - 18:00</p>
-                        <p>Sábados: 9:00 - 13:00</p>
+                        <p>De Lunes a Viernes solo con cita previa</p>
                     </div>
                 </div>
                 
                 <a 
-                    href="https://maps.google.com/?q=Contador+IB,+Av.+Dardo+Rocha+1038,+Tigre,+Buenos+Aires"
+                    href="https://maps.google.com/?q=Contador+IB,+Av.+del+Golf+2100,+Tigre,+Buenos+Aires"
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="btn-direcciones"

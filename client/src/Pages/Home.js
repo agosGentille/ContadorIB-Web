@@ -210,14 +210,6 @@ function Home() {
                     <h3>Constitución de Sociedades</h3>
                     <p>Asesoramiento completo para tu emprendimiento</p>
                     </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">payments</span>
-                    </div>
-                    <h3>Planes de Facilidades/Moratorias</h3>
-                    <p>Regularizá tu situación fiscal de manera accesible</p>
-                    </div>
                 </div>
 
                 <div className="columna-servicios">
@@ -243,14 +235,6 @@ function Home() {
                     </div>
                     <h3>Armado de Balances</h3>
                     <p>Presentaciones precisas y oportunas</p>
-                    </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">receipt_long</span>
-                    </div>
-                    <h3>Certificaciones</h3>
-                    <p>Documentación oficial para tus trámites</p>
                     </div>
                 </div>
 
@@ -313,12 +297,12 @@ function Home() {
             </div>
             
             <AcordeonCondiciones />
-            {/* 
+            
             <Calendly/>
-            */}
+            
          </section>
          
-         {/* <OpinionesGoogle />*/}
+         <OpinionesGoogle />
          
          <CintaEmpresas />
         </>

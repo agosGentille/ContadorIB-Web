@@ -22,9 +22,16 @@
   --bg-footer: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
   --bg-boton: linear-gradient(135deg, #7FB8C2, #5CA1B0);
   --bg-boton-hover: linear-gradient(135deg, #5CA1B0, #7FB8C2);
+  --bg-secc-impacto: linear-gradient(to bottom right, #2F4A5C 0%,#7FB8C2 100%);
+  --color-span-impacto: #ACD4CD;
+  --bg-punto-timeline: #2F4A5C;
+  --borde-punto-timeline: 2px solid white;
+  --bg-carac-reunion: linear-gradient(to bottom, #7FB8C2, #ACD4CD);
+  --bg-carac-reunion-wave:url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='0.2' d='M0,160L60,181.3C120,203,240,245,360,261.3C480,277,600,267,720,245.3C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'/></svg>") no-repeat bottom;
+  --color-texto-reunion:#2F4A5C;
 
   /* Hover y transiciones */
-  --fondo-hover: rgba(127, 184, 194, 0.08);
+  --fondo-hover: 0px 4px 15px rgba(127, 184, 194, 0.08);
 
   /* Switch */
   --switch-bg: rgba(127, 184, 194, 0.1);
@@ -52,6 +59,13 @@
   --bg-footer: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
   --bg-boton: linear-gradient(135deg, #5CA1B0, #7FB8C2);
   --bg-boton-hover: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  --bg-secc-impacto: linear-gradient(to bottom right, #1E293B 0%,#2F4A5C 100%);
+  --color-span-impacto: #7FB8C2;
+  --bg-punto-timeline: #7FB8C2;
+  --borde-punto-timeline: 2px solid #0F172A;
+  --bg-carac-reunion: linear-gradient(to bottom, #2F4A5C, #6ca9b4);
+  --bg-carac-reunion-wave: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%237FB8C2' fill-opacity='0.2' d='M0,160L60,181.3C120,203,240,245,360,261.3C480,277,600,267,720,245.3C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'/></svg>") no-repeat bottom;
+  --color-texto-reunion: white;
 
   --fondo-hover: rgba(255, 255, 255, 0.05);
   --switch-bg: rgba(255, 255, 255, 0.1);

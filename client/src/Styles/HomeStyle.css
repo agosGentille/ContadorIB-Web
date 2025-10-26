@@ -9,7 +9,7 @@
 }
 
 html{
-  color:#4B4B4B;
+  color: var(--color-texto-secundario);
   font-size: 15px; /*Este valor equivale a 1rem*/
 }
 /* ------------- INICIO ------------- */
@@ -21,7 +21,7 @@ html{
   height: auto;
   padding: 2rem;
   margin-bottom: 2rem;
-  background: #F7F6F3;
+  background: var(--color-fondo-secundario);
   gap:20px;
   overflow: hidden;
 }
@@ -33,7 +33,7 @@ html{
   left: 0;
   width: 100%;
   height: 60px; 
-  background: white; 
+  background: var(--color-fondo); 
   border-radius: 50%;
 }
 
@@ -45,6 +45,7 @@ html{
 
 .texto-inicio{
   font-size: 1rem;
+  color: var(--color-texto-secundario);
 }
 
 .btn-contactanos{
@@ -96,7 +97,7 @@ html{
   border-radius: 50%;
   object-fit: cover;
   border: 4px solid #7FB8C2;
-  box-shadow: 0 10px 30px rgba(127, 184, 194, 0.2);
+  box-shadow: var(--sombra-acento);
 }
 
 .decoracion-imagen {
@@ -111,10 +112,10 @@ html{
 .moneda {
   position: absolute;
   width: 50px;
-  background-color: white;
+  background-color: var(--color-fondo);
   border-radius: 50%;
   padding: 4px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra-suave);
   animation: flotar 3s ease-in-out infinite;
 }
 
@@ -199,17 +200,17 @@ html{
 .parrafo-destacado {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #4B4B4B;
+  color: var(--color-texto-secundario);
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
 
 .card-informacion {
-  background: white;
+  background: var(--color-fondo);
   padding: 1.5rem;
   border-radius: 12px;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: var(--sombra-suave);
   border-left: 4px solid #ACD4CD;
 }
 
@@ -217,7 +218,7 @@ html{
   font-size: 0.9rem;
   margin: 0;
   line-height: 1.6;
-  color: #666;
+  color: var(--color-texto-secundario);
 }
 
 .valores-destacados {
@@ -231,10 +232,10 @@ html{
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #F8FAFC;
+  background: var(--color-fondo-secundario);
   padding: 0.5rem 1rem;
   border-radius: 20px;
-  border: 1px solid #E2E8F0;
+  border: var(--color-borde);
   font-size: 0.9rem;
   font-weight: 500;
 }
@@ -271,11 +272,7 @@ html{
 .secc-impacto {
   padding: 2rem 1rem;
   text-align: center;
-  background: linear-gradient(
-    to bottom right,
-    #2F4A5C 0%,      
-    #7FB8C2 100%     
-  );
+  background: var(--bg-secc-impacto);
 }
 .secc-impacto h3 {
   font-family: 'Playfair Display', serif;
@@ -315,7 +312,7 @@ html{
 
 .caracteristica-impacto span{
   font-size: 3.5rem;
-  color: #ACD4CD; 
+  color: var(--color-span-impacto); 
   transition: all 0.3s ease;
 }
 
@@ -346,7 +343,7 @@ html{
 /* ------------- SERVICIOS ------------- */
 .servicios {
   padding: 2rem;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+  background: var(--bg-header);
   position: relative;
 }
 
@@ -377,7 +374,7 @@ html{
 }
 
 .descripcion-servicios {
-  color: #666;
+  color: var(--color-texto-secundario);
   font-size: 0.9rem;
   max-width: 600px;
   margin: 0 auto;
@@ -397,11 +394,11 @@ html{
 }
 
 .card-servicio {
-  background: white;
+  background: var(--color-fondo);
   padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  border: 1px solid #F1F5F9;
+  box-shadow: var(--sombra-suave);
+  border: var(--color-borde);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -420,7 +417,7 @@ html{
 
 .card-servicio:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(127, 184, 194, 0.15);
+  box-shadow: var(--sombra-acento);
 }
 
 .card-servicio:hover::before {
@@ -444,7 +441,7 @@ html{
 }
 
 .card-servicio h3 {
-  color: #2F4A5C;
+  color: var(--color-texto);
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
@@ -452,7 +449,7 @@ html{
 }
 
 .card-servicio p {
-  color: #666;
+  color: var(--color-texto-secundario);
   line-height: 1.5;
   font-size: 0.8rem;
 }
@@ -571,7 +568,7 @@ html{
 
 /* ------- Caracteristicas reunion de asesoria ------- */
 .contenedor-caracteristicas-reunion{
-  background: linear-gradient(to bottom, #7FB8C2, #ACD4CD);
+  background: var(--bg-carac-reunion);
   width: 100vw;
   color: white;
   text-align: center;
@@ -583,6 +580,7 @@ html{
   overflow: hidden;
 }
 
+
 .contenedor-caracteristicas-reunion::before {
   content: "";
   position: absolute;
@@ -590,7 +588,7 @@ html{
   left: 0;
   width: 100%;
   height: 100px;
-  background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'><path fill='%23ffffff' fill-opacity='0.2' d='M0,160L60,181.3C120,203,240,245,360,261.3C480,277,600,267,720,245.3C840,224,960,192,1080,170.7C1200,149,1320,139,1380,133.3L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'/></svg>") no-repeat bottom;
+  background: var(--bg-carac-reunion-wave);
   background-size: cover;
   opacity: 0.6;
 }
@@ -611,7 +609,7 @@ html{
   font-weight: 700;
   transition: all 0.3s ease;
   font-family: 'Playfair Display', serif;
-  color: #2F4A5C;
+  color: var(--color-texto-reunion);
 }
 
 .texto-reu{font-size: 0.9rem;}
@@ -638,7 +636,8 @@ html{
 
 .elfsight-app-21df6b1e-76b2-49b2-aaa6-e1d8db028b5b {
   max-width: fit-content;  
-  height: 500px;     
+  height: 500px;  
+  opacity: 0.9;   
 }
 
 /* ------------- CINTA EMPRESAS ------------- */
@@ -656,7 +655,7 @@ html{
 .secc-cinta h2 {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #333;
+  color: var(--color-texto);
   margin-bottom: 2rem;
 }
 
@@ -670,7 +669,7 @@ html{
   display: inline-flex;
   gap: 3rem;
   padding: 1rem 0;
-  animation: desplazar-logos 30s linear infinite;
+  animation: desplazar-logos 40s linear infinite;
 }
 
 .logo-empresa {
@@ -680,6 +679,8 @@ html{
   filter: grayscale(100%) opacity(0.8);
   transition: all 0.3s ease;
   flex-shrink: 0;
+  background-color: white;
+  border-radius: 50%;
 }
 
 .logo-empresa:hover {

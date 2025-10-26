@@ -12,9 +12,6 @@ const PORT = 5000;
 app.use(cors()); // permite que React haga peticiones
 app.use(bodyParser.json());
 
-const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY; // tu clave de Google Cloud
-const PLACE_ID = process.env.PLACE_ID; // el place_id de tu negocio
-
 const planesRoutes = require("./Routes/PlanesRoutes.js");
 const pregRoutes = require("./Routes/PreguntasRoutes.js");
 
@@ -24,7 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar mail
 app.post("/send-email", async (req, res) => {
-  const { nombre, apellido, email, telefono, mensaje } = req.body;
+  const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
   if (!nombre || !apellido || !email || !mensaje) {
     return res.status(400).json({ error: "Faltan campos obligatorios" });
@@ -44,7 +41,27 @@ app.post("/send-email", async (req, res) => {
       from: "ibellomoyasoc@gmail.com",       
       to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
       subject: `Formulario de contacto - Estudio Contable IB`, //asunto
-      text: `Se completó el Formulario de Contacto desde la página web del Estudio Contable IB.\n\nDatos de contacto recibidos:\n\nNombre: ${nombre}\nApellido: ${apellido}\nCorreo: ${email}\nTeléfono: ${telefono}\nMensaje: ${mensaje}`,
+      text: `Estimado equipo del Estudio Contable IB,
+        Se ha recibido un nuevo mensaje a través del formulario de contacto del sitio web.
+
+        ──────────────────────────────
+        📋 Datos del remitente:
+        ──────────────────────────────
+        Nombre: ${nombre} ${apellido}
+        Correo electrónico: ${email}
+        Teléfono: ${telefono || "No especificado"}
+        Tipo de cliente: ${tipoCliente || "No especificado"}
+        ${tipoCliente === "empresa" ? `Nombre de la empresa: ${nombreEmpresa}` : ""}
+
+        ──────────────────────────────
+        📝 Mensaje:
+        ──────────────────────────────
+        ${mensaje}
+
+        ──────────────────────────────
+        Este correo fue generado automáticamente. 
+        Por favor, responda directamente a este mensaje para contactar al remitente.
+        `,
       replyTo: email 
       // cuando se responda desde ivan.bellomo@contadorib.com.ar, le va a llegar al mail del 
       // usuario que completó el formulario
@@ -56,25 +73,6 @@ app.post("/send-email", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al enviar el correo" });
-  }
-});
-
-//para obtener opiniones de google
-app.get('/api/reviews', async (req, res) => {
-  try {
-    const url = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${GOOGLE_API_KEY}`;
-    const response = await axios.get(url);
-    const allReviews = response.data.result.reviews || [];
-
-    // Filtrar solo reseñas con 5 estrellas y tomar las 10 más recientes
-    const topReviews = allReviews
-      .filter(r => r.rating === 5)
-      .slice(0, 10);
-
-    res.json(topReviews);
-  } catch (error) {
-    console.error('Error al obtener reseñas:', error);
-    res.status(500).json({ error: 'Error al obtener reseñas' });
   }
 });
 

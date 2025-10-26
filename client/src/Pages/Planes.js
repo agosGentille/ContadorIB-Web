@@ -69,7 +69,7 @@ function Planes() {
 
     return(
         <>
-         <h2 className="titulo-planes">Planes adaptados a tus necesidades</h2>
+         <h2 className="titulo-planes" id="Planes">Planes adaptados a tus necesidades</h2>
          <section className="empresas">
             <h3>Paquetes mensuales para tus Empresas</h3>
             <div className="contendorPlanes">

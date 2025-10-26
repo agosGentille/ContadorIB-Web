@@ -112,8 +112,41 @@ html{
   background: transparent;
   color: #7FB8C2;
   border: 2px solid #7FB8C2;
-  transform: translateY(-2px); /* Efecto elevación */
+  transform: translateY(-2px); 
   box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
+}
+
+.fila-tipo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.fila-tipo .inputForm {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.campo-empresa {
+  flex: 1 1 50%;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.4s ease;
+  overflow: hidden;
+  max-width: 0;
+}
+
+.campo-empresa.visible {
+  opacity: 1;
+  transform: translateX(0);
+  max-width: 50%; 
+}
+
+.campo-empresa .inputForm {
+  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 #FAQ{

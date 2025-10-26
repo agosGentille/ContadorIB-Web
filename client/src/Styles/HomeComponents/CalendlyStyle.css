@@ -9,7 +9,7 @@
 }
 
 html{
-    color:#4B4B4B;
+    color: var(--color-texto-secundario);
     font-size: 15px; 
 }
 
@@ -21,14 +21,14 @@ html{
   align-items: center;
   width: 100vw;
   padding: 1rem;
-  background-color: #F7F6F3;
+  background-color: var(--color-fondo-secundario);
   border-radius: 10px;      
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 
 .secc-calendly > p {
   font-family: 'Playfair Display', sans-serif;
-  color: #333333;
+  color: var(--color-texto);
   font-weight: 600;
   margin-bottom: 1rem;
   margin-top: 1rem;

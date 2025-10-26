@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import '../Styles/FooterStyle.css';
 
 import instagram_logo from '../Images/instagram.png';
@@ -19,7 +19,7 @@ function Footer() {
             </div>
             <div className='footer-info'>
                 <div id="footer-columna1">
-                    <Link to="/contacto" className='contacto'>Contacto</Link>
+                    <HashLink smooth to="/contacto#FormularioDeContacto" className='contacto'>Contacto</HashLink>
                     <div className="contactos">
                         <a href="https://www.instagram.com/contador.ib/"
                         target="_blank" rel="noopener noreferrer">
@@ -29,7 +29,7 @@ function Footer() {
                         target="_blank" rel="noopener noreferrer">
                             <img src={whatsapp_logo} alt="logo whatsapp" id="icono-wsp-contacto"/>
                         </a>
-                        <a href="google.com/maps?q=Contador+IB,+Av.+Dardo+Rocha+1038,+B1648FMT+Tigre,+Provincia+de+Buenos+Aires&ftid=0x95bca5d65214d6f3:0xdcfe02340fca3636&entry=gps&lucs=,94242520,94224825,94227247,94227248,47071704,47069508,94218641,94203019,47084304,94208458,94208447&g_ep=CAISDTYuMTM2LjAuODc4MzAYACCenQoqYyw5NDI0MjUyMCw5NDIyNDgyNSw5NDIyNzI0Nyw5NDIyNzI0OCw0NzA3MTcwNCw0NzA2OTUwOCw5NDIxODY0MSw5NDIwMzAxOSw0NzA4NDMwNCw5NDIwODQ1OCw5NDIwODQ0N0ICQVI%3D&g_st=com.google.maps.preview.copy" 
+                        <a href="https://maps.google.com/?q=Contador+IB,+Av.+del+Golf+2100,+Tigre,+Buenos+Aires" 
                             target="_blank" rel="noopener noreferrer">
                             <img src={google_logo} alt="logo Google" id="icono-google-contacto"/>
                         </a>
@@ -45,8 +45,8 @@ function Footer() {
                     <p className='texto-links-utiles'>Links Útiles</p>
                     <div className='links-utiles'>
                         <ul>
-                            <li><Link to="/contacto">Preguntas Frecuentes</Link></li>
-                            <li><Link to="/planes">Planes</Link></li>
+                            <li><HashLink smooth to="/contacto#FAQ">Preguntas Frecuentes</HashLink></li>
+                            <li><HashLink smooth to="/planes#Planes">Planes</HashLink></li>
                         </ul>
                     </div>
                     {/* 
