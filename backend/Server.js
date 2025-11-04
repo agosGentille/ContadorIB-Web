@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require("express");
-const nodemailer = require("nodemailer");
+const sgMail = require('@sendgrid/mail');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -38,17 +38,6 @@ app.post("/api/send-email", async (req, res) => {
   }
 
   try {
-    // Configura tu transportador SMTP
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.sendgrid.net',
-      port: 587,
-      secure: false,
-      auth: {
-        user: 'apikey', 
-        pass: process.env.SENDGRID_API_KEY 
-      }
-    });
-
     const mailOptions = {
       from: "ibellomoyasoc@gmail.com",       
       to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
@@ -79,12 +68,14 @@ app.post("/api/send-email", async (req, res) => {
       // usuario que completó el formulario
     };
 
-    await transporter.sendMail(mailOptions);
+    await sgMail.send(mailOptions);
 
     res.json({ success: true, message: "Correo enviado correctamente" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error al enviar el correo" });
+    console.error("❌ Error enviando email:", error);
+    console.error("❌ Error details:", error.response?.body || error.message);
   }
 });
 
