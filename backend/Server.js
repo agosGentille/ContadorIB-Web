@@ -29,7 +29,7 @@ app.use('/api/PreguntasFrecuentes', pregRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar mail
-app.post("api/send-email", async (req, res) => {
+app.post("/api/send-email", async (req, res) => {
   const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
   if (!nombre || !apellido || !email || !mensaje) {
