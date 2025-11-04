@@ -9,7 +9,13 @@ const app = express();
 const PORT = 5000;
 
 // Middlewares
-app.use(cors()); // permite que React haga peticiones
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://contador-ib-web.vercel.app",
+  ]
+})); // permite que React haga peticiones
+
 app.use(bodyParser.json());
 
 const planesRoutes = require("./Routes/PlanesRoutes.js");
