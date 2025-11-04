@@ -13,7 +13,10 @@ app.use(cors({
   origin: [
     "http://localhost:3000",
     "https://contador-ib-web.vercel.app",
-  ]
+    "https://contadorib.com.ar",
+    "https://www.contadorib.com.ar"
+  ],
+  credentials: true
 })); // permite que React haga peticiones
 
 app.use(bodyParser.json());
