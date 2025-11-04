@@ -7,7 +7,8 @@ import Home from './Pages/Home';
 import Planes from './Pages/Planes';
 import Contacto from './Pages/Contacto';
 
-import './App.css'
+import './App.css';
+import './Styles/Theme.css';
 
 function App() {
   return (

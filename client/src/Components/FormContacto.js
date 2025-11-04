@@ -1,13 +1,17 @@
 import { useState } from "react";
 import { validarEmail } from "../Utils/ValidarEmail";
 
+import { API_BASE_URL } from '../Config/api.js';
+
 function FormContacto(){
     const [form, setForm] = useState({
         email: "",
         nombre: "",
         apellido: "",
         telefono: "",
-        mensaje: ""
+        mensaje: "",
+        tipoCliente: "", 
+        nombreEmpresa: ""
     });
 
     const [CantCaracteres, setCantCaracteres] = useState(0);
@@ -36,6 +40,11 @@ function FormContacto(){
             setErrors("Por favor completa todos los campos obligatorios.");
             return;
         }
+
+        if (form.tipoCliente === "empresa" && !form.nombreEmpresa.trim()) {
+            setErrors("Por favor ingresa el nombre de la empresa.");
+            return;
+        }
         
         const { valido, error: errorEmail } = validarEmail(form.email);
         if (!valido) {
@@ -43,8 +52,13 @@ function FormContacto(){
             return;
         }
 
+        const url = `${API_BASE_URL}/send-email`;
+
+        console.log("URL de la petición:", url);
+        console.log("API_BASE_URL:", API_BASE_URL);
+
         try {
-            const res = await fetch("http://localhost:5000/send-email", {
+            const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)
@@ -54,7 +68,7 @@ function FormContacto(){
 
         if (data.success) {
             alert("Correo enviado correctamente!");
-            setForm({ email: "", nombre: "", apellido: "", telefono: "", mensaje: "" });
+            setForm({ email: "", nombre: "", apellido: "", telefono: "", mensaje: "", tipoCliente: "", nombreEmpresa: "" });
             setCantCaracteres(0);
             setErrors("");
         } else {
@@ -77,6 +91,36 @@ function FormContacto(){
             </div>
             <input type="email" name="email" placeholder="Correo Electrónico" className="inputForm" required value={form.email} onChange={handleChangeValues}/>
             <input type="text" name="telefono" placeholder="Teléfono (opcional)" className="inputForm" value={form.telefono} onChange={handleChangeValues}/>
+            <div className="fila-tipo">
+                <select
+                    name="tipoCliente"
+                    className="inputForm selectTipo"
+                    value={form.tipoCliente}
+                    onChange={handleChangeValues}
+                    required
+                >
+                    <option value="">Seleccioná una opción</option>
+                    <option value="monotributista">Monotributista</option>
+                    <option value="ri">Responsable Inscripto</option>
+                    <option value="empresa">Empresa</option>
+                </select>
+
+                <div
+                    className={`campo-empresa ${
+                    form.tipoCliente === "empresa" ? "visible" : ""
+                    }`}
+                >
+                    <input
+                    type="text"
+                    name="nombreEmpresa"
+                    placeholder="Nombre de la empresa"
+                    className="inputForm"
+                    value={form.nombreEmpresa}
+                    onChange={handleChangeValues}
+                    required={form.tipoCliente === "empresa"}
+                    />
+                </div>
+            </div>
             <div className='mensaje'>
                 <textarea  id='inputMensaje'
                     name="mensaje" 
