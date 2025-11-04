@@ -31,6 +31,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Ruta para enviar mail
 app.post("/api/send-email", async (req, res) => {
   console.log("✅ Ruta /api/send-email alcanzada");
+
+  console.log("🔑 API Key existe?", !!process.env.SENDGRID_API_KEY);
+  console.log("🔑 API Key longitud:", process.env.SENDGRID_API_KEY?.length);
+  console.log("🔑 API Key inicia con:", process.env.SENDGRID_API_KEY?.substring(0, 10));
+  
   const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
   if (!nombre || !apellido || !email || !mensaje) {
