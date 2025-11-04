@@ -4,6 +4,8 @@ import TarjetaPlanes from '../Components/PlanesCard';
 
 import '../Styles/PlanesStyle.css';
 
+import { API_BASE_URL } from '../config/api';
+
 function Planes() {
     const [planesEmpresas, setPlanesEmpresas] = useState([]);
     const [planesMono, setPlanesMono] = useState([]);
@@ -14,12 +16,11 @@ function Planes() {
     useEffect(() => {
         async function fetchPlanesEmpresas() {
             try {
-                const respuesta = await fetch('http://localhost:5000/api/planes/PlanesEmpresas');
+                const respuesta = await fetch(`${API_BASE_URL}/planes/PlanesEmpresas`);
                 const datos = await respuesta.json();
 
                 const planesConUrl = datos.map(plan => ({
-                    ...plan,
-                    imagen: `http://localhost:5000${plan.imagen}`
+                    ...plan
                 }));
                 setPlanesEmpresas(planesConUrl);
 
@@ -40,12 +41,11 @@ function Planes() {
 
         async function fetchPlanesMono() {
             try {
-                const respuesta = await fetch('http://localhost:5000/api/planes/PlanesEmprendedores');
+                const respuesta = await fetch(`${API_BASE_URL}/planes/PlanesEmprendedores`);
                 const datos = await respuesta.json();
 
                 const planesConUrl = datos.map(plan => ({
-                    ...plan,
-                    imagen: `http://localhost:5000${plan.imagen}`
+                    ...plan
                 }));
                 setPlanesMono(planesConUrl);
 

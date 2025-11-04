@@ -6,13 +6,15 @@ import FormularioContacto from '../Components/FormContacto';
 import PreguntasFrecuentes from '../Components/PregFrecuentes';
 import MapaUbicacion from '../Components/MapaUbicacion';
 
+import { API_BASE_URL } from '../config/api';
+
 function Contacto() {
     const [preguntas, setPreguntas] = useState([]);
 
     useEffect(() => {
         async function fetchPreguntas() {
             try {
-                const respuesta = await fetch('http://localhost:5000/api/PreguntasFrecuentes');
+                const respuesta = await fetch(`${API_BASE_URL}/PreguntasFrecuentes`);;
                 const datos = await respuesta.json();
                 
                 setPreguntas(datos);
