@@ -52,8 +52,13 @@ function FormContacto(){
             return;
         }
 
+        const url = `${API_BASE_URL}/send-email`;
+
+        console.log("URL de la petición:", url);
+        console.log("API_BASE_URL:", API_BASE_URL);
+
         try {
-            const res = await fetch(`${API_BASE_URL}/send-email`, {
+            const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(form)

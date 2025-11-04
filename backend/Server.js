@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar mail
 app.post("/api/send-email", async (req, res) => {
+  console.log("✅ Ruta /api/send-email alcanzada");
   const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
   if (!nombre || !apellido || !email || !mensaje) {
