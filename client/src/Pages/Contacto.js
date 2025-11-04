@@ -6,7 +6,7 @@ import FormularioContacto from '../Components/FormContacto';
 import PreguntasFrecuentes from '../Components/PregFrecuentes';
 import MapaUbicacion from '../Components/MapaUbicacion';
 
-import { API_BASE_URL } from '../config/api';
+import { API_BASE_URL } from '../Config/api.js';
 
 function Contacto() {
     const [preguntas, setPreguntas] = useState([]);

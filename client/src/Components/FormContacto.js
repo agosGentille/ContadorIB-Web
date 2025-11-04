@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { validarEmail } from "../Utils/ValidarEmail";
 
+import { API_BASE_URL } from '../Config/api.js';
+
 function FormContacto(){
     const [form, setForm] = useState({
         email: "",
