@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color: var(--color-texto-secundario);
+    font-size: 15px; /*Este valor equivale a 1rem*/
+}
+
+.acordeon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem auto;
+  max-width: 800px;
+}
+
+.acordeon > p{
+  font-family: 'Playfair Display', serif;
+  color: var(--color-texto);
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.acordeon-item {
+  margin-bottom: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid rgba(127, 184, 194, 0.15);
+  transition: all 0.3s ease;
+}
+
+.acordeon-item:hover {
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.1);
+}
+
+.acordeon-title {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  padding: 1rem 1.2rem;
+  background: var(--bg-header);
+  border: none;
+  color: var(--color-texto);
+  transition: all 0.3s ease;
+}
+
+.acordeon-title:hover {
+  background: var(--bg-footer);
+}
+
+.acordeon-condicion {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  font-size: 0.9rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.acordeon-title:hover .acordeon-condicion {
+  color: #C9A646;
+}
+
+.more-less {
+  font-family: "Material Symbols Outlined";
+  transition: all 0.3s ease;
+  color: #7FB8C2;
+  font-size: 1.2rem;
+}
+
+.acordeon-title.open {
+  background: linear-gradient(135deg, #C9A646 0%, #e2c471 100%);
+  color: white;
+}
+
+.acordeon-title.open .acordeon-condicion {
+  color: white;
+  font-weight: 600;
+}
+
+.acordeon-title.open .more-less {
+  color: white;
+  transform: rotate(180deg);
+}
+
+.acordeon-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 1.2rem;
+  background: var(--color-fondo);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+  color: var(--color-texto-secundario);
+  border-top: 1px solid rgba(127, 184, 194, 0.1);
+}
+
+.acordeon-content.open {
+  max-height: 300px;
+  padding: 1rem 1.2rem;
+}
+
+.acordeon-content ul li {
+  list-style: none;
+}
+
+.acordeon-content li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.2rem;
+  position: relative;
+}
+
+.acordeon-content li::before {
+  content: "•";
+  color: #C9A646;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+@media (min-width: 768px) {
+  .acordeon {
+    width: 90%;
+  }
+  
+  .acordeon-condicion {
+    font-size: 0.95rem;
+  }
+  
+  .acordeon-content {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .acordeon {
+    width: 70%;
+  }
+  
+  .acordeon > p {
+    font-size: 1.3rem;
+  }
+}

@@ -1,8 +1,9 @@
-[
+const planesMonotributo = [
   {
-    "titulo": "Plan Monotributo",
-    "imagen": "plan-monotributo.jpg",
-    "caracteristicas": [
+    id: 1,
+    titulo: "Plan Monotributo",
+    imagen: "/Images/Planes/plan-inicial.jpg",
+    caracteristicas: [
       "Control de facturación",
       "Control relación ingresos/gastos",
       "Recategorizaciones",
@@ -12,24 +13,22 @@
       "Informe de novedades impositivas",
       "Generación de VEPS y planes de pagos",
       "Asesoramiento y respuesta rápida"
-    ],
-    "link": "#",
-    "textoLink": "Solicitar detalles"
+    ]
   },
   {
-    "titulo": "Plan Monotributo Plus",
-    "imagen": "plan-monotributo-plus.jpg",
-    "caracteristicas": [
+    id: 2,
+    titulo: "Plan Monotributo Plus",
+    imagen: "/Images/Planes/plan-inicial.jpg",
+    caracteristicas: [
       "Facturación mensual",
       "+ Plan Monotributo"
-    ],
-    "link": "#",
-    "textoLink": "Solicitar detalles"
+    ]
   },
   {
-    "titulo": "Plan Responsable Inscripto",
-    "imagen": "plan-responsable-inscripto.jpg",
-    "caracteristicas": [
+    id: 3,
+    titulo: "Plan Responsable Inscripto",
+    imagen: "/Images/Planes/plan-inicial.jpg",
+    caracteristicas: [
       "Presentación de DDJJ de IVA e IIBB",
       "Tramitación del certificado Mipyme y beneficio de diferimiento del IVA",
       "Cert. de no retención/exenciones",
@@ -38,8 +37,8 @@
       "Informe de novedades impositivas",
       "Generación de veps y planes de pagos",
       "Asesoramiento y respuesta rápida"
-    ],
-    "link": "#",
-    "textoLink": "Solicitar detalles"
+    ]
   }
-]
+];
+
+module.exports = {planesMonotributo};

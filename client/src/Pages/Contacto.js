@@ -1,10 +1,28 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../Styles/ContactoStyle.css';
 
 import FormularioContacto from '../Components/FormContacto';
+import PreguntasFrecuentes from '../Components/PregFrecuentes';
+import MapaUbicacion from '../Components/MapaUbicacion';
 
 function Contacto() {
+    const [preguntas, setPreguntas] = useState([]);
+
+    useEffect(() => {
+        async function fetchPreguntas() {
+            try {
+                const respuesta = await fetch('http://localhost:5000/api/PreguntasFrecuentes');
+                const datos = await respuesta.json();
+                
+                setPreguntas(datos);
+            } catch (error) {
+                console.log(`Error: ${error}`);
+            }
+        }
+        fetchPreguntas();
+    }, []);
+
 
     return(
         <>
@@ -13,9 +31,16 @@ function Contacto() {
             <FormularioContacto/>
          </section>
 
+         <section id='Mapa'>
+            <h2>Nuestra Ubicación</h2>
+            <h3>Visitanos en Nuestro Estudio</h3>
+            <MapaUbicacion/>
+         </section>
+
          <section id='FAQ'>
             <h2>FAQ</h2>
             <h3>Preguntas Frecuentes</h3>
+            <PreguntasFrecuentes preguntas={preguntas}/>
          </section>
         </>
     );

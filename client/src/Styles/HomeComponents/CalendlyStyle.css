@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color: var(--color-texto-secundario);
+    font-size: 15px; 
+}
+
+.secc-calendly {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  text-align: center;
+  align-items: center;
+  width: 100vw;
+  padding: 1rem;
+  background-color: var(--color-fondo-secundario);
+  border-radius: 10px;      
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.secc-calendly > p {
+  font-family: 'Playfair Display', sans-serif;
+  color: var(--color-texto);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.calendly-inline-widget {
+  width: 80%;
+  height: 500px; 
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .secc-calendly {
+    width: 90%; 
+    padding: 0;
+    padding: 2rem 1rem;
+  }
+
+  .calendly-inline-widget {
+    width: 80%;
+    height: 580px; 
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .secc-calendly > p {
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+html{
+    color:var(--color-texto-secundario);
+    font-size: 15px; 
+}
+
+.timeline {
+  position: relative;
+  width: 80vw;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  align-items: center;
+  justify-content: center;
+}
+
+#linea-vertical {
+  position: absolute;
+  left: 15px;
+  transform: none;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #ACD4CD 0%, #8BC3B8 100%);
+  box-shadow: 0 0 10px rgba(172, 212, 205, 0.3);
+  top: 0;
+  bottom: 0;
+}
+
+.elemento {
+  position: relative;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  left: 0;
+  text-align: left;
+}
+
+.punto {
+  position: absolute;
+  top: 1rem;
+  width: 15px;
+  height: 15px;
+  background-color: var(--bg-punto-timeline);
+  border-radius: 50%;
+  border: var(--borde-punto-timeline);
+  z-index: 2;
+  left: 8px;
+  transform: none;
+}
+
+.caja-de-texto {
+  background: var(--bg-header);
+  padding: 1rem;
+  border-radius: 8px;
+  display: inline-block;
+  max-width: 90%;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.08),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  border: var(--color-borde);
+  position: relative;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.titulo-elemento {
+  color: var(--color-texto);
+  font-family: 'Playfair Display', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.texto-elemento {
+  font-family: sans-serif;
+  color: var(--color-texto-secundario);
+  font-size: 0.9rem;
+}
+
+/* Animaciones */
+.elemento .punto,
+.elemento .caja-de-texto {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.elemento.visible .punto {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.elemento.visible .caja-de-texto {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s; 
+}
+
+@media (min-width: 1024px) {
+
+  .timeline {width: 100%;}
+  .elemento {
+    width: 50%;
+    position: relative;
+    margin-bottom: -0.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .elemento.elemento-izquierda {
+    left: 0;
+    padding-right: 2.5rem;
+  }
+
+  .elemento.elemento-izquierda .punto {
+    right: -8px;    
+    left: auto;
+    transform: none;
+  }
+
+  .elemento.elemento-derecha {
+    left: 50%;
+    padding-left: 2.5rem;
+  }
+
+  .elemento.elemento-derecha .punto {
+    left: -8px;     
+    right: auto;
+    transform: none;
+  }
+
+  .elemento-derecha .caja-de-texto {
+    margin-right: 0;
+    margin-left: auto; 
+  }
+
+  .caja-de-texto {
+    max-width: 85%;
+    display: inline-block;
+  }
+
+  #linea-vertical {left: 50%;}
+}
+
+/* Efecto de brillo sutil en hover */
+@keyframes subtleGlow {
+  0% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
+  50% { box-shadow: 0 4px 20px rgba(172, 212, 205, 0.15); }
+  100% { box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); }
+}
+
+.caja-de-texto:hover {
+  animation: subtleGlow 2s ease-in-out infinite;
+}
