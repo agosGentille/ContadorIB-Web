@@ -40,10 +40,12 @@ app.post("/api/send-email", async (req, res) => {
   try {
     // Configura tu transportador SMTP
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: 'smtp.sendgrid.net',
+      port: 587,
+      secure: false,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: 'apikey', 
+        pass: process.env.SENDGRID_API_KEY 
       }
     });
 
