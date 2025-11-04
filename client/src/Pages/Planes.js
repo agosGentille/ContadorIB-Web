@@ -4,7 +4,7 @@ import TarjetaPlanes from '../Components/PlanesCard';
 
 import '../Styles/PlanesStyle.css';
 
-import { API_BASE_URL } from '../config/api';
+import { API_BASE_URL } from '../Config/api.js';
 
 function Planes() {
     const [planesEmpresas, setPlanesEmpresas] = useState([]);
