@@ -31,7 +31,7 @@ function Header() {
     return(
         <header className='header-sticky'>
             <div className='header-menu'>
-                <span onClick={toggleMenu} className={`material-symbols-outlined menu-icon ${menuOpen ? 'open' : ''}`}>dehaze</span>
+                <span onClick={toggleMenu} className={`material-symbols-outlined menu-icon ${menuOpen ? 'open' : ''}`}>menu</span>
             </div>
             <div className='header-marca'>
                 <HashLink smooth to="/#Inicio"><img src={logo} alt='Logo Estudio Contable IB' id='Logo'/></HashLink>
