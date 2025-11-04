@@ -287,7 +287,7 @@ function Home() {
                     </div>
                     <span className='divisor-caracteristicas'></span>
                     <div className="caracteristica-reu">
-                        <p className="title-reu">$50.000 ARS</p>
+                        <p className="title-reu">$80.000 ARS</p>
                         <p className='texto-reu'>Precio final</p>
                     </div>
                 </div> 
