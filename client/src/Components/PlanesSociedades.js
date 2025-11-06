@@ -22,24 +22,24 @@ export default function PlanesEmpresas() {
       {
         nombre: "Plan Base SAS",
         desc: "Constitución de SAS + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "$150.000",
+        precio: "$950.000",
       },
       {
         nombre: "Plan Completo SAS",
         desc: "Incluye todo el Plan Base + desarrollo de una web estática personalizada.",
-        precio: "$230.000",
+        precio: "$ - A Consultar",
       },
     ],
     SRL: [
       {
         nombre: "Plan Base SRL",
         desc: "Constitución de SRL + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "$180.000",
+        precio: "$1.500.000",
       },
       {
         nombre: "Plan Completo SRL",
         desc: "Incluye todo el Plan Base + desarrollo de una web estática personalizada.",
-        precio: "$260.000",
+        precio: "$ - A Consultar",
       },
     ],
   };
