@@ -80,7 +80,7 @@ function Home() {
         return count;
     };
 
-    const facturas = useCounter(18000);
+    const facturas = useCounter(300);
     const clientes = useCounter(60);
     const enfocados = useCounter(100);
     
@@ -89,7 +89,7 @@ function Home() {
          <section className="Inicio" id="Inicio">
             <h2 className='titulo-inicio'>Optimiza tu negocio con servicios Contables e Impositivos.</h2>
             <p className='texto-inicio'>Deja la complejidad fiscal en manos expertas y enfócate en lo que realmente importa: <b>¡hacer crecer tu negocio!</b></p>
-            <button className='btn-contactanos'>¡CONTACTANOS AHORA!</button>
+            <HashLink smooth to="/contacto#FormularioDeContacto" className='btn-contactanos'>¡CONTACTANOS AHORA!</HashLink>
          </section>
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
@@ -158,19 +158,19 @@ function Home() {
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined">group</span>
                     <p className="numero">{visibleImpacto ? `+${clientes}` : '+0'} Clientes</p>
-                    <p className='texto-impacto'>que confían mes a mes</p>
+                    <p className='texto-impacto'>confían en nosotros cada mes</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined icono-impacto">corporate_fare</span>
                     <p className="numero">{visibleImpacto ? `${enfocados}%` : '0%'} Enfocados</p>
-                    <p className='texto-impacto'>en PYMES y Emprendedores de Argentina</p>
+                    <p className='texto-impacto'>en impulsar PYMES y Emprendedores argentinos</p>
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
                     <span className="material-symbols-outlined icono-impacto">receipt_long</span>
                     <p className="numero">{visibleImpacto ? `+${facturas.toLocaleString()}` : '+0'}</p>
-                    <p className='texto-impacto'>facturas emitidas</p>
+                    <p className='texto-impacto'>gestiones impositivas concretadas con éxito</p>
                 </div>
             </div>
          </section>
