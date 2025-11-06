@@ -194,3 +194,361 @@ h3::after {
   background: #ACD4CD;
   border-radius: 1px;
 }
+
+.subtitulo-planes {
+  text-align: center;
+  color: var(--color-texto-secundario);
+  font-size: 1rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.contendorPlanesSociedades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.seccion-planes-sociedades {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* Títulos */
+.titulo-seccion {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-texto);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.titulo-seccion::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD);
+  border-radius: 2px;
+}
+
+.subtitulo-seccion {
+  color: var(--color-texto-secundario);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* Selector de tipo de sociedad */
+.selector-sociedades {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.boton-selector {
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.boton-selector.activo {
+  background-color: #C97A63;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.boton-selector.inactivo {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.boton-selector.inactivo:hover {
+  background-color: #d1d5db;
+}
+
+/* Grid de planes */
+.contenedor-planes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjetas de planes */
+.tarjeta-plan {
+  background: var(--bg-header);
+  border: 1px solid var(--color-borde);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-plan::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #7FB8C2, #ACD4CD, #C9A646, #C97A63);
+  opacity: 0.8;
+}
+
+.tarjeta-plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.tarjeta-plan.seleccionada {
+  border: var(--color-borde);
+  box-shadow: var(--sombra-acento);
+  background-color: #fff7ed;
+}
+
+.nombre-plan {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.descripcion-plan {
+  color: var(--color-texto-secundario);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.precio-plan {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #C97A63;
+}
+
+/* Formulario */
+.formulario-contacto {
+  background: var(--bg-header);
+  border: 1px solid #f3f4f6;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.titulo-formulario {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin-bottom: 1.5rem;
+}
+
+.grupo-formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.campo-formulario {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  background-color: var(--bg-header);
+  color: var(--color-texto);
+}
+
+.campo-formulario:focus {
+  outline: none;
+  border-color: var(--color-acento);
+}
+
+.boton-enviar {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.boton-enviar.activo {
+  background-color: #C97A63;
+  color: white;
+}
+
+.boton-enviar.activo:hover {
+  background-color: #b56955;
+  transform: translateY(-2px);
+}
+
+.boton-enviar.inactivo {
+  background-color: #d1d5db;
+  color: #4b5563;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .seccion-planes-sociedades {
+    margin: 3rem auto;
+    padding: 0 0.5rem;
+  }
+  
+  .titulo-seccion {
+    font-size: 1.6rem;
+  }
+  
+  .selector-sociedades {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .contenedor-planes {
+    grid-template-columns: 1fr;
+  }
+  
+  .formulario-contacto {
+    padding: 1.5rem;
+  }
+}
+
+.grupo-checkbox {
+  margin: 1rem 0;
+  padding: 1rem;
+  background-color: var(--bg-header);
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+}
+
+.etiqueta-checkbox {
+  display: block;
+  font-weight: 500;
+  color: var(--color-texto);
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.opciones-contacto {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.opcion-contacto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+  transition: color 0.3s ease;
+}
+
+.opcion-contacto:hover {
+  color: var(--color-texto);
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-personalizado {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.checkbox-input:checked + .checkbox-personalizado {
+  background-color: var(--color-acento-secundario);
+  border-color: var(--color-acento-secundario);
+}
+
+.checkbox-input:checked + .checkbox-personalizado::after {
+  content: "✓";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.checkbox-input:focus + .checkbox-personalizado {
+  box-shadow: 0 0 0 2px rgba(201, 122, 99, 0.2);
+}
+
+/* Responsive para checkboxes */
+@media (max-width: 768px) {
+  .opciones-contacto {
+    gap: 0.75rem;
+  }
+  
+  .opcion-contacto {
+    font-size: 0.9rem;
+  }
+}
+
+.mensaje-error {
+  background-color: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Mensaje de ayuda */
+.mensaje-ayuda {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Estado de deshabilitado */
+.campo-formulario:disabled,
+.boton-enviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.opcion-contacto:has(.checkbox-input:disabled) {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

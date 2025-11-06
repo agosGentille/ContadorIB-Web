@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import '../Styles/ContactoStyle.css';
 
 import FormularioContacto from '../Components/FormContacto';
-import PreguntasFrecuentes from '../Components/PregFrecuentes';
 import MapaUbicacion from '../Components/MapaUbicacion';
 
 import { API_BASE_URL } from '../Config/api.js';
@@ -37,12 +36,6 @@ function Contacto() {
             <h2>Nuestra Ubicación</h2>
             <h3>Visitanos en Nuestro Estudio</h3>
             <MapaUbicacion/>
-         </section>
-
-         <section id='FAQ'>
-            <h2>FAQ</h2>
-            <h3>Preguntas Frecuentes</h3>
-            <PreguntasFrecuentes preguntas={preguntas}/>
          </section>
         </>
     );
