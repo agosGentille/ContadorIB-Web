@@ -152,7 +152,7 @@ export default function PlanesEmpresas() {
   };
 
   return (
-    <section className="seccion-planes-sociedades">
+    <section className="seccion-planes-sociedades" id="Sociedades">
       <h3 className="titulo-seccion">Constitución de Sociedades</h3>
       <p className="subtitulo-seccion">
         Iniciá tu empresa con asesoramiento integral: elegí entre SAS o SRL, y sumá presencia digital con tu propia web.

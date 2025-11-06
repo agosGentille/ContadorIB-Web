@@ -106,7 +106,7 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
       text: `Nueva solicitud de plan recibida desde el sitio web.
 
           ──────────────────────────────
-          📋 DATOS DEL SOLICITANTE:
+          📋 Datos del remitente:
           ──────────────────────────────
           • Nombre: ${nombre}
           • Email: ${email}
@@ -116,7 +116,7 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
           • Plan Seleccionado: ${plan}
 
           ──────────────────────────────
-          📞 PREFERENCIAS DE CONTACTO:
+          📞 Preferencias de contacto:
           ──────────────────────────────
           • WhatsApp: ${preferenciasContacto?.whatsapp ? "SÍ" : "No"}
           • Email: ${preferenciasContacto?.email ? "SÍ" : "No"}
