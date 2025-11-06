@@ -43,7 +43,6 @@ function Header() {
                     <li><HashLink onClick={toggleMenu} smooth to="/#Servicios">Servicios</HashLink></li>
                     <li><Link onClick={toggleMenu} to="/planes">Planes</Link></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
-                    <li><HashLink onClick={toggleMenu} smooth to="/contacto#FAQ">Preguntas Frecuentes</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
                 </ul>
                 </div>
