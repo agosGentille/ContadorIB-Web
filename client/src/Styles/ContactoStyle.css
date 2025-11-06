@@ -128,6 +128,22 @@ html{
   min-width: 0;
 }
 
+.selectTipo {
+  background-color: var(--bg-footer);
+  border-radius: 8px;
+  padding: 12px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.selectTipo option {
+  background-color: var(--color-fondo-secundario);
+  padding: 12px;
+  font-size: 14px;
+  border: none;
+}
+
 .campo-empresa {
   flex: 1 1 50%;
   opacity: 0;
