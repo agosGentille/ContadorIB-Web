@@ -99,7 +99,7 @@ function FormContacto(){
                     onChange={handleChangeValues}
                     required
                 >
-                    <option value="">Seleccioná una opción</option>
+                    <option value="">Seleccioná tipo de contribuyente</option>
                     <option value="monotributista">Monotributista</option>
                     <option value="ri">Responsable Inscripto</option>
                     <option value="empresa">Empresa</option>
