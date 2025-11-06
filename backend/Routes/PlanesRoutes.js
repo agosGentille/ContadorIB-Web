@@ -7,6 +7,4 @@ router.get('/PlanesEmpresas', getPlanesEmpresas);
 
 router.get('/PlanesEmprendedores', getPlanesEmprendedores);
 
-router.get('/PlanesSociedades', getPlanesEmprendedores);
-
 module.exports = router;
