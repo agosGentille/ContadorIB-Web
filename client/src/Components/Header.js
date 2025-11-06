@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { HashLink  } from 'react-router-hash-link';
-import { Link } from 'react-router-dom';
 import '../Styles/HeaderStyle.css';
 
 import logo from '../Images/logo.jpg';
@@ -41,7 +40,8 @@ function Header() {
                 <div className='header-nav-inner'>
                     <ul>
                     <li><HashLink onClick={toggleMenu} smooth to="/#Servicios">Servicios</HashLink></li>
-                    <li><Link onClick={toggleMenu} to="/planes">Planes</Link></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/planes#Planes">Planes</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/planes#Sociedades">Constitución SAS/SRL</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
                 </ul>
