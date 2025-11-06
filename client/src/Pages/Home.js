@@ -89,7 +89,7 @@ function Home() {
          <section className="Inicio" id="Inicio">
             <h2 className='titulo-inicio'>Optimiza tu negocio con servicios Contables e Impositivos.</h2>
             <p className='texto-inicio'>Deja la complejidad fiscal en manos expertas y enfócate en lo que realmente importa: <b>¡hacer crecer tu negocio!</b></p>
-            <button className='btn-contactanos'>¡CONTACTANOS AHORA!</button>
+            <HashLink smooth to="/contacto#FormularioDeContacto" className='btn-contactanos'>¡CONTACTANOS AHORA!</HashLink>
          </section>
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
