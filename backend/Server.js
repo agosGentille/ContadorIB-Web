@@ -30,13 +30,8 @@ app.use('/api/planes', planesRoutes);
 app.use('/api/PreguntasFrecuentes', pregRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta para enviar mail
+// Ruta para enviar mail desde form contacto
 app.post("/api/send-email", async (req, res) => {
-  console.log("✅ Ruta /api/send-email alcanzada");
-
-  console.log("🔑 API Key existe?", !!process.env.SENDGRID_API_KEY);
-  console.log("🔑 API Key longitud:", process.env.SENDGRID_API_KEY?.length);
-  console.log("🔑 API Key inicia con:", process.env.SENDGRID_API_KEY?.substring(0, 10));
   
   const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
@@ -83,6 +78,67 @@ app.post("/api/send-email", async (req, res) => {
     res.status(500).json({ error: "Error al enviar el correo" });
     console.error("❌ Error enviando email:", error);
     console.error("❌ Error details:", error.response?.body || error.message);
+  }
+});
+
+app.post("/api/planes/solicitud-plan", async (req, res) => {
+  const { 
+    nombre, 
+    email, 
+    telefono, 
+    empresa, 
+    plan, 
+    tipoSociedad, 
+    preferenciasContacto 
+  } = req.body;
+
+  if (!nombre || !email || !plan || !tipoSociedad) {
+    return res.status(400).json({ 
+      error: "Faltan campos obligatorios: nombre, email, plan y tipo de sociedad son requeridos" 
+    });
+  }
+
+  try {
+    const mailOptions = {
+      from: "ibellomoyasoc@gmail.com",
+      to: "ivan.bellomo@contadorib.com.ar",
+      subject: `Solicitud de Plan - ${plan} (${tipoSociedad})`,
+      text: `Nueva solicitud de plan recibida desde el sitio web.
+
+          ──────────────────────────────
+          📋 DATOS DEL SOLICITANTE:
+          ──────────────────────────────
+          • Nombre: ${nombre}
+          • Email: ${email}
+          • Teléfono: ${telefono || "No proporcionado"}
+          • Empresa: ${empresa || "No proporcionado"}
+          • Tipo de Sociedad: ${tipoSociedad}
+          • Plan Seleccionado: ${plan}
+
+          ──────────────────────────────
+          📞 PREFERENCIAS DE CONTACTO:
+          ──────────────────────────────
+          • WhatsApp: ${preferenciasContacto?.whatsapp ? "SÍ" : "No"}
+          • Email: ${preferenciasContacto?.email ? "SÍ" : "No"}
+          • Teléfono: ${preferenciasContacto?.telefono ? "SÍ" : "No"}
+
+          ──────────────────────────────
+          Este es un mensaje automático. 
+          Por favor contactar al solicitante según sus preferencias indicadas.
+          `,
+      replyTo: email
+    };
+
+    await sgMail.send(mailOptions);
+
+    res.json({ 
+      success: true, 
+      message: "Solicitud de plan enviada correctamente" 
+    });
+  } catch (error) {
+    console.error("Error enviando email de plan:", error);
+    console.error("Error details:", error.response?.body || error.message);
+    res.status(500).json({ error: "Error al enviar la solicitud" });
   }
 });
 
