@@ -130,9 +130,7 @@ html{
 
 .selectTipo {
   background-color: var(--bg-footer);
-  border-radius: 8px;
   padding: 12px;
-  width: 100%;
   cursor: pointer;
   font-size: 14px;
 }
