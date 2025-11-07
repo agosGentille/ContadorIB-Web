@@ -203,7 +203,7 @@ function Home() {
                     <p>Nacionales, provinciales, mensuales y anuales</p>
                     </div>
 
-                    <HashLink smooth to="/contacto#FormularioDeContacto" className="card-servicio destacado">
+                    <HashLink smooth to="/planes#Sociedades" className="card-servicio destacado">
                     <div className="icono-servicio">
                         <span className="material-symbols-outlined">corporate_fare</span>
                     </div>
