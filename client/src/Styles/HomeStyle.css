@@ -403,6 +403,7 @@ html{
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .card-servicio::before {
@@ -511,6 +512,7 @@ html{
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Playfair Display', serif;
+  text-decoration: none;
 }
 
 .btn-solicitar-info:hover {

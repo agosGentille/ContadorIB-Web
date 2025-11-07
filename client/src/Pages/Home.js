@@ -203,13 +203,13 @@ function Home() {
                     <p>Nacionales, provinciales, mensuales y anuales</p>
                     </div>
 
-                    <div className="card-servicio">
+                    <HashLink smooth to="/planes#Sociedades" className="card-servicio destacado">
                     <div className="icono-servicio">
                         <span className="material-symbols-outlined">corporate_fare</span>
                     </div>
                     <h3>Constitución de Sociedades</h3>
                     <p>Asesoramiento completo para tu emprendimiento</p>
-                    </div>
+                    </HashLink>
                 </div>
 
                 <div className="columna-servicios">
