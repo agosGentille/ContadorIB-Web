@@ -252,6 +252,7 @@ h3::after {
 /* Selector de tipo de sociedad */
 .selector-sociedades {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2.5rem;
@@ -290,7 +291,6 @@ h3::after {
   margin-bottom: 3rem;
 }
 
-/* Tarjetas de planes */
 .tarjeta-plan {
   background: var(--bg-header);
   border: 1px solid var(--color-borde);
@@ -341,10 +341,439 @@ h3::after {
   margin-bottom: 1rem;
 }
 
+.lista-detalles-plan {
+  list-style: none;
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 0.9rem;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.tarjeta-plan.seleccionada .lista-detalles-plan li::before {
+  color: #C97A63;
+}
+
+@media (max-width: 768px) {
+  .lista-detalles-plan::before {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .lista-detalles-plan li {
+    padding: 0.4rem 0.4rem 0.4rem 2.2rem;
+    font-size: 0.85rem;
+  }
+  
+  .lista-detalles-plan li::before {
+    font-size: 1rem;
+    left: 0.6rem;
+    top: 0.4rem;
+  }
+}
+
+.lista-detalles-plan li {
+  margin-bottom: 4px;
+}
+
+.tarjeta-plan {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Badge para el plan "Completo" */
+.tarjeta-plan:has(.boton-detalles-completo)::after {
+  content: " + Incluye Web";
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #7FB8C2, #ACD4CD);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(127, 184, 194, 0.3);
+}
+
 .precio-plan {
-  font-size: 1.125rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #C97A63;
+  margin: 1.5rem 0 0.5rem 0;
+  text-align: center;
+  position: relative;
+  padding: 0.75rem 0;
+}
+
+.precio-plan::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #C97A63, transparent);
+}
+
+.precio-plan:contains("Personalizado") {
+  font-size: 1.3rem;
+  color: #7FB8C2;
+  font-weight: 600;
+}
+
+.nota-precio {
+  font-size: 0.8rem;
+  color: var(--color-texto-secundario);
+  text-align: center;
+  font-style: italic;
+  margin: 0.25rem 0 1rem 0;
+  padding: 0.5rem 1rem;
+  background: rgba(127, 184, 194, 0.08);
+  border-radius: 0.5rem;
+  border-left: 3px solid #7FB8C2;
+  line-height: 1.4;
+}
+
+.tarjeta-plan:hover .precio-plan {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-plan:hover .nota-precio {
+  background: rgba(127, 184, 194, 0.12);
+  transition: background 0.3s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .precio-plan {
+    font-size: 1.3rem;
+    margin: 1rem 0 0.25rem 0;
+  }
+  
+  .nota-precio {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .precio-plan:contains("Personalizado") {
+    font-size: 1.1rem;
+  }
+}
+
+.boton-detalles-completo {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #7FB8C2, #ACD4CD);
+  border: none;
+  color: white;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(127, 184, 194, 0.3);
+}
+
+.boton-detalles-completo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(127, 184, 194, 0.4);
+  background: linear-gradient(135deg, #6fa8b2, #9bc4bd);
+}
+
+/* Overlay completo que oscurece la página */
+.modal-overlay-completo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+/* Modal completo */
+.modal-completo {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 0;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.boton-cerrar-modal {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--color-texto);
+  transition: all 0.3s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boton-cerrar-modal:hover {
+  background: #C9A646;
+  color: white;
+  transform: rotate(90deg);
+}
+
+/* Cabecera del modal */
+.cabecera-modal {
+  background: linear-gradient(135deg, #7FB8C2, #ACD4CD);
+  color: white;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 1.5rem 1.5rem 0 0;
+  text-align: center;
+}
+
+.titulo-modal {
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.descripcion-modal {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.precio-destacado {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.nota-precio-modal {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  font-weight: 400;
+  margin-top: 0.5rem;
+}
+
+.contenido-modal {
+  padding: 2.5rem 2rem;
+  background-color: var(--color-fondo);
+}
+
+.seccion-caracteristicas,
+.seccion-rangos-precio {
+  margin-bottom: 2.5rem;
+}
+
+.seccion-caracteristicas h4,
+.seccion-rangos-precio h4 {
+  color: var(--color-texto);
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+}
+
+.lista-caracteristicas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-caracteristica {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(127, 184, 194, 0.05);
+  border-radius: 0.75rem;
+  border-left: 4px solid #7FB8C2;
+  transition: all 0.3s ease;
+}
+
+.item-caracteristica:hover {
+  background: rgba(127, 184, 194, 0.1);
+  transform: translateX(5px);
+}
+
+.icono-caracteristica {
+  color: #7FB8C2;
+  font-weight: bold;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.contenedor-rangos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-rango-precio {
+  background: linear-gradient(135deg, #C9A64610, #C9A64615);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0.75rem;
+  border-left: 4px solid #C9A646;
+  font-weight: 600;
+  color: var(--color-texto);
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.item-rango-precio:hover {
+  transform: translateX(8px);
+  background: linear-gradient(135deg, #C9A64615, #C9A64620);
+}
+
+/* Nota final */
+.nota-final-modal {
+  background: rgba(201, 122, 99, 0.1);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  color: #C97A63;
+  border: 1px solid rgba(201, 122, 99, 0.2);
+  margin-top: 2rem;
+}
+
+.nota-final-modal p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.pie-modal {
+  padding: 0 2rem 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  background-color: var(--color-fondo);
+}
+
+.boton-seleccionar-plan {
+  width: 100%;
+  padding: 1.25rem;
+  background: #C97A63;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-seleccionar-plan:hover {
+  background: #b56955;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(201, 122, 99, 0.4);
+}
+
+.boton-cerrar-secundario {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 2px solid #e2e8f0;
+  color: var(--color-texto-secundario);
+  border-radius: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton-cerrar-secundario:hover {
+  border-color: #C97A63;
+  color: #C97A63;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-completo {
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+  
+  .cabecera-modal {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  
+  .titulo-modal {
+    font-size: 1.4rem;
+  }
+  
+  .precio-destacado {
+    font-size: 1.6rem;
+  }
+  
+  .contenido-modal {
+    padding: 2rem 1.5rem;
+  }
+  
+  .item-caracteristica {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .item-rango-precio {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .pie-modal {
+    padding: 0 1.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-completo {
+    border-radius: 1rem;
+  }
+  
+  .cabecera-modal {
+    padding: 1.5rem 1rem 1rem;
+  }
+  
+  .contenido-modal {
+    padding: 1.5rem 1rem;
+  }
+  
+  .seccion-caracteristicas h4,
+  .seccion-rangos-precio h4 {
+    font-size: 1.1rem;
+  }
 }
 
 /* Formulario */
@@ -428,7 +857,6 @@ h3::after {
   }
   
   .selector-sociedades {
-    flex-direction: column;
     align-items: center;
     gap: 0.5rem;
   }

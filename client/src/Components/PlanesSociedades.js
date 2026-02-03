@@ -16,6 +16,9 @@ export default function PlanesEmpresas() {
     contactoTelefono: false,
     tipoSociedad: "SAS"
   });
+  const [planDetallado, setPlanDetallado] = useState(null);
+  const [errors, setErrors] = useState("");
+  const [enviando, setEnviando] = useState(false);
 
   const planes = {
     SAS: [
@@ -26,8 +29,26 @@ export default function PlanesEmpresas() {
       },
       {
         nombre: "Plan Completo SAS",
-        desc: "Incluye todo el Plan Base + desarrollo de una web estática personalizada.",
-        precio: "$ - A Consultar",
+        desc: "Incluye todo el Plan Base + presencia digital profesional a medida de tu empresa.",
+        detallesWeb: [
+          "Diseño exclusivo desarrollado desde cero, sin plantillas",
+          "Modo claro/oscuro incluido",
+          "Optimizado para celulares, tablets y computadoras",
+          "Formularios configurados según tus necesidades",
+          "Sitio web publicado con tu dominio personalizado",
+          "Certificado SSL de seguridad profesional",
+          "Entrega en 10-15 días hábiles con seguimiento parcial",
+          "1 ronda de revisiones y ajustes incluida sin costo adicional",
+          "Soporte técnico post-entrega por 15 días",
+          "Mantenimiento mensual disponible (consultar costos)"
+        ],
+        precio: "Hasta $1.260.000",
+        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        rangosPrecio: [
+          "Landing page (3 secciones): $185.000",
+          "SPA (5 páginas): $220.000", 
+          "Sitio completo (8 páginas): $310.000"
+        ],
       },
     ],
     SRL: [
@@ -38,14 +59,29 @@ export default function PlanesEmpresas() {
       },
       {
         nombre: "Plan Completo SRL",
-        desc: "Incluye todo el Plan Base + desarrollo de una web estática personalizada.",
-        precio: "$ - A Consultar",
+        desc: "Incluye todo el Plan Base + presencia digital profesional a medida de tu empresa.",
+        detallesWeb: [
+          "Diseño exclusivo desarrollado desde cero, sin plantillas",
+          "Modo claro/oscuro incluido",
+          "Optimizado para celulares, tablets y computadoras",
+          "Formularios configurados según tus necesidades",
+          "Sitio web publicado con tu dominio personalizado",
+          "Certificado SSL de seguridad profesional",
+          "Entrega en 10-15 días hábiles con seguimiento parcial",
+          "1 ronda de revisiones y ajustes incluida sin costo adicional",
+          "Soporte técnico post-entrega por 15 días",
+          "Mantenimiento mensual disponible (consultar costos)"
+        ],
+        precio: "Hasta $1.900.000",
+        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        rangosPrecio: [
+          "Landing corporativa (5 secciones): $220.000",
+          "SPA corporativo (8 secciones): $310.000",
+          "Sitio corporativo completo (10+ secciones): $400.000"
+        ],
       },
     ],
   };
-
-  const [errors, setErrors] = useState("");
-  const [enviando, setEnviando] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -188,14 +224,117 @@ export default function PlanesEmpresas() {
               className={`tarjeta-plan ${
                 formData.plan === p.nombre ? "seleccionada" : ""
               }`}
-              onClick={() => handlePlanSelect(p.nombre)}
             >
-              <h4 className="nombre-plan">{p.nombre}</h4>
-              <p className="descripcion-plan">{p.desc}</p>
-              <p className="precio-plan">{p.precio}</p>
+              <div onClick={() => handlePlanSelect(p.nombre)}>
+                <h4 className="nombre-plan">{p.nombre}</h4>
+                <p className="descripcion-plan">{p.desc}</p>
+                <div>
+                  {p.detallesWeb && (
+                    <button 
+                      className="boton-detalles-completo"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setPlanDetallado(p);
+                      }}
+                    >
+                      Conocer opciones de diseño
+                    </button>
+                  )}
+                </div>
+                <p className="precio-plan">{p.precio}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
+      </AnimatePresence>
+
+      {/* Modal Detalle de Plan + web */}
+      <AnimatePresence>
+        {planDetallado && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="modal-overlay-completo"
+            onClick={() => setPlanDetallado(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="modal-completo"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className="material-symbols-outlined boton-cerrar-modal"
+                onClick={() => setPlanDetallado(null)}
+              >
+                close_small
+              </button>
+              
+              <div className="cabecera-modal">
+                <h3 className="titulo-modal">{planDetallado.nombre}</h3>
+                <p className="descripcion-modal">{planDetallado.desc}</p>
+                <div className="precio-destacado">
+                  {planDetallado.precio}
+                  {planDetallado.notaPrecio && (
+                    <span className="nota-precio-modal">{planDetallado.notaPrecio}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="contenido-modal">
+                {/* Sección de características de la web */}
+                <div className="seccion-caracteristicas">
+                  <h4>Qué incluye tu sitio web</h4>
+                  <div className="lista-caracteristicas">
+                    {planDetallado.detallesWeb.map((item, idx) => (
+                      <div key={idx} className="item-caracteristica">
+                        <span className="icono-caracteristica">✓</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Sección de rangos de precio */}
+                <div className="seccion-rangos-precio">
+                  <h4>Opciones de Precio</h4>
+                  <div className="contenedor-rangos">
+                    {planDetallado.rangosPrecio.map((rango, idx) => (
+                      <div key={idx} className="item-rango-precio">
+                        {rango}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Nota final */}
+                <div className="nota-final-modal">
+                  <p>💡 <strong>Cotización personalizada:</strong> Te contactaremos para ajustar el precio exacto según tus necesidades específicas y requerimientos.</p>
+                </div>
+              </div>
+
+              <div className="pie-modal">
+                <button 
+                  className="boton-seleccionar-plan"
+                  onClick={() => {
+                    handlePlanSelect(planDetallado.nombre);
+                    setPlanDetallado(null);
+                  }}
+                >
+                  Seleccionar este plan
+                </button>
+                <button 
+                  className="boton-cerrar-secundario"
+                  onClick={() => setPlanDetallado(null)}
+                >
+                  Cerrar
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Formulario */}

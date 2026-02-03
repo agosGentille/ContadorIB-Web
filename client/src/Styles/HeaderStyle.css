@@ -228,6 +228,18 @@ html{
   box-shadow: 0 3px 10px var(--sombra-acento);
 }
 
+#icono-wsp {
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 20%;
+  background: var(--switch-bg);
+  border: 1px solid var(--color-borde);
+  color: var(--color-texto);
+  filter: invert(100%);
+}
+
 .btn-Hablanos span {
   font-size: 20px;
   color: white;
