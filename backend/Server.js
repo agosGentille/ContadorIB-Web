@@ -83,10 +83,12 @@ app.post("/api/send-email", async (req, res) => {
       // cuando se responda desde ivan.bellomo@contadorib.com.ar, le va a llegar al mail del 
       // usuario que completó el formulario
     };
-
+    console.log("Números a notificar por WhatsApp:", WHATSAPP_NUMBERS);
     //await sgMail.send(mailOptions);
     await resend.emails.send(mailOptions);
+    console.log("Números a notificar por WhatsApp:", WHATSAPP_NUMBERS);
     for (const numero of WHATSAPP_NUMBERS) {
+      console.log("Intentando enviar WhatsApp a:", numero);
       await client.messages.create({
         from: "whatsapp:+14155238886", // sandbox de Twilio
         to: numero,
