@@ -43,7 +43,7 @@ app.post("/api/send-email", async (req, res) => {
 
   try {
     const mailOptions = {
-      from: "ibellomoyasoc@gmail.com",
+      from: "Estudio Contable IB <admin.impuestos@contadorib.com.ar>",
       to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
       subject: `Formulario de contacto - Estudio Contable IB`, //asunto
       text: `Estimado equipo del Estudio Contable IB,
@@ -102,7 +102,7 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
 
   try {
     const mailOptions = {
-      from: "ibellomoyasoc@gmail.com",
+      from: "Estudio Contable IB <admin.impuestos@contadorib.com.ar>",
       to: "ivan.bellomo@contadorib.com.ar",
       subject: `Solicitud de Plan - ${plan} (${tipoSociedad})`,
       text: `Nueva solicitud de plan recibida desde el sitio web.
