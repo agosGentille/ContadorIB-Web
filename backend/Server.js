@@ -5,12 +5,23 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
 const { Resend } = require("resend");
+const twilio = require("twilio");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 //sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+const client = twilio(
+  process.env.TWILIO_SID,
+  process.env.TWILIO_AUTH_TOKEN
+);
+
+const WHATSAPP_NUMBERS = [
+  "whatsapp:+5491121741245",
+  "whatsapp:+5491131214776"
+];
 
 // Middlewares
 app.use(cors({
@@ -31,6 +42,7 @@ const pregRoutes = require("./Routes/PreguntasRoutes.js");
 app.use('/api/planes', planesRoutes);
 app.use('/api/PreguntasFrecuentes', pregRoutes);
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Ruta para enviar mail desde form contacto
 app.post("/api/send-email", async (req, res) => {
@@ -74,6 +86,24 @@ app.post("/api/send-email", async (req, res) => {
 
     //await sgMail.send(mailOptions);
     await resend.emails.send(mailOptions);
+    for (const numero of WHATSAPP_NUMBERS) {
+      await client.messages.create({
+        from: "whatsapp:+14155238886", // sandbox de Twilio
+        to: numero,
+        body: `
+      📩 Nuevo contacto desde la web
+
+      Nombre: ${nombre} ${apellido}
+      Email: ${email}
+      Tel: ${telefono || "No"}
+      Tipo: ${tipoCliente}
+      Empresa: ${nombreEmpresa || "-"}
+
+      Mensaje:
+      ${mensaje}
+      `
+        });
+    }
     res.json({ success: true, message: "Correo enviado correctamente" });
   } catch (error) {
     console.error(error);
@@ -133,6 +163,22 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
 
     //await sgMail.send(mailOptions);
     await resend.emails.send(mailOptions);
+      for (const numero of WHATSAPP_NUMBERS) {
+      await client.messages.create({
+        from: "whatsapp:+14155238886", // sandbox de Twilio
+        to: numero,
+        body: `
+          📩 Nuevo contacto desde la web
+
+          Nombre: ${nombre}
+          Email: ${email}
+          Tel: ${telefono || "No"}
+          Tipo: ${tipoSociedad}
+          Plan Seleccionado: ${plan}
+
+          `
+      });
+    }
     res.json({ 
       success: true, 
       message: "Solicitud de plan enviada correctamente" 
