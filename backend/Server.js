@@ -1,14 +1,16 @@
 //require('dotenv').config();
 const express = require("express");
-const sgMail = require('@sendgrid/mail');
+//const sgMail = require('@sendgrid/mail');
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
+const { Resend } = require("resend");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+//sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Middlewares
 app.use(cors({
@@ -41,7 +43,7 @@ app.post("/api/send-email", async (req, res) => {
 
   try {
     const mailOptions = {
-      from: "ibellomoyasoc@gmail.com",       
+      from: "ibellomoyasoc@gmail.com",
       to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
       subject: `Formulario de contacto - Estudio Contable IB`, //asunto
       text: `Estimado equipo del Estudio Contable IB,
@@ -70,8 +72,8 @@ app.post("/api/send-email", async (req, res) => {
       // usuario que completó el formulario
     };
 
-    await sgMail.send(mailOptions);
-
+    //await sgMail.send(mailOptions);
+    await resend.emails.send(mailOptions);
     res.json({ success: true, message: "Correo enviado correctamente" });
   } catch (error) {
     console.error(error);
@@ -129,8 +131,8 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
       replyTo: email
     };
 
-    await sgMail.send(mailOptions);
-
+    //await sgMail.send(mailOptions);
+    await resend.emails.send(mailOptions);
     res.json({ 
       success: true, 
       message: "Solicitud de plan enviada correctamente" 
