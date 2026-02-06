@@ -46,18 +46,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Ruta para enviar mail desde form contacto
 app.post("/api/send-email", async (req, res) => {
-  
   const { nombre, apellido, email, telefono, mensaje, tipoCliente, nombreEmpresa } = req.body;
 
   if (!nombre || !apellido || !email || !mensaje) {
     return res.status(400).json({ error: "Faltan campos obligatorios" });
   }
 
+  let emailEnviado = false;
+  let whatsappEnviado = false;
+  const errores = [];
+
   try {
+    // 1. Intentar enviar email
     const mailOptions = {
       from: "Estudio Contable IB <admin.impuestos@contadorib.com.ar>",
-      to: "ivan.bellomo@contadorib.com.ar",   // destinatario final
-      subject: `Formulario de contacto - Estudio Contable IB`, //asunto
+      to: "ivan.bellomo@contadorib.com.ar",
+      subject: `Formulario de contacto - Estudio Contable IB`,
       text: `Estimado equipo del Estudio Contable IB,
         Se ha recibido un nuevo mensaje a través del formulario de contacto del sitio web.
 
@@ -79,39 +83,70 @@ app.post("/api/send-email", async (req, res) => {
         Este correo fue generado automáticamente. 
         Por favor, responda directamente a este mensaje para contactar al remitente.
         `,
-      replyTo: email 
-      // cuando se responda desde ivan.bellomo@contadorib.com.ar, le va a llegar al mail del 
-      // usuario que completó el formulario
+      replyTo: email
     };
-    console.log("Números a notificar por WhatsApp:", WHATSAPP_NUMBERS);
-    //await sgMail.send(mailOptions);
+
     await resend.emails.send(mailOptions);
-    console.log("Números a notificar por WhatsApp:", WHATSAPP_NUMBERS);
-    for (const numero of WHATSAPP_NUMBERS) {
-      console.log("Intentando enviar WhatsApp a:", numero);
-      await client.messages.create({
-        from: "whatsapp:+14155238886", // sandbox de Twilio
-        to: numero,
-        body: `
-      📩 Nuevo contacto desde la web
-
-      Nombre: ${nombre} ${apellido}
-      Email: ${email}
-      Tel: ${telefono || "No"}
-      Tipo: ${tipoCliente}
-      Empresa: ${nombreEmpresa || "-"}
-
-      Mensaje:
-      ${mensaje}
-      `
-        });
-    }
-    res.json({ success: true, message: "Correo enviado correctamente" });
+    emailEnviado = true;
+    console.log("✅ Email enviado correctamente");
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error al enviar el correo" });
-    console.error("❌ Error enviando email:", error);
-    console.error("❌ Error details:", error.response?.body || error.message);
+    console.error("❌ Error enviando email:", error.message);
+    errores.push(`Email: ${error.message}`);
+  }
+
+  console.log("TWILIO_SID existe?:", !!process.env.TWILIO_SID);
+  console.log("TWILIO_AUTH_TOKEN existe?:", !!process.env.TWILIO_AUTH_TOKEN);
+  console.log("Números configurados:", WHATSAPP_NUMBERS);
+  
+  try {
+    // 2. Intentar enviar WhatsApp (independientemente del resultado del email)
+    console.log("Enviando WhatsApp a números:", WHATSAPP_NUMBERS);
+    
+    const mensajeWhatsApp = `📩 Nuevo contacto desde la web
+            Nombre: ${nombre} ${apellido}
+            Email: ${email}
+            Tel: ${telefono || "No especificado"}
+            Tipo: ${tipoCliente || "No especificado"}
+            Empresa: ${nombreEmpresa || "-"}
+            Mensaje:
+            ${mensaje}`;
+
+    for (const numero of WHATSAPP_NUMBERS) {
+      try {
+        console.log(`Enviando a: ${numero}`);
+        const message = await client.messages.create({
+          from: "whatsapp:+14155238886",
+          to: numero,
+          body: mensajeWhatsApp
+        });
+        console.log(`✅ WhatsApp enviado a ${numero}: SID ${message.sid}`);
+        whatsappEnviado = true;
+      } catch (error) {
+        console.error(`Error enviando WhatsApp a ${numero}:`, error.message);
+        errores.push(`WhatsApp (${numero}): ${error.message}`);
+      }
+    }
+  } catch (error) {
+    console.error("Error en proceso de WhatsApp:", error.message);
+    errores.push(`Proceso WhatsApp: ${error.message}`);
+  }
+
+  // 3. Responder al cliente
+  if (emailEnviado || whatsappEnviado) {
+    res.json({
+      success: true,
+      message: "Mensaje procesado",
+      detalles: {
+        email: emailEnviado ? "enviado" : "falló",
+        whatsapp: whatsappEnviado ? "enviado" : "falló",
+        errores: errores.length > 0 ? errores : undefined
+      }
+    });
+  } else {
+    res.status(500).json({
+      error: "No se pudo enviar el mensaje",
+      detalles: errores
+    });
   }
 });
 
@@ -165,22 +200,6 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
 
     //await sgMail.send(mailOptions);
     await resend.emails.send(mailOptions);
-      for (const numero of WHATSAPP_NUMBERS) {
-      await client.messages.create({
-        from: "whatsapp:+14155238886", // sandbox de Twilio
-        to: numero,
-        body: `
-          📩 Nuevo contacto desde la web
-
-          Nombre: ${nombre}
-          Email: ${email}
-          Tel: ${telefono || "No"}
-          Tipo: ${tipoSociedad}
-          Plan Seleccionado: ${plan}
-
-          `
-      });
-    }
     res.json({ 
       success: true, 
       message: "Solicitud de plan enviada correctamente" 
