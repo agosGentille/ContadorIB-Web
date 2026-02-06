@@ -91,13 +91,8 @@ app.post("/api/send-email", async (req, res) => {
     console.log("✅ Email enviado correctamente");
   } catch (error) {
     console.error("❌ Error enviando email:", error.message);
-    errores.push(`Email: ${error.message}`);
   }
 
-  console.log("TWILIO_SID existe?:", !!process.env.TWILIO_SID);
-  console.log("TWILIO_AUTH_TOKEN existe?:", !!process.env.TWILIO_AUTH_TOKEN);
-  console.log("Números configurados:", WHATSAPP_NUMBERS);
-  
   try {
     // 2. Intentar enviar WhatsApp (independientemente del resultado del email)
     console.log("Enviando WhatsApp a números:", WHATSAPP_NUMBERS);
@@ -123,12 +118,10 @@ app.post("/api/send-email", async (req, res) => {
         whatsappEnviado = true;
       } catch (error) {
         console.error(`Error enviando WhatsApp a ${numero}:`, error.message);
-        errores.push(`WhatsApp (${numero}): ${error.message}`);
       }
     }
   } catch (error) {
     console.error("Error en proceso de WhatsApp:", error.message);
-    errores.push(`Proceso WhatsApp: ${error.message}`);
   }
 
   // 3. Responder al cliente
@@ -202,12 +195,50 @@ app.post("/api/planes/solicitud-plan", async (req, res) => {
     await resend.emails.send(mailOptions);
     res.json({ 
       success: true, 
-      message: "Solicitud de plan enviada correctamente" 
+      message: "Solicitud enviada correctamente" 
     });
   } catch (error) {
     console.error("Error enviando email de plan:", error);
     console.error("Error details:", error.response?.body || error.message);
     res.status(500).json({ error: "Error al enviar la solicitud" });
+  }
+
+  try {
+    // 2. Intentar enviar WhatsApp (independientemente del resultado del email)
+    const mensajeWhatsApp = `📋 SOLICITUD DE NUEVO PLAN
+          👤 Cliente: ${nombre}
+          📧 Email: ${email}
+          📞 Teléfono: ${telefono || "No proporcionado"}
+          🏢 Empresa: ${empresa || "No proporcionado"}
+
+          📊 Detalles del plan:
+          • Tipo de Sociedad: ${tipoSociedad}
+          • Plan Seleccionado: ${plan}
+
+          Preferencias de contacto:
+          ${preferenciasContacto?.whatsapp ? '✓ WhatsApp' : '✗ WhatsApp'}
+          ${preferenciasContacto?.email ? '✓ Email' : '✗ Email'}
+          ${preferenciasContacto?.telefono ? '✓ Teléfono' : '✗ Teléfono'}
+
+          ──────────────────────────────
+          Enviado desde: Solicitud de plan`;
+
+    for (const numero of WHATSAPP_NUMBERS) {
+      try {
+        console.log(`Enviando WhatsApp de plan a: ${numero}`);
+        const message = await client.messages.create({
+          from: "whatsapp:+14155238886",
+          to: numero,
+          body: mensajeWhatsApp
+        });
+        console.log(`✅ WhatsApp de plan enviado a ${numero}: SID ${message.sid}`);
+        whatsappEnviado = true;
+      } catch (error) {
+        console.error(`❌ Error enviando WhatsApp de plan a ${numero}:`, error.message);
+      }
+    }
+  } catch (error) {
+    console.error("❌ Error en proceso de WhatsApp para plan:", error.message);
   }
 });
 
