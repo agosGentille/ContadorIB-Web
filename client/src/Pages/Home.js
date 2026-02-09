@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { HashLink  } from 'react-router-hash-link';
 
-import fotoIvan from '../Images/foto_ivan.jpg';
+//import fotoIvan from '../Images/foto_ivan.jpg';
+import fotoIvan from '../Images/foto_ivan.JPG';
 import imgMonedita from '../Images/moneda_icono.png';
 import '../Styles/HomeStyle.css';
 
