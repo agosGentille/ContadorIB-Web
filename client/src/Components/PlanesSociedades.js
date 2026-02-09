@@ -81,6 +81,36 @@ export default function PlanesEmpresas() {
         ],
       },
     ],
+    SA: [
+      {
+        nombre: "Plan Base SA",
+        desc: "Constitución de SA + alta de impuestos con punto de venta habilitado para facturar.",
+        precio: "$3.000.000",
+      },
+      {
+        nombre: "Plan Completo SA",
+        desc: "Incluye todo el Plan Base + presencia digital profesional a medida de tu empresa.",
+        detallesWeb: [
+          "Diseño exclusivo desarrollado desde cero, sin plantillas",
+          "Modo claro/oscuro incluido",
+          "Optimizado para celulares, tablets y computadoras",
+          "Formularios configurados según tus necesidades",
+          "Sitio web publicado con tu dominio personalizado",
+          "Certificado SSL de seguridad profesional",
+          "Entrega en 10-15 días hábiles con seguimiento parcial",
+          "1 ronda de revisiones y ajustes incluida sin costo adicional",
+          "Soporte técnico post-entrega por 15 días",
+          "Mantenimiento mensual disponible (consultar costos)"
+        ],
+        precio: "Hasta $3.500.000",
+        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        rangosPrecio: [
+          "Landing corporativa (5 secciones): $290.000",
+          "SPA corporativo (8 secciones): $360.000",
+          "Sitio corporativo completo (10+ secciones): $500.000"
+        ],
+      },
+    ],
   };
 
   const handleChange = (e) => {
@@ -110,13 +140,6 @@ export default function PlanesEmpresas() {
     e.preventDefault();
     setErrors("");
     setEnviando(true);
-
-    console.log("🔍 DEBUG - Validando formulario:", {
-    nombre: formData.nombre,
-    email: formData.email,
-    plan: formData.plan,
-    empresa: formData.empresa
-  });
 
     if (!formData.nombre || !formData.email || !formData.plan || !formData.empresa) {
       setErrors("Por favor completá todos los campos obligatorios.");
@@ -194,9 +217,9 @@ export default function PlanesEmpresas() {
         Iniciá tu empresa con asesoramiento integral: elegí entre SAS o SRL, y sumá presencia digital con tu propia web.
       </p>
 
-      {/* Selector SAS / SRL */}
+      {/* Selector SAS / SRL / SA */}
       <div className="selector-sociedades">
-        {["SAS", "SRL"].map((t) => (
+        {["SAS", "SRL", "SA"].map((t) => (
           <button
             key={t}
             type="button"
@@ -247,6 +270,60 @@ export default function PlanesEmpresas() {
           ))}
         </motion.div>
       </AnimatePresence>
+
+      <div className="recomendacion-contextual">
+    <h4 className="titulo-recomendacion">¿Aún tenés dudas sobre {tipo}?</h4>
+    
+    {tipo === "SAS" && (
+      <div className="contenido-recomendacion">
+        <p className="texto-recomendacion">
+          <strong>Te recomendamos SAS si:</strong> Buscás una constitución 100% digital, rápida (7-10 días) 
+          y económica. No requiere libros físicos, es ideal para emprendedores, startups y negocios 
+          que quieren crecer con agilidad y menor burocracia.
+        </p>
+        <div className="puntos-destacados">
+          <span className="punto-destacado">✅ 100% digital sin libros físicos</span>
+          <span className="punto-destacado">✅ Constitución express (7-10 días)</span>
+          <span className="punto-destacado">✅ Más económica de mantener</span>
+          <span className="punto-destacado">✅ Ideal para emprendedores</span>
+        </div>
+      </div>
+    )}
+    
+    {tipo === "SRL" && (
+      <div className="contenido-recomendacion">
+        <p className="texto-recomendacion">
+          <strong>Te recomendamos SRL si:</strong> Tenés 2 o más socios, buscás una estructura tradicional 
+          y reconocida, o es un emprendimiento familiar. Requiere libros físicos pero ofrece mayor 
+          formalidad y credibilidad en el mercado.
+        </p>
+        <div className="puntos-destacados">
+          <span className="punto-destacado">✅ Estructura para 2 o más socios</span>
+          <span className="punto-destacado">✅ Tradicional y ampliamente reconocida</span>
+          <span className="punto-destacado">✅ Ideal para emprendimientos familiares</span>
+          <span className="punto-destacado">✅ Mayor credibilidad comercial</span>
+        </div>
+      </div>
+    )}
+    
+    {tipo === "SA" && (
+      <div className="contenido-recomendacion">
+        <p className="texto-recomendacion">
+          <strong>Te recomendamos SA si:</strong> Tenés un proyecto de gran escala con capital mínimo 
+          de $30.000.000, buscás licitar con el Estado, captar inversionistas o pedir créditos importantes. 
+          Es la estructura más sólida pero también la más costosa de mantener.
+        </p>
+        <div className="puntos-destacados">
+          <span className="punto-destacado">✅ Capital mínimo $30.000.000</span>
+          <span className="punto-destacado">✅ Ideal para licitaciones estatales</span>
+          <span className="punto-destacado">✅ Atrae inversionistas serios</span>
+          <span className="punto-destacado">✅ Mejor para créditos bancarios importantes</span>
+          <span className="punto-destacado">⚠️ Más cara de mantener</span>
+        </div>
+      </div>
+    )}
+
+  </div>
 
       {/* Modal Detalle de Plan + web */}
       <AnimatePresence>

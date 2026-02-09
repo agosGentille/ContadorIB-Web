@@ -12,7 +12,7 @@ function Footer() {
     return(
         <footer>
             <div className="footer-header">
-                <p className="contador">Contador Iván Bellomo</p>
+                <p className="contador">Estudio Contable IB</p>
                 <div className='Logo-Alineado-Izquierda'>
                     <img src={logo} alt='Logo Estudio Contable IB' id='logo-footer'/>
                 </div>
@@ -40,6 +40,7 @@ function Footer() {
                     </div>
                     <p>+54 9 11 3121-4776</p>
                     <p>ivan.bellomo@contadorib.com.ar</p>
+                    <p>lucas.silvestri@contadorib.com.ar</p>
                 </div>
                 <div id="footer-columna2">
                     <p className='texto-links-utiles'>Links Útiles</p>

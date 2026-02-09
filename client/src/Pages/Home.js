@@ -88,10 +88,30 @@ function Home() {
     return(
         <>
          <section className="Inicio" id="Inicio">
-            <h2 className='titulo-inicio'>Optimiza tu negocio con servicios Contables e Impositivos.</h2>
-            <p className='texto-inicio'>Deja la complejidad fiscal en manos expertas y enfócate en lo que realmente importa: <b>¡hacer crecer tu negocio!</b></p>
-            <HashLink smooth to="/contacto#FormularioDeContacto" className='btn-contactanos'>¡CONTACTANOS AHORA!</HashLink>
-         </section>
+            <h2 className='titulo-inicio'>¿Querés estar al día y pagar lo justo, sin estrés?</h2>
+            <div className="texto-con-iconos">
+                <div className="icono-texto">
+                <span className="icono">✓</span>
+                <p className="texto-item">Cumplí en tiempo y forma</p>
+                </div>
+                <div className="icono-texto">
+                <span className="icono">✓</span>
+                <p className="texto-item">Optimizá tu carga fiscal dentro de la ley</p>
+                </div>
+                <div className="icono-texto">
+                <span className="icono">✓</span>
+                <p className="texto-item">Olvidate de las sorpresas</p>
+                </div>
+            </div>
+            
+            <p className='texto-destacado'>
+                <strong>Nos encargamos de tus impuestos y tu contabilidad</strong> para que solo te concentres en lo importante.
+            </p>
+            
+            <HashLink smooth to="/contacto#FormularioDeContacto" className='btn-contactanos'>
+                ¡CONTACTANOS AHORA!
+            </HashLink>
+            </section>
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
             <div className="contenedor-sobrenosotros">
@@ -99,8 +119,8 @@ function Home() {
                 <div className="contenedor-imagen-ivan">
                     <img src={fotoIvan} alt="Foto Cdor. Iván Bellomo" className="img-ivan"/>
                     <div className="decoracion-imagen">
-                    <img src={imgMonedita} alt="icono moneda" className="moneda moneda-superior"/>
-                    <img src={imgMonedita} alt="icono moneda" className="moneda moneda-inferior"/>
+                    {/*<img src={imgMonedita} alt="icono moneda" className="moneda moneda-superior"/>
+                    <img src={imgMonedita} alt="icono moneda" className="moneda moneda-inferior"/> */}
                     </div>
                     {visibleSobreNosotros && (
                     <div className="badge-profesional">
@@ -118,7 +138,7 @@ function Home() {
                 
                 <div className="contenido-textual">
                     <p className="parrafo-destacado">
-                    Somos un estudio contable liderado por <strong>Iván Bellomo</strong>, Contador Público matriculado en el Consejo Profesional de CABA.
+                    Somos un estudio contable liderado por el <strong>Cdor. Iván Bellomo</strong>, con matrícula en CABA, PBA y San Luis. Acompañamos a Pymes con una gestión contable e impositiva clara y ordenada.
                     </p>
                     
                     <div className="card-informacion">
@@ -152,7 +172,7 @@ function Home() {
                 </div>
             </div>
             </section>
-         <section className='secc-impacto' ref={refImpacto}>
+        <section className='secc-impacto' ref={refImpacto}>
             <h3>Contabilidad clara, sin estrés.</h3>
             <p>Nos ocupamos de tus obligaciones fiscales para que puedas enfocarte en hacer crecer tu negocio. Evitá errores y cumplí con ARCA sin complicaciones.</p>
             <div className='contenedor-caracteristicas'>
@@ -163,7 +183,7 @@ function Home() {
                 </div>
                 <span className='divisor-caracteristicas'></span>
                 <div className="caracteristica-impacto">
-                    <span className="material-symbols-outlined icono-impacto">corporate_fare</span>
+                    <span className="material-symbols-outlined icono-impacto">location_on </span>
                     <p className="numero">{visibleImpacto ? `${enfocados}%` : '0%'} Enfocados</p>
                     <p className='texto-impacto'>en impulsar PYMES y Emprendedores argentinos</p>
                 </div>
@@ -174,8 +194,8 @@ function Home() {
                     <p className='texto-impacto'>gestiones impositivas concretadas con éxito</p>
                 </div>
             </div>
-         </section>
-         <section className='servicios' id="Servicios" ref={refServicios}>
+        </section>
+        <section className='servicios' id="Servicios" ref={refServicios}>
             <div className="contenedor-servicios">
                 <div className="encabezado-servicios">
                 <h2 className="titulo-servicios">Servicios Contables para Optimizar tu Negocio</h2>
@@ -186,89 +206,121 @@ function Home() {
                 </div>
 
                 <div className="grid-servicios">
-                {/* Columna 1 */}
+                {/* Columna 1 - Nuestros Planes */}
                 <div className="columna-servicios">
-                    <div className="card-servicio">
+                    <HashLink smooth to="/planes#Planes" className="card-servicio destacado">
                     <div className="icono-servicio">
-                        <span className="material-symbols-outlined">assignment_add</span>
+                        <span className="material-symbols-outlined">layers</span>
                     </div>
-                    <h3>Inscripción en Impuestos</h3>
-                    <p>Monotributo, Responsable inscripto y sociedades</p>
-                    </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">calculate</span>
-                    </div>
-                    <h3>Liquidación de Impuestos</h3>
-                    <p>Nacionales, provinciales, mensuales y anuales</p>
-                    </div>
-
-                    <HashLink smooth to="/planes#Sociedades" className="card-servicio destacado">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">corporate_fare</span>
-                    </div>
-                    <h3>Constitución de Sociedades</h3>
-                    <p>Asesoramiento completo para tu emprendimiento</p>
+                    <h3>Nuestros Planes Contables</h3>
+                    <p>Soluciones integrales adaptadas a cada etapa de tu negocio, desde monotributo hasta empresas consolidadas</p>
                     </HashLink>
                 </div>
 
+                {/* Columna 2 - Constitución de Sociedades */}
                 <div className="columna-servicios">
-                    <div className="card-servicio">
+                    <HashLink smooth to="/planes#Sociedades" className="card-servicio destacado">
                     <div className="icono-servicio">
-                        <span className="material-symbols-outlined">lock_open</span>
+                        <span className="material-symbols-outlined">gavel</span>
                     </div>
-                    <h3>Levantamiento de Embargos</h3>
-                    <p>Solucionamos tus problemas fiscales pendientes</p>
-                    </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">trending_up</span>
-                    </div>
-                    <h3>Planificación Fiscal</h3>
-                    <p>Estrategias para optimizar tu carga tributaria</p>
-                    </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">account_balance</span>
-                    </div>
-                    <h3>Armado de Balances</h3>
-                    <p>Presentaciones precisas y oportunas</p>
-                    </div>
+                    <h3>Constitución de Sociedades</h3>
+                    <p>Asesoramiento completo para formalizar tu empresa, desde la elección del tipo societario hasta la inscripción final</p>
+                    </HashLink>
                 </div>
 
+                {/* Columna 3 - Asesoramiento Personalizado */}
                 <div className="columna-servicios">
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">groups</span>
-                    </div>
-                    <h3>Liquidación de Sueldos</h3>
-                    <p>Y gestión para casas particulares</p>
-                    </div>
-
-                    <div className="card-servicio">
-                    <div className="icono-servicio">
-                        <span className="material-symbols-outlined">description</span>
-                    </div>
-                    <h3>Gestión de Facturación</h3>
-                    <p>A consumidor final o masiva de cobros</p>
-                    </div>
-
                     <div className="card-servicio destacado">
                     <div className="icono-servicio">
                         <span className="material-symbols-outlined">person_check</span>
                     </div>
                     <h3>Asesoramiento Personalizado</h3>
-                    <p>Solución específica para tu caso particular</p>
+                    <p>Solución específica para tu caso particular con atención directa de nuestros expertos contables</p>
                     <HashLink smooth to="/contacto#FormularioDeContacto" className="btn-solicitar-info">Solicitar detalles</HashLink>
                     </div>
                 </div>
                 </div>
             </div>
         </section>
-         <section className='asesoria'>
+        <section className='PorQueElegirnos' id='PorQueElegirnos'>
+            <div className='eleginos'>
+                <div className="encabezado-eleginos">
+                    <h2 className="titulo-eleginos">¿Por qué elegir nuestro estudio?</h2>
+                    <div className="subrayado-eleginos"></div>
+                    <p className="descripcion-eleginos">
+                        La combinación perfecta entre tecnología, especialización y atención personalizada
+                    </p>
+                </div>
+
+                <div className="beneficios-grid">
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">bolt</span>
+                        </div>
+                        <h3>Respuesta inmediata 24/7</h3>
+                        <p>Operamos íntegramente online y nuestro tiempo medio de respuesta es inferior a 24h. Tu consulta no espera.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">engineering</span>
+                        </div>
+                        <h3>Equipo especializado multidisciplinario</h3>
+                        <p>Reunimos contadores, tributaristas, despachantes y analistas financieros formados en las normativas más recientes.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">chat</span>
+                        </div>
+                        <h3>Canal directo en WhatsApp</h3>
+                        <p>Creamos un grupo exclusivo con nuestros especialistas. Existe una comunicación fluida con todo el equipo y resolvemos tus dudas al instante por el canal que prefieras.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">trending_up</span>
+                        </div>
+                        <h3>Estrategias de ahorro fiscal</h3>
+                        <p>Diseñamos esquemas legales que optimizan la carga tributaria y mejoran tu flujo de caja, utilizando beneficios vigentes, diferimientos y regímenes especiales.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">star</span>
+                        </div>
+                        <h3>Calificación perfecta</h3>
+                        <p>Nuestra reputación de 5★ refleja la satisfacción de clientes que valoran transparencia, cercanía y resultados tangibles.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">stacked_line_chart</span>
+                        </div>
+                        <h3>Servicio escalable</h3>
+                        <p>Desde el alta en Monotributo hasta la gestión integral de PyMEs, escalamos el soporte según tus necesidades y crecimiento.</p>
+                    </div>
+
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">update</span>
+                        </div>
+                        <h3>Equipo siempre actualizado</h3>
+                        <p>Equipo joven, especializado y siempre actualizado con los últimos cambios normativos y herramientas digitales.</p>
+                    </div>
+                    <div className="beneficio-item">
+                        <div className="icono-beneficio">
+                            <span className="material-symbols-outlined">code</span>
+                        </div>
+                        <h3>Tecnologías de gestión avanzada</h3>
+                        <p>Utilizamos herramientas profesionales como <strong>Acont</strong>, <strong>Afippi</strong> y <strong>Xubio</strong> para llevar tu contabilidad de forma ordenada, ágil y precisa.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section className='asesoria'>
             <div>
                 <h2 id='title-asesoria'>Asesoría Fiscal Express</h2>
                 <h3 id='subtitle-asesoria'>Decisión rápida y segura, online.</h3>

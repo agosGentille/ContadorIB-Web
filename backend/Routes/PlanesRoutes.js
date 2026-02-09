@@ -1,10 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const { getPlanesEmpresas, getPlanesEmprendedores } = require('../Controllers/PlanesController');
+//const { getPlanesEmpresas, getPlanesEmprendedores } = require('../Controllers/PlanesController');
 
-router.get('/PlanesEmpresas', getPlanesEmpresas);
+const { getPlanes } = require('../Controllers/PlanesController');
 
-router.get('/PlanesEmprendedores', getPlanesEmprendedores);
+/*router.get('/PlanesEmpresas', getPlanesEmpresas);
+
+router.get('/PlanesEmprendedores', getPlanesEmprendedores);*/
+
+router.get('/Planes', getPlanes);
 
 module.exports = router;

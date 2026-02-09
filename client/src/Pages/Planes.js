@@ -8,11 +8,13 @@ import '../Styles/PlanesStyle.css';
 import { API_BASE_URL } from '../Config/api.js';
 
 function Planes() {
-    const [planesEmpresas, setPlanesEmpresas] = useState([]);
-    const [planesMono, setPlanesMono] = useState([]);
+    //const [planesEmpresas, setPlanesEmpresas] = useState([]);
+    //const [planesMono, setPlanesMono] = useState([]);
+    const [planes, setPlanes] = useState([]);
 
-    const [visibleEmpresas, setVisibleEmpresas] = useState([]);
-    const [visibleMono, setVisibleMono] = useState([]);
+    //const [visibleEmpresas, setVisibleEmpresas] = useState([]);
+    //const [visibleMono, setVisibleMono] = useState([]);
+    const [visible, setVisible] = useState([]);
     
     const [loading, setLoading] = useState(true);
     const [dots, setDots] = useState("");
@@ -28,20 +30,25 @@ function Planes() {
     useEffect(() => {
         async function fetchPlanes() {
             try {
-                const [respEmpresas, respMono] = await Promise.all([
+                /*const [respEmpresas, respMono] = await Promise.all([
                     fetch(`${API_BASE_URL}/planes/PlanesEmpresas`),
                     fetch(`${API_BASE_URL}/planes/PlanesEmprendedores`)
-                ]);
+                ]);*/
 
-                const [datosEmpresas, datosMono] = await Promise.all([
+                /*const [datosEmpresas, datosMono] = await Promise.all([
                     respEmpresas.json(),
                     respMono.json()
+                ]);*/
+                const [resp] = await Promise.all([
+                    fetch(`${API_BASE_URL}/planes/Planes`)
                 ]);
 
-                setPlanesEmpresas(datosEmpresas);
-                setPlanesMono(datosMono);
+                const datos = await resp.json();
 
-                let i = 0, j = 0;
+                //setPlanesEmpresas(datosEmpresas);
+                //setPlanesMono(datosMono);
+
+                /*let i = 0, j = 0;
                 const intervalEmp = setInterval(() => {
                     if (i < datosEmpresas.length) {
                         setVisibleEmpresas(prev => [...prev, datosEmpresas[i]]);
@@ -54,6 +61,16 @@ function Planes() {
                         setVisibleMono(prev => [...prev, datosMono[j]]);
                         j++;
                     } else clearInterval(intervalMono);
+                }, 200);*/
+
+                setPlanes(datos);
+
+                let i = 0, j = 0;
+                const interval = setInterval(() => {
+                    if (i < datos.length) {
+                        setVisible(prev => [...prev, datos[i]]);
+                        i++;
+                    } else clearInterval(interval);
                 }, 200);
 
             } catch (error) {
@@ -69,8 +86,8 @@ function Planes() {
     return(
         <>
          <h2 className="titulo-planes" id="Planes">Planes adaptados a tus necesidades</h2>
-         <section className="empresas">
-            <h3>Paquetes mensuales para tus Empresas</h3>
+         <section className="planes">
+            <h3>Paquetes mensuales </h3>
             <div className="contendorPlanes">
                 {loading ? ( 
                     <p
@@ -85,31 +102,11 @@ function Planes() {
                     Cargando{dots}
                 </p>
                 ) : (
-                    <TarjetaPlanes planes={planesEmpresas}/>
+                    <TarjetaPlanes planes={planes}/>
                 )}
             </div>
          </section>
-         <section className="emprendedores">
-            <h3>Paquetes mensuales para Emprendedores</h3>
-            <div className="contendorPlanes">
-                {loading ? ( 
-                    <p
-                    style={{
-                        textAlign: "center",
-                        fontSize: "1.2rem",
-                        marginTop: "2rem",
-                        fontWeight: "500",
-                        transition: "opacity 0.3s ease"
-                    }}
-                >
-                    Cargando{dots}
-                </p>
-                ) : (
-                    <TarjetaPlanes planes={planesMono}/>
-                )}
-            </div>
-
-         </section>
+         
          <PlanesSociedades />
         </>
     );
