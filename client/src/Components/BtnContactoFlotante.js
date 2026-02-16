@@ -127,7 +127,8 @@ function BtnContactoFlotante() {
             <div className={`contenedor-boton ${isActive ? 'active' : ''}`}>
                 <span className="icono-contenedor">
                     <span className="material-symbols-outlined">
-                        support_agent
+                        mail
+
                     </span>
                 </span>
                 <span className="texto-boton">
