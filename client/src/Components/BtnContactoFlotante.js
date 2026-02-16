@@ -1,22 +1,23 @@
-import { useEffect, useState, useRef  } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import { useLocation } from 'react-router-dom';
 
 import '../Styles/BtnContactanos.css';
 
 function BtnContactoFlotante() {
-    const [showFloatBtn, setShowFloatBtn] = useState(false);
+const [showFloatBtn, setShowFloatBtn] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const location = useLocation();
     const touchTimer = useRef(null);
     const isTouchDevice = useRef(false);
+    const expandedByTouch = useRef(false);
+    const hoverTimeout = useRef(null);
     
     useEffect(() => {
         // Detectar si es dispositivo táctil
         isTouchDevice.current = 'ontouchstart' in window;
         
         if (location.pathname === '/') {
-            // Pequeño delay para asegurar que el DOM está listo
             setTimeout(() => {
                 const btnOriginal = document.querySelector('.btn-contactanos');
                 
@@ -34,7 +35,6 @@ function BtnContactoFlotante() {
                         observer.disconnect();
                     };
                 } else {
-                    // Si no hay botón original, mostramos el flotante igual
                     setShowFloatBtn(true);
                 }
             }, 500);
@@ -44,46 +44,67 @@ function BtnContactoFlotante() {
         
     }, [location.pathname]);
 
-    // Manejar touch en móviles
-    const handleTouchStart = (e) => {
-        // Limpiar timer anterior si existe
-        if (touchTimer.current) {
-            clearTimeout(touchTimer.current);
+    // Resetear expandedByTouch cuando se oculta el botón
+    useEffect(() => {
+        if (!showFloatBtn) {
+            expandedByTouch.current = false;
+            setIsActive(false);
         }
-        
-        // Activar expansión
-        setIsActive(true);
-    };
+    }, [showFloatBtn]);
 
-    const handleTouchEnd = (e) => {
-        // Prevenir comportamiento por defecto de manera no pasiva
-        e.preventDefault();
-        
-        // Guardar referencia al enlace para navegar después
-        const link = e.currentTarget;
-        
-        // Configurar timer para navegar después de la expansión
-        touchTimer.current = setTimeout(() => {
-            // Navegar programáticamente
-            window.location.href = '/contacto#FormularioDeContacto';
-        }, 300);
-    };
-
-    const handleTouchMove = () => {
-        // Si el usuario se mueve (scroll), cancelar la expansión y navegación
+    // Manejar touch en móviles
+    const handleTouchStart = () => {
         if (touchTimer.current) {
             clearTimeout(touchTimer.current);
             touchTimer.current = null;
         }
+    };
+
+    const handleTouchEnd = (e) => {
+        e.preventDefault();
+        
+        if (!expandedByTouch.current) {
+            // PRIMER TAP: solo expandir
+            expandedByTouch.current = true;
+            setIsActive(true);
+            
+            // Auto-contraer después de 3 segundos
+            touchTimer.current = setTimeout(() => {
+                expandedByTouch.current = false;
+                setIsActive(false);
+                touchTimer.current = null;
+            }, 3000);
+            
+            return;
+        }
+        
+        // SEGUNDO TAP: navegar
+        expandedByTouch.current = false;
+        setIsActive(false);
+        
+        if (touchTimer.current) {
+            clearTimeout(touchTimer.current);
+            touchTimer.current = null;
+        }
+        
+        window.location.href = '/contacto#FormularioDeContacto';
+    };
+
+    const handleTouchMove = () => {
+        if (touchTimer.current) {
+            clearTimeout(touchTimer.current);
+            touchTimer.current = null;
+        }
+        expandedByTouch.current = false;
         setIsActive(false);
     };
 
     const handleTouchCancel = () => {
-        // Si se cancela el touch, limpiar todo
         if (touchTimer.current) {
             clearTimeout(touchTimer.current);
             touchTimer.current = null;
         }
+        expandedByTouch.current = false;
         setIsActive(false);
     };
 
@@ -93,49 +114,57 @@ function BtnContactoFlotante() {
             return; // Dejar que el HashLink maneje la navegación
         }
         
-        // En móviles, si ya está activo, navegamos
-        if (isActive) {
-            return; // Dejar que el HashLink maneje la navegación
-        }
-        
-        // Si no está activo, prevenimos y activamos
+        // En móviles, prevenimos
         e.preventDefault();
-        setIsActive(true);
-        
-        // Timer para navegar
-        setTimeout(() => {
-            window.location.href = '/contacto#FormularioDeContacto';
-        }, 300);
+    };
+
+    // Manejadores para desktop
+    const handleMouseEnter = () => {
+        if (!isTouchDevice.current) {
+            if (hoverTimeout.current) {
+                clearTimeout(hoverTimeout.current);
+                hoverTimeout.current = null;
+            }
+            setIsActive(true);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (!isTouchDevice.current) {
+            hoverTimeout.current = setTimeout(() => {
+                setIsActive(false);
+                hoverTimeout.current = null;
+            }, 100);
+        }
     };
 
     if (!showFloatBtn) return null;
 
+    return (
+        <>
 
-     return (
-        <HashLink 
+            <HashLink 
             smooth 
             to="/contacto#FormularioDeContacto" 
-            className="btn-contactanos-flotante"
+            className={`btn-contactanos-flotante ${isTouchDevice.current ? 'touch-device' : ''}`}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
             onTouchMove={handleTouchMove}
             onTouchCancel={handleTouchCancel}
             onClick={handleClick}
-            onMouseEnter={() => setIsActive(true)}
-            onMouseLeave={() => setIsActive(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             <div className={`contenedor-boton ${isActive ? 'active' : ''}`}>
                 <span className="icono-contenedor">
-                    <span className="material-symbols-outlined">
-                        mail
-
-                    </span>
+                    <span className="material-symbols-outlined">mail</span>
                 </span>
-                <span className="texto-boton">
-                    CONTACTANOS    
-                </span>
+                <span className="texto-boton">CONTACTANOS</span>
             </div>
         </HashLink>
+
+            
+        </>
     );
 }
 
