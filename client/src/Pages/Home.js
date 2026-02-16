@@ -11,6 +11,7 @@ import AcordeonCondiciones from '../Components/AcordeonCondiciones';
 import Calendly from '../Components/Calendly';
 import OpinionesGoogle from '../Components/OpinionesGoogle';
 import CintaEmpresas from '../Components/CintaEmpresas';
+import BotonContactoFlotante from '../Components/BtnContactoFlotante';
 
 function Home() {
     const [visibleSobreNosotros, setVisibleSobreNosotros] = useState(false);
@@ -358,6 +359,8 @@ function Home() {
          <OpinionesGoogle />
          
          <CintaEmpresas />
+
+         <BotonContactoFlotante />
         </>
     );
 }

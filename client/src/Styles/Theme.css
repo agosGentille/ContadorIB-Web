@@ -21,7 +21,9 @@
   --bg-header: linear-gradient(135deg, #FFFFFF 0%, #F7F6F3 100%);
   --bg-footer: linear-gradient(135deg, #F7F6F3 0%, #FFFFFF 100%);
   --bg-boton: linear-gradient(135deg, #7FB8C2, #5CA1B0);
+  --bg-boton-wsp: linear-gradient(135deg, #7fc282, #5fb05c);
   --bg-boton-hover: linear-gradient(135deg, #5CA1B0, #7FB8C2);
+  --bg-boton-hover-wsp: linear-gradient(135deg, #5fb05c, #7fc282);
   --bg-secc-impacto: linear-gradient(to bottom right, #2F4A5C 0%,#7FB8C2 100%);
   --color-span-impacto: #ACD4CD;
   --bg-punto-timeline: #2F4A5C;

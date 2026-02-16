@@ -4,6 +4,7 @@ import '../Styles/ContactoStyle.css';
 
 import FormularioContacto from '../Components/FormContacto';
 import MapaUbicacion from '../Components/MapaUbicacion';
+import BotonContactoFlotante from '../Components/BtnContactoFlotante';
 
 import { API_BASE_URL } from '../Config/api.js';
 
@@ -37,6 +38,7 @@ function Contacto() {
             <h3>Visitanos en Nuestro Estudio</h3>
             <MapaUbicacion/>
          </section>
+         <BotonContactoFlotante />
         </>
     );
 }
