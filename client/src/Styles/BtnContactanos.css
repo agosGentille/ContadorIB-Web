@@ -1,0 +1,129 @@
+.btn-contactanos-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent; /* Quita el highlight en móviles */
+}
+
+/* Contenedor del botón */
+.btn-contactanos-flotante .contenedor-boton {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: pulse 2s infinite;
+    width: 56px;
+    overflow: hidden;
+}
+
+/* Estado expandido */
+.btn-contactanos-flotante .contenedor-boton.active,
+.btn-contactanos-flotante:hover .contenedor-boton {
+    width: 180px; /* Un poco más pequeño para que no se corte */
+}
+
+/* Icono contenedor */
+.btn-contactanos-flotante .icono-contenedor {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+/* Ícono */
+.btn-contactanos-flotante .material-symbols-outlined {
+    font-size: 28px;
+    color: white;
+    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Texto del botón */
+.btn-contactanos-flotante .texto-boton {
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    padding-right: 16px;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.1s;
+    flex-shrink: 0;
+}
+
+/* Mostrar texto cuando está activo */
+.btn-contactanos-flotante .contenedor-boton.active .texto-boton,
+.btn-contactanos-flotante:hover .texto-boton {
+    opacity: 1;
+}
+
+/* Efecto de ondas */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* Tablet y desktop */
+@media screen and (min-width: 768px) {
+    .btn-contactanos-flotante {
+        bottom: 30px;
+        right: 30px;
+    }
+    
+    .btn-contactanos-flotante .contenedor-boton {
+        width: 60px;
+    }
+    
+    .btn-contactanos-flotante .contenedor-boton.active,
+    .btn-contactanos-flotante:hover .contenedor-boton {
+        width: 220px;
+    }
+    
+    .btn-contactanos-flotante .icono-contenedor {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .btn-contactanos-flotante .material-symbols-outlined {
+        font-size: 30px;
+    }
+    
+    .btn-contactanos-flotante .texto-boton {
+        font-size: 1rem;
+        padding-right: 20px;
+    }
+}
+
+/* Animación de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-contactanos-flotante {
+    animation: slideIn 0.5s ease-out;
+}

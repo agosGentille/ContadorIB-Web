@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import TarjetaPlanes from '../Components/PlanesCard';
 import PlanesSociedades from '../Components/PlanesSociedades';
+import BotonContactoFlotante from '../Components/BtnContactoFlotante';
 
 import '../Styles/PlanesStyle.css';
 
@@ -108,6 +109,7 @@ function Planes() {
          </section>
          
          <PlanesSociedades />
+         <BotonContactoFlotante />
         </>
     );
 }

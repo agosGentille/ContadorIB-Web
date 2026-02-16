@@ -220,7 +220,7 @@ html{
   justify-content: center;
   text-decoration: none;
   transition: all 0.3s ease;
-  background: var(--bg-boton);
+  background: var(--bg-boton-wsp);
   border: none;
   padding: 10px;
   width: 45px;
@@ -245,7 +245,7 @@ html{
 }
 
 .btn-Hablanos:hover {
-   background: var(--bg-boton-hover);
+   background: var(--bg-boton-hover-wsp);
   transform: scale(1.05) rotate(5deg);
   box-shadow: 0 6px 20px rgba(127, 184, 194, 0.4);
 }
