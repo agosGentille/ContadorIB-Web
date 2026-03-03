@@ -15,7 +15,6 @@ import './Styles/Theme.css';
 function App() {
   return (
     <Router>
-      <Analytics />
       <Header />
       <main className='componentes'>
         <Routes>
