@@ -65,7 +65,7 @@
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--color-fondo-secundario);
   backdrop-filter: blur(10px);
   border-radius: 24px;
   padding: 2rem 1.5rem;
@@ -215,7 +215,7 @@
 }
 
 .btn-volver {
-  background: white;
+  background: var(--color-fondo);
   color: #7FB8C2;
   border: 2px solid #7FB8C2;
 }
