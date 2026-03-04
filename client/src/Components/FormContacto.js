@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { validarEmail } from "../Utils/ValidarEmail";
-
+import { useNavigate } from "react-router-dom";
 import { API_BASE_URL } from '../Config/api.js';
 
 function FormContacto(){
+    const navigate = useNavigate();
     const [form, setForm] = useState({
         email: "",
         nombre: "",
@@ -16,6 +17,7 @@ function FormContacto(){
 
     const [CantCaracteres, setCantCaracteres] = useState(0);
     const [errors, setErrors] = useState("");
+    const [loading, setLoading] = useState(false);
 
     // Handler genérico para todos los inputs
     const handleChangeValues = (e) => {
@@ -35,6 +37,8 @@ function FormContacto(){
     // Manejo del submit
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors("");
+        setLoading(true);
 
         if (!form.nombre || !form.apellido || !form.email || !form.mensaje) {
             setErrors("Por favor completa todos los campos obligatorios.");
@@ -67,15 +71,22 @@ function FormContacto(){
         const data = await res.json();
 
         if (data.success) {
-            alert("Correo enviado correctamente!");
+            navigate('/gracias', { 
+                    state: { 
+                        fromForm: true,
+                        nombre: form.nombre 
+                    } 
+                });
             setForm({ email: "", nombre: "", apellido: "", telefono: "", mensaje: "", tipoCliente: "", nombreEmpresa: "" });
             setCantCaracteres(0);
             setErrors("");
         } else {
             setErrors(data.error || "Error al enviar correo");
+            setLoading(false);
         }
     } catch (err) {
         setErrors("Error de conexión con el servidor");
+        setLoading(false);
     }
     };
 
@@ -84,13 +95,13 @@ function FormContacto(){
     return(
         <>
         <form className="Form" onSubmit={handleSubmit} autoComplete="off">
-            {errors}
+            {errors && <div className="error-mensaje">{errors}</div>}
             <div className="nombre-completo">
-                <input type="text" name="nombre" placeholder="Nombre(s)" className="inputForm" required value={form.nombre} onChange={handleChangeValues}/>
-                <input type="text" name="apellido" placeholder="Apellido(s)" className="inputForm" required value={form.apellido} onChange={handleChangeValues}/>
+                <input disabled={loading} type="text" name="nombre" placeholder="Nombre(s)" className="inputForm" required value={form.nombre} onChange={handleChangeValues}/>
+                <input disabled={loading} type="text" name="apellido" placeholder="Apellido(s)" className="inputForm" required value={form.apellido} onChange={handleChangeValues}/>
             </div>
-            <input type="email" name="email" placeholder="Correo Electrónico" className="inputForm" required value={form.email} onChange={handleChangeValues}/>
-            <input type="text" name="telefono" placeholder="Teléfono (opcional)" className="inputForm" value={form.telefono} onChange={handleChangeValues}/>
+            <input disabled={loading} type="email" name="email" placeholder="Correo Electrónico" className="inputForm" required value={form.email} onChange={handleChangeValues}/>
+            <input disabled={loading} type="text" name="telefono" placeholder="Teléfono (opcional)" className="inputForm" value={form.telefono} onChange={handleChangeValues}/>
             <div className="fila-tipo">
                 <select
                     name="tipoCliente"
@@ -98,6 +109,7 @@ function FormContacto(){
                     value={form.tipoCliente}
                     onChange={handleChangeValues}
                     required
+                    disabled={loading}
                 >
                     <option value="">Seleccioná tipo de contribuyente</option>
                     <option value="monotributista">Monotributista</option>
@@ -118,6 +130,7 @@ function FormContacto(){
                     value={form.nombreEmpresa}
                     onChange={handleChangeValues}
                     required={form.tipoCliente === "empresa"}
+                    disabled={loading}
                     />
                 </div>
             </div>
@@ -129,12 +142,16 @@ function FormContacto(){
                     value={form.mensaje}
                     onChange={handleChangeValues}
                     maxLength={500}
+                    disabled={loading}
                     required
                 />
                 <p> {CantCaracteres}/500 caracteres máx. </p>
             </div>
             <div className='button'>
-                <button type="submit" className='btnEnviarMensaje'> ENVIAR MENSAJE </button>
+                <button type="submit" className={`btnEnviarMensaje ${loading ? 'btn-loading' : ''}`}
+                disabled={loading}> 
+                    {loading ? 'ENVIANDO...' : 'ENVIAR MENSAJE'} 
+                </button>
             </div>
                 
         </form>
