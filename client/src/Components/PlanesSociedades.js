@@ -42,7 +42,7 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Desde $950.000 + desarrollo web",
+        precio: "Desde $1.170.000",
         notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
           "Landing page (3 secciones): desde $220.000",
@@ -73,7 +73,7 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Desde $1.500.000 + desarrollo web",
+        precio: "Desde $1.780.000",
         notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
           "Landing corporativa (5 secciones): desde $280.000",
@@ -104,7 +104,7 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Desde $3.000.000 + desarrollo web",
+        precio: "Desde $3.350.000",
         notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
           "Landing corporativa (5 secciones): desde $350.000",
