@@ -25,7 +25,7 @@ export default function PlanesEmpresas() {
       {
         nombre: "Plan Base SAS",
         desc: "Constitución de SAS + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "$950.000",
+        precio: "Desde $950.000",
       },
       {
         nombre: "Plan Completo SAS",
@@ -42,12 +42,13 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Hasta $1.260.000",
-        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        precio: "Desde $950.000 + desarrollo web",
+        notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
-          "Landing page (3 secciones): $185.000",
-          "SPA (5 páginas): $220.000", 
-          "Sitio completo (8 páginas): $310.000"
+          "Landing page (3 secciones): desde $220.000",
+          "SPA (5 páginas): desde $280.000", 
+          "Sitio completo (8 páginas): desde $380.000",
+          "Tienda online / E-commerce: desde $550.000"
         ],
       },
     ],
@@ -55,7 +56,7 @@ export default function PlanesEmpresas() {
       {
         nombre: "Plan Base SRL",
         desc: "Constitución de SRL + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "$1.500.000",
+        precio: "Desde $1.500.000",
       },
       {
         nombre: "Plan Completo SRL",
@@ -72,12 +73,13 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Hasta $1.900.000",
-        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        precio: "Desde $1.500.000 + desarrollo web",
+        notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
-          "Landing corporativa (5 secciones): $220.000",
-          "SPA corporativo (8 secciones): $310.000",
-          "Sitio corporativo completo (10+ secciones): $400.000"
+          "Landing corporativa (5 secciones): desde $280.000",
+          "SPA corporativo (8 secciones): desde $360.000",
+          "Sitio corporativo completo (10+ secciones): desde $480.000",
+          "Tienda online / E-commerce: desde $650.000"
         ],
       },
     ],
@@ -85,7 +87,7 @@ export default function PlanesEmpresas() {
       {
         nombre: "Plan Base SA",
         desc: "Constitución de SA + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "$3.000.000",
+        precio: "Desde $3.000.000",
       },
       {
         nombre: "Plan Completo SA",
@@ -102,12 +104,13 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Hasta $3.500.000",
-        notaPrecio: "Incluye desarrollo web personalizado - Cotización sin cargo",
+        precio: "Desde $3.000.000 + desarrollo web",
+        notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
-          "Landing corporativa (5 secciones): $290.000",
-          "SPA corporativo (8 secciones): $360.000",
-          "Sitio corporativo completo (10+ secciones): $500.000"
+          "Landing corporativa (5 secciones): desde $350.000",
+          "SPA corporativo (8 secciones): desde $450.000",
+          "Sitio corporativo completo (10+ secciones): desde $600.000",
+          "Tienda online / E-commerce: desde $800.000"
         ],
       },
     ],
@@ -213,9 +216,7 @@ export default function PlanesEmpresas() {
   return (
     <section className="seccion-planes-sociedades" id="Sociedades">
       <h3 className="titulo-seccion">Constitución de Sociedades</h3>
-      <p className="subtitulo-seccion">
-        Iniciá tu empresa con asesoramiento integral: elegí entre SAS o SRL, y sumá presencia digital con tu propia web.
-      </p>
+      Iniciá tu empresa con asesoramiento integral: elegí entre SAS, SRL o SA, y sumá presencia digital con tu web o tienda online.
 
       {/* Selector SAS / SRL / SA */}
       <div className="selector-sociedades">
@@ -388,7 +389,7 @@ export default function PlanesEmpresas() {
 
                 {/* Nota final */}
                 <div className="nota-final-modal">
-                  <p>💡 <strong>Cotización personalizada:</strong> Te contactaremos para ajustar el precio exacto según tus necesidades específicas y requerimientos.</p>
+                  <p>💡 <strong>Cotización personalizada:</strong> Los precios indicados son estimativos. El valor final puede variar según funcionalidades, integraciones (como e-commerce), diseño y requerimientos específicos del proyecto.</p>
                 </div>
               </div>
 
