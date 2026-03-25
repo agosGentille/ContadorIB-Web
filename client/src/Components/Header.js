@@ -3,7 +3,6 @@ import { HashLink  } from 'react-router-hash-link';
 import '../Styles/HeaderStyle.css';
 
 import logo from '../Images/logo.jpg';
-import whatsapp_logo from '../Images/whatsapp-hablemos.png';
 
 function Header() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -53,12 +52,6 @@ function Header() {
                 onClick={toggleMenu}
             ></div> 
             <div className="header-actions">
-                <a 
-                    href="https://wa.me/541131214776?text=Hola,%20Contador%20Iv%C3%A1n%20Bellomo.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20servicios%20contables%20que%20ofrecen." 
-                        target="_blank" rel="noopener noreferrer" className="btn-Hablanos">
-                    <img src={whatsapp_logo} alt="logo whatsapp" id="icono-wsp"/>
-                </a>
-
                 <div className="switch-dark-light" onClick={toggleTheme}>
                     {theme === 'light' ? (
                     <span className="material-symbols-outlined" style={{ color: '#333' }}>light_mode</span>
