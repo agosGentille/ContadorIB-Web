@@ -15,29 +15,35 @@
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #25D366, #128C7E);
-    border-radius: 40px;
+    border-radius: 60px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: 2px solid rgba(255, 255, 255, 0.2);
     animation: pulse 2s infinite;
-    width: 56px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
     overflow: hidden;
 }
 
 .btn-contactanos-flotante .icono-contenedor {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    background: transparent;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.btn-contactanos-flotante .material-symbols-outlined {
-    font-size: 26px;
-    color: white;
-    font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+#icono-wsp {
+    transition: all 0.3s ease;
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    display: block;
 }
 
 .btn-contactanos-flotante .texto-boton {
@@ -46,28 +52,49 @@
     font-size: 0.85rem;
     letter-spacing: 0.3px;
     white-space: nowrap;
-    padding-right: 14px;
     opacity: 0;
     transition: opacity 0.2s ease 0.1s;
     flex-shrink: 0;
+    margin-right: 0px;
+}
+
+/* Estado cerrado: ícono centrado, texto oculto */
+.btn-contactanos-flotante .contenedor-boton {
+    justify-content: center;
+}
+
+.btn-contactanos-flotante .texto-boton {
+    display: none;
 }
 
 /* HOVER SOLO EN DESKTOP (cuando NO es touch device) */
 .btn-contactanos-flotante:not(.touch-device):hover .contenedor-boton {
     width: 180px;
+    justify-content: flex-start;
 }
 
 .btn-contactanos-flotante:not(.touch-device):hover .texto-boton {
+    display: inline-block;
     opacity: 1;
 }
 
-/* ACTIVE para móviles (y también para desktop cuando corresponda) */
+.btn-contactanos-flotante:not(.touch-device):hover .icono-contenedor {
+    margin-right: 8px;
+}
+
+/* ACTIVE para móviles */
 .btn-contactanos-flotante .contenedor-boton.active {
-    width: 160px;
+    width: 170px;
+    justify-content: flex-start;
 }
 
 .btn-contactanos-flotante .contenedor-boton.active .texto-boton {
+    display: inline-block;
     opacity: 1;
+}
+
+.btn-contactanos-flotante .contenedor-boton.active .icono-contenedor {
+    margin-right: 8px;
 }
 
 /* Efecto de ondas */
@@ -89,25 +116,36 @@
         right: 30px;
     }
     
-    .btn-contactanos-flotante .contenedor-boton.active {
-        width: 180px;
+    .btn-contactanos-flotante .contenedor-boton {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .btn-contactanos-flotante .icono-contenedor {
+        width: 64px;
+        height: 64px;
+    }
+    
+    #icono-wsp {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .btn-contactanos-flotante .texto-boton {
+        font-size: 1rem;
+        margin-right: 24px;
     }
     
     .btn-contactanos-flotante:not(.touch-device):hover .contenedor-boton {
         width: 220px;
     }
     
-    .btn-contactanos-flotante .icono-contenedor {
-        width: 56px;
-        height: 56px;
+    .btn-contactanos-flotante .contenedor-boton.active {
+        width: 210px;
     }
     
-    .btn-contactanos-flotante .material-symbols-outlined {
-        font-size: 30px;
-    }
-    
-    .btn-contactanos-flotante .texto-boton {
-        font-size: 1rem;
-        padding-right: 20px;
+    .btn-contactanos-flotante:not(.touch-device):hover .icono-contenedor,
+    .btn-contactanos-flotante .contenedor-boton.active .icono-contenedor {
+        margin-right: 12px;
     }
 }

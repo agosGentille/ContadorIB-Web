@@ -213,43 +213,6 @@ html{
   background: var(--color-acento-secundario);
 }
 
-.btn-Hablanos {
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  background: var(--bg-boton-wsp);
-  border: none;
-  padding: 10px;
-  width: 45px;
-  height: 45px;
-  box-shadow: 0 3px 10px var(--sombra-acento);
-}
-
-#icono-wsp {
-  transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
-  padding: 5px;
-  background: none;
-  border: 1px solid var(--color-borde);
-  color: var(--color-texto);
-  filter: invert(100%);
-}
-
-.btn-Hablanos span {
-  font-size: 20px;
-  color: white;
-}
-
-.btn-Hablanos:hover {
-   background: var(--bg-boton-hover-wsp);
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 6px 20px rgba(127, 184, 194, 0.4);
-}
-
 .nav-overlay {
   position: fixed;
   top: 0;

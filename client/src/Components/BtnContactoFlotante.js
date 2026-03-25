@@ -3,6 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 import { useLocation } from 'react-router-dom';
 
 import '../Styles/BtnContactanos.css';
+import whatsapp_logo from '../Images/whatsapp-hablemos.png';
 
 function BtnContactoFlotante() {
 const [showFloatBtn, setShowFloatBtn] = useState(false);
@@ -143,25 +144,23 @@ const [showFloatBtn, setShowFloatBtn] = useState(false);
     return (
         <>
 
-            <HashLink 
-            smooth 
-            to="/contacto#FormularioDeContacto" 
-            className={`btn-contactanos-flotante ${isTouchDevice.current ? 'touch-device' : ''}`}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onTouchMove={handleTouchMove}
-            onTouchCancel={handleTouchCancel}
-            onClick={handleClick}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        >
-            <div className={`contenedor-boton ${isActive ? 'active' : ''}`}>
-                <span className="icono-contenedor">
-                    <span className="material-symbols-outlined">mail</span>
-                </span>
-                <span className="texto-boton">CONTACTANOS</span>
-            </div>
-        </HashLink>
+            <a 
+                href="https://wa.me/541131214776?text=Hola,%20Contador%20Iv%C3%A1n%20Bellomo.%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20servicios%20contables%20que%20ofrecen." 
+                target="_blank" rel="noopener noreferrer"
+                className={`btn-contactanos-flotante ${isTouchDevice.current ? 'touch-device' : ''}`}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                onTouchMove={handleTouchMove}
+                onTouchCancel={handleTouchCancel}
+                onClick={handleClick}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            >
+                <div className={`contenedor-boton ${isActive ? 'active' : ''}`}>
+                    <img src={whatsapp_logo} alt="logo whatsapp" id="icono-wsp" className="icono-contenedor"/>
+                    <span className="texto-boton">CONTACTANOS</span>
+                </div>
+            </a>
 
             
         </>
