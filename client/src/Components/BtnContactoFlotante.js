@@ -18,6 +18,11 @@ const [showFloatBtn, setShowFloatBtn] = useState(false);
         // Detectar si es dispositivo táctil
         isTouchDevice.current = 'ontouchstart' in window;
         
+        // SIEMPRE mostrar el botón flotante, sin importar dónde estés
+        setShowFloatBtn(true);
+        
+        // Código original comentado para que no oculte el botón
+        /*
         if (location.pathname === '/') {
             setTimeout(() => {
                 const btnOriginal = document.querySelector('.btn-contactanos');
@@ -42,6 +47,7 @@ const [showFloatBtn, setShowFloatBtn] = useState(false);
         } else {
             setShowFloatBtn(true);
         }
+        */
         
     }, [location.pathname]);
 
