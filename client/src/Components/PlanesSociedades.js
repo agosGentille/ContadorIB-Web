@@ -25,7 +25,7 @@ export default function PlanesEmpresas() {
       {
         nombre: "Plan Base SAS",
         desc: "Constitución de SAS + alta de impuestos con punto de venta habilitado para facturar.",
-        precio: "Desde $950.000",
+        precio: "Desde $1.200.000",
       },
       {
         nombre: "Plan Completo SAS",
@@ -42,7 +42,7 @@ export default function PlanesEmpresas() {
           "Soporte técnico post-entrega por 15 días",
           "Mantenimiento mensual disponible (consultar costos)"
         ],
-        precio: "Desde $1.170.000",
+        precio: "Desde $1.420.000",
         notaPrecio: "Precios web aproximados. El valor final depende de funcionalidades, diseño y alcance del proyecto.",
         rangosPrecio: [
           "Landing page (3 secciones): desde $220.000",
