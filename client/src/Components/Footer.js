@@ -40,7 +40,6 @@ function Footer() {
                     </div>
                     <p>+54 9 11 3121-4776</p>
                     <p>ivan.bellomo@contadorib.com.ar</p>
-                    <p>lucas.silvestri@contadorib.com.ar</p>
                 </div>
                 <div id="footer-columna2">
                     <p className='texto-links-utiles'>Links Útiles</p>
