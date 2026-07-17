@@ -15,8 +15,8 @@ html{
 
 /* ------------- SOBRE NOSOTROS ------------- */
 .Sobre-Nosotros {
-  padding: 4rem 2rem;
-  margin-top: -50px;
+  padding: 8rem 2rem;
+  margin-top: 18px;
 }
 
 .contenedor-sobrenosotros {
@@ -699,7 +699,9 @@ html{
 .texto-reu{font-size: 0.9rem;}
 
 /* ------------- OPINIONES GOOGLE ------------- */
-
+.secc-opiniones{
+  margin-top: 4rem;
+}
 /* ------------- CINTA EMPRESAS ------------- */
 .secc-cinta {
   margin-top: 4rem;
