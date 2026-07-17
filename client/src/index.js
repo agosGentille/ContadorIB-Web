@@ -4,6 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// --- parche ResizeObserver (evita el warning "loop completed with undelivered notifications") ---
+const debounce = (callback, delay) => {
+  let timeoutId;
+  return (...args) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback(...args), delay);
+  };
+};
+
+const ResizeObserverOriginal = window.ResizeObserver;
+window.ResizeObserver = class ResizeObserver extends ResizeObserverOriginal {
+  constructor(callback) {
+    super(debounce(callback, 20));
+  }
+};
+// --- fin parche ---
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

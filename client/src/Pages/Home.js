@@ -6,6 +6,7 @@ import fotoIvan from '../Images/foto_ivan.png';
 import imgMonedita from '../Images/moneda_icono.png';
 import '../Styles/HomeStyle.css';
 
+import Hero from '../Components/Hero';
 import Timeline from '../Components/Timeline';
 import AcordeonCondiciones from '../Components/AcordeonCondiciones';
 import Calendly from '../Components/Calendly';
@@ -14,6 +15,7 @@ import CintaEmpresas from '../Components/CintaEmpresas';
 import BotonContactoFlotante from '../Components/BtnContactoFlotante';
 
 function Home() {
+    
     const [visibleSobreNosotros, setVisibleSobreNosotros] = useState(false);
     const [visibleImpacto, setVisibleImpacto] = useState(false);
     const refSobreNosotros = useRef(null);
@@ -88,31 +90,7 @@ function Home() {
     
     return(
         <>
-         <section className="Inicio" id="Inicio">
-            <h2 className='titulo-inicio'>¿Querés estar al día y pagar lo justo, sin estrés?</h2>
-            <div className="texto-con-iconos">
-                <div className="icono-texto">
-                <span className="icono">✓</span>
-                <p className="texto-item">Cumplí en tiempo y forma</p>
-                </div>
-                <div className="icono-texto">
-                <span className="icono">✓</span>
-                <p className="texto-item">Optimizá tu carga fiscal dentro de la ley</p>
-                </div>
-                <div className="icono-texto">
-                <span className="icono">✓</span>
-                <p className="texto-item">Olvidate de las sorpresas</p>
-                </div>
-            </div>
-            
-            <p className='texto-destacado'>
-                <strong>Nos encargamos de tus impuestos y tu contabilidad</strong> para que solo te concentres en lo importante.
-            </p>
-            
-            <HashLink smooth to="/contacto#FormularioDeContacto" className='btn-contactanos'>
-                ¡CONTACTANOS AHORA!
-            </HashLink>
-            </section>
+         <Hero />
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
             <div className="contenedor-sobrenosotros">
@@ -320,7 +298,7 @@ function Home() {
 
             </div>
         </section>
-
+{/* 
         <section className='asesoria'>
             <div>
                 <h2 id='title-asesoria'>Asesoría Fiscal Express</h2>
@@ -354,7 +332,7 @@ function Home() {
             
             <Calendly/>
             
-         </section>
+         </section>*/}
          
          <OpinionesGoogle />
          
