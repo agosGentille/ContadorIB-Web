@@ -7,7 +7,7 @@ import fondoLaptop from '../Images/Slide2.PNG';
 import fondoLupa from '../Images/Slide3.PNG';
 import fondoCalculadora from '../Images/Slide4.PNG';
 
-const NUMERO_WSP = "5491112345678";
+const NUMERO_WSP = "5491131214776";
 
 const slides = [
   {
