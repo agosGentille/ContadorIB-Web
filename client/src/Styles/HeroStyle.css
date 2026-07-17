@@ -1,0 +1,265 @@
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 3rem 1.2rem;
+  overflow: hidden;
+  background: linear-gradient(160deg,
+    rgba(127, 184, 194, 0.06) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(201, 166, 70, 0.05) 100%
+  );
+}
+
+/* formas de fondo animadas */
+.hero-forma {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-forma-1 {
+  width: 260px;
+  height: 260px;
+  top: -80px;
+  right: -60px;
+  background: radial-gradient(circle, rgba(127, 184, 194, 0.28) 0%, transparent 70%);
+}
+
+.hero-forma-2 {
+  width: 200px;
+  height: 200px;
+  bottom: -70px;
+  left: -50px;
+  background: radial-gradient(circle, rgba(201, 166, 70, 0.22) 0%, transparent 70%);
+}
+
+/* contenido central */
+.hero-contenido {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  min-height: 200px;
+  justify-content: center;
+}
+
+.hero-eyebrow {
+  display: inline-block;
+  color: var(--color-destacado, #C97A63);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid currentColor;
+  border-radius: 20px;
+}
+
+.hero-titulo {
+  font-family: 'Playfair Display', serif;
+  color: var(--color-acento, #7FB8C2);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.hero-texto {
+  color: var(--color-texto-secundario, #555);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* boton principal */
+.hero-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, var(--color-acento, #7FB8C2), var(--color-destacado, #C97A63));
+  color: white;
+  border: none;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(127, 184, 194, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(127, 184, 194, 0.4);
+}
+
+/* dots del slider */
+.hero-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(127, 184, 194, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.hero-dot.activo {
+  width: 24px;
+  border-radius: 4px;
+  background: var(--color-acento, #7FB8C2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .hero {
+    min-height: 65vh;
+    padding: 4rem 2rem;
+  }
+
+  .hero-titulo {
+    font-size: 2.6rem;
+  }
+
+  .hero-texto {
+    font-size: 1.05rem;
+  }
+
+  .hero-forma-1 {
+    width: 340px;
+    height: 340px;
+  }
+
+  .hero-forma-2 {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-titulo {
+    font-size: 3rem;
+  }
+}
+
+/* el slide arrastrable */
+.hero-slide {
+  cursor: grab;
+  touch-action: pan-y; /* permite drag horizontal sin trabar el scroll vertical del celu */
+}
+
+.hero-slide:active {
+  cursor: grabbing;
+}
+
+/* flechas laterales */
+.hero-flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--color-acento, #7FB8C2);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.hero-flecha:hover {
+  background: var(--color-acento, #7FB8C2);
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-flecha-izq {
+  left: 0.7rem;
+}
+
+.hero-flecha-der {
+  right: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .hero-flecha {
+    width: 46px;
+    height: 46px;
+    font-size: 1.9rem;
+  }
+
+  .hero-flecha-izq {
+    left: 1.5rem;
+  }
+
+  .hero-flecha-der {
+    right: 1.5rem;
+  }
+}
+
+/* capa de agarre a pantalla completa de la sección */
+.hero-drag-area {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  cursor: grab;
+  touch-action: pan-y; /* deja hacer scroll vertical en el celu sin trabarse */
+}
+
+.hero-drag-area:active {
+  cursor: grabbing;
+}
+
+/* el slide ahora solo se anima, ya no maneja el drag */
+.hero-slide {
+  pointer-events: none; /* el texto no compite por el drag, todo el gesto lo agarra la capa de fondo */
+  user-select: none;
+}
+
+.hero-fondos {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-fondo-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* leve velo blanco para que el texto siga legible arriba de la foto */
+.hero-fondo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.45);
+}
+
