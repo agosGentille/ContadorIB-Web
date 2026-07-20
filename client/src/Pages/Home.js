@@ -84,9 +84,9 @@ function Home() {
         return count;
     };
 
-    const facturas = useCounter(300);
-    const clientes = useCounter(60);
-    const enfocados = useCounter(100);
+    const anios = useCounter(8);
+    const rubros = useCounter(25);
+    const clientes = useCounter(80);
     
     return(
         <>
@@ -152,25 +152,25 @@ function Home() {
             </div>
             </section>
         <section className='secc-impacto' ref={refImpacto}>
-            <h3>Contabilidad clara, sin estrés.</h3>
-            <p>Nos ocupamos de tus obligaciones fiscales para que puedas enfocarte en hacer crecer tu negocio. Evitá errores y cumplí con ARCA sin complicaciones.</p>
+            <h3>Experiencia real, resultados concretos.</h3>
+            <p>Años de trayectoria acompañando a monotributistas, profesionales y PyMEs de los rubros más diversos.</p>
             <div className='contenedor-caracteristicas'>
                 <div className="caracteristica-impacto">
-                    <span className="material-symbols-outlined">group</span>
+                    <span className="material-symbols-outlined">workspace_premium</span>
+                    <p className="numero">{visibleImpacto ? `+${anios}` : '+0'} Años</p>
+                    <p className='texto-impacto'>de experiencia asesorando</p>
+                </div>
+                <span className='divisor-caracteristicas'></span>
+                <div className="caracteristica-impacto">
+                    <span className="material-symbols-outlined icono-impacto">category</span>
+                    <p className="numero">{visibleImpacto ? `+${rubros}` : '+0'} Rubros</p>
+                    <p className='texto-impacto'>distintos en gestión activa</p>
+                </div>
+                <span className='divisor-caracteristicas'></span>
+                <div className="caracteristica-impacto">
+                    <span className="material-symbols-outlined icono-impacto">group</span>
                     <p className="numero">{visibleImpacto ? `+${clientes}` : '+0'} Clientes</p>
                     <p className='texto-impacto'>confían en nosotros cada mes</p>
-                </div>
-                <span className='divisor-caracteristicas'></span>
-                <div className="caracteristica-impacto">
-                    <span className="material-symbols-outlined icono-impacto">location_on </span>
-                    <p className="numero">{visibleImpacto ? `${enfocados}%` : '0%'} Enfocados</p>
-                    <p className='texto-impacto'>en impulsar PYMES y Emprendedores argentinos</p>
-                </div>
-                <span className='divisor-caracteristicas'></span>
-                <div className="caracteristica-impacto">
-                    <span className="material-symbols-outlined icono-impacto">receipt_long</span>
-                    <p className="numero">{visibleImpacto ? `+${facturas.toLocaleString()}` : '+0'}</p>
-                    <p className='texto-impacto'>gestiones impositivas concretadas con éxito</p>
                 </div>
             </div>
         </section>
@@ -234,52 +234,11 @@ function Home() {
                 <div className="beneficios-grid">
                     <div className="beneficio-item">
                         <div className="icono-beneficio">
-                            <span className="material-symbols-outlined">bolt</span>
-                        </div>
-                        <h3>Respuesta inmediata 24/7</h3>
-                        <p>Operamos íntegramente online y nuestro tiempo medio de respuesta es inferior a 24h. Tu consulta no espera.</p>
-                    </div>
-
-                    <div className="beneficio-item">
-                        <div className="icono-beneficio">
                             <span className="material-symbols-outlined">engineering</span>
                         </div>
                         <h3>Equipo especializado multidisciplinario</h3>
                         <p>Reunimos contadores, tributaristas, despachantes y analistas financieros formados en las normativas más recientes.</p>
                     </div>
-
-                    <div className="beneficio-item">
-                        <div className="icono-beneficio">
-                            <span className="material-symbols-outlined">chat</span>
-                        </div>
-                        <h3>Canal directo en WhatsApp</h3>
-                        <p>Creamos un grupo exclusivo con nuestros especialistas. Existe una comunicación fluida con todo el equipo y resolvemos tus dudas al instante por el canal que prefieras.</p>
-                    </div>
-
-                    <div className="beneficio-item">
-                        <div className="icono-beneficio">
-                            <span className="material-symbols-outlined">trending_up</span>
-                        </div>
-                        <h3>Estrategias de ahorro fiscal</h3>
-                        <p>Diseñamos esquemas legales que optimizan la carga tributaria y mejoran tu flujo de caja, utilizando beneficios vigentes, diferimientos y regímenes especiales.</p>
-                    </div>
-
-                    <div className="beneficio-item">
-                        <div className="icono-beneficio">
-                            <span className="material-symbols-outlined">star</span>
-                        </div>
-                        <h3>Calificación perfecta</h3>
-                        <p>Nuestra reputación de 5★ refleja la satisfacción de clientes que valoran transparencia, cercanía y resultados tangibles.</p>
-                    </div>
-
-                    <div className="beneficio-item">
-                        <div className="icono-beneficio">
-                            <span className="material-symbols-outlined">stacked_line_chart</span>
-                        </div>
-                        <h3>Servicio escalable</h3>
-                        <p>Desde el alta en Monotributo hasta la gestión integral de PyMEs, escalamos el soporte según tus necesidades y crecimiento.</p>
-                    </div>
-
                     <div className="beneficio-item">
                         <div className="icono-beneficio">
                             <span className="material-symbols-outlined">update</span>

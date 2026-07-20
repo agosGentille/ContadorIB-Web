@@ -1097,3 +1097,109 @@ h3::after {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+
+
+
+
+
+
+
+.boton-abrir-comparativa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--color-acento);
+  color: var(--color-acento);
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 1rem 0;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.boton-abrir-comparativa:hover {
+  background: var(--color-acento);
+  color: white;
+}
+
+.boton-abrir-comparativa .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+/* modal comparativa: reusa el mismo overlay que ya tenés (.modal-overlay-completo) */
+.modal-comparativa {
+  background: var(--color-fondo);
+  border-radius: 16px;
+  padding: 1.5rem;
+  max-width: 900px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--sombra-acento);
+}
+
+.tabla-comparativa-wrapper {
+  overflow-x: auto;
+  margin-top: 1.2rem;
+  border-radius: 12px;
+  box-shadow: var(--sombra-suave);
+}
+
+.tabla-comparativa {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-fondo);
+  font-size: 0.85rem;
+}
+
+.tabla-comparativa th {
+  background: var(--bg-header);
+  color: var(--color-texto);
+  font-weight: 700;
+  text-align: left;
+  padding: 0.8rem 1rem;
+  white-space: nowrap;
+}
+
+.tabla-comparativa td {
+  padding: 0.8rem 1rem;
+  border-top: var(--color-borde);
+  color: var(--color-texto-secundario);
+}
+
+.celda-tipo {
+  font-weight: 700;
+  color: var(--color-acento);
+}
+
+.tabla-comparativa tr.fila-activa {
+  background: rgba(127, 184, 194, 0.06);
+}
+
+.boton-ver-plan {
+  background: var(--color-acento);
+  color: white;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+
+.boton-ver-plan:hover {
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .tabla-comparativa {
+    font-size: 0.95rem;
+  }
+}
