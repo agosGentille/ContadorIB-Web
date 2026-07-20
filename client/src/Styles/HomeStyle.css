@@ -532,12 +532,11 @@ html{
 
 /* Grid de beneficios COMPACTO */
 .beneficios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 1.5rem;
 }
-
 .beneficio-item {
     background: var(--color-fondo);
     padding: 1.5rem;
@@ -547,7 +546,9 @@ html{
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: 180px; /* Altura mínima compacta */
+    min-height: 180px;
+    flex: 1 1 250px;   /* crece/achica, pero arranca en 250px como antes */
+    max-width: 320px;  /* evita que una sola tarjeta se estire demasiado si queda sola en la fila */
 }
 
 .beneficio-item:hover {
@@ -596,12 +597,29 @@ html{
         font-size: 1.5rem;
     }
     
-    .beneficios-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
+    .beneficio-item {
+        padding: 1.2rem;
+        min-height: 160px;
+    }
+    
+    .icono-beneficio {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+    }
+}
+@media (max-width: 768px) {
+    .PorQueElegirnos {
+        padding: 2.5rem 1rem;
+    }
+    
+    .titulo-eleginos {
+        font-size: 1.5rem;
     }
     
     .beneficio-item {
+        flex: 1 1 100%;
+        max-width: 100%;
         padding: 1.2rem;
         min-height: 160px;
     }
@@ -614,14 +632,16 @@ html{
 }
 
 @media (min-width: 1024px) {
-    .beneficios-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .beneficio-item {
+        flex: 1 1 280px;
+        max-width: 340px;
     }
 }
 
 @media (min-width: 1200px) {
-    .beneficios-grid {
-        grid-template-columns: repeat(4, 1fr);
+    .beneficio-item {
+        flex: 1 1 260px;
+        max-width: 300px;
     }
 }
 
