@@ -66,21 +66,26 @@
   border-radius: 20px;
 }
 
+
 .hero-titulo {
   font-family: 'Playfair Display', serif;
-  color: var(--color-acento, #7FB8C2);
+  color: var(--color-texto);
   font-size: 1.9rem;
   font-weight: 700;
   line-height: 1.2;
   margin: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .hero-texto {
-  color: var(--color-texto-secundario, #555);
+  color: var(--color-texto-secundario);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 480px;
-  margin: 0;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* boton principal */
@@ -117,7 +122,7 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: rgba(127, 184, 194, 0.3);
+  background: var(--hero-dot-bg);
   cursor: pointer;
   padding: 0;
   transition: width 0.3s ease, background 0.3s ease;
@@ -126,7 +131,7 @@
 .hero-dot.activo {
   width: 24px;
   border-radius: 4px;
-  background: var(--color-acento, #7FB8C2);
+  background: var(--color-acento);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -165,6 +170,7 @@
 .hero-slide {
   cursor: grab;
   touch-action: pan-y; /* permite drag horizontal sin trabar el scroll vertical del celu */
+  width: 100%;
 }
 
 .hero-slide:active {
@@ -181,8 +187,8 @@
   height: 40px;
   border-radius: 50%;
   border: none;
-  background: rgba(255, 255, 255, 0.7);
-  color: var(--color-acento, #7FB8C2);
+  background: var(--hero-control-bg);
+  color: var(--color-acento);
   font-size: 1.6rem;
   line-height: 1;
   display: flex;
@@ -190,11 +196,11 @@
   justify-content: center;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: background 0.25s ease, transform 0.25s ease;
+  transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
 }
 
 .hero-flecha:hover {
-  background: var(--color-acento, #7FB8C2);
+  background: var(--color-acento);
   color: white;
   transform: translateY(-50%) scale(1.08);
 }
@@ -256,10 +262,8 @@
   background-position: center;
 }
 
-/* leve velo blanco para que el texto siga legible arriba de la foto */
 .hero-fondo-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.45);
+  background: var(--hero-overlay-bg);
 }
-
