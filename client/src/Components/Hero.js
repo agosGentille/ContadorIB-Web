@@ -30,7 +30,7 @@ const slides = [
   },
   {
     eyebrow: "Para Cada Etapa",
-    titulo: "Desde el inicio hasta crecer",
+    titulo: "Crecé sin límites",
     texto: "Te acompañamos desde el monotributo hasta la constitución de tu sociedad.",
     fondo: fondoCalculadora,
   },
