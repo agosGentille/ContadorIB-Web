@@ -17,16 +17,16 @@ const slides = [
     fondo: fondoCarpetas,
   },
   {
+  eyebrow: "Beneficios Clave",
+  titulo: "Todo lo que buscás",
+  texto: "Atención 24/7, ahorro fiscal y trato directo, sin vueltas ni letra chica.",
+  fondo: fondoLaptop,
+},
+  {
     eyebrow: "Atención Ágil",
     titulo: "Todo resuelto sin moverte",
     texto: "Operamos 100% online, con respuestas rápidas y comunicación directa por WhatsApp.",
     fondo: fondoLaptop,
-  },
-  {
-    eyebrow: "Cumplimiento al Día",
-    titulo: "Sin sorpresas fiscales",
-    texto: "Vencimientos, categorizaciones y presentaciones controladas para que no te falte nada.",
-    fondo: fondoLupa,
   },
   {
     eyebrow: "Para Cada Etapa",
