@@ -38,19 +38,17 @@ html{
 }
 
 #Logo {
-  width: 50px; /* Tamaño más consistente */
-  height: 50px;
-  border-radius: 50%;
-  border: 2px solid var(--color-acento);
-  padding: 2px;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(127, 184, 194, 0.2);
+    height: 42px;      /* antes era width/height fijos iguales (círculo) */
+    width: auto;        /* deja que el ancho se ajuste solo, ya que el logo es rectangular */
+    border-radius: 6px; /* opcional: bordes suaves en vez de círculo. Si no querés nada, poné 0 */
+    border: none;       /* el borde circular con --color-acento ya no pega en un logo con texto */
+    padding: 0;
+    transition: all 0.3s ease;
 }
 
 #Logo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(127, 184, 194, 0.3);
-  border-color: var(--color-acento-secundario);
+    transform: scale(1.05);
+    box-shadow: none; /* la sombra de color tampoco pega bien sobre fondo blanco con texto */
 }
 
 .header-menu {
@@ -243,8 +241,8 @@ html{
   }
   
   #Logo {
-    width: 55px;
-    height: 55px;
+    height: 48px;
+    width: auto;
   }
   
   .menu-icon {
