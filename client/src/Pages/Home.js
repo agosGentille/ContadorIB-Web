@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { HashLink  } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
 //import fotoIvan from '../Images/foto_ivan.jpg';
 import fotoIvan from '../Images/foto_ivan.png';
@@ -91,6 +92,20 @@ function Home() {
     return(
         <>
          <Hero />
+
+         <section className="banner-simulador">
+            <div className="contenedor-banner-simulador">
+                <div className="texto-banner-simulador">
+                    <span className="etiqueta-banner-simulador">Herramienta gratuita</span>
+                    <h2>¿Monotributo, Responsable Inscripto o Sociedad?</h2>
+                    <p>Probá nuestro simulador de regímenes y descubrí en segundos cuánto te queda con cada uno, según tu facturación real.</p>
+                </div>
+                <Link to="/simulador" className="btn-banner-simulador">
+                    Probar el simulador
+                    <span className="material-symbols-outlined">arrow_forward</span>
+                </Link>
+            </div>
+        </section>
 
          <section className="Sobre-Nosotros" id="SobreNosotros" ref={refSobreNosotros}>
             <div className="contenedor-sobrenosotros">

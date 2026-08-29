@@ -50,6 +50,7 @@ function Header() {
                     <li><HashLink onClick={toggleMenu} smooth to="/#Servicios">Servicios</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/planes#Planes">Planes</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/planes#Sociedades">Constitución SAS/SRL</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/simulador">Probá nuestro Simulador de Regímenes!</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
                 </ul>
