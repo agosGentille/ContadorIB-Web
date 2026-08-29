@@ -5,7 +5,7 @@ import instagram_logo from '../Images/instagram.png';
 import whatsapp_logo from '../Images/whatsapp.png';
 import linkedin_logo from '../Images/linkedin.png';
 import google_logo from '../Images/google.png';
-import logo from '../Images/logo.jpg';
+import logo from '../Images/B_Bellomo_EstCont_logo.JPG';
 
 function Footer() {
 

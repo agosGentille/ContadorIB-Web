@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { HashLink  } from 'react-router-hash-link';
 import '../Styles/HeaderStyle.css';
 
-import logo from '../Images/logo.jpg';
+import logoLight from '../Images/Bellomo_EstCont_logo.jpeg';
+import logoDark from '../Images/Bellomo_EstCont_logoDark.png';
+
 
 function Header() {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -33,7 +35,13 @@ function Header() {
                 <span onClick={toggleMenu} className={`material-symbols-outlined menu-icon ${menuOpen ? 'open' : ''}`}>menu</span>
             </div>
             <div className='header-marca'>
-                <HashLink smooth to="/#Inicio"><img src={logo} alt='Logo Estudio Contable IB' id='Logo'/></HashLink>
+                <HashLink smooth to="/#Inicio">
+                    <img 
+                        src={theme === 'dark' ? logoDark : logoLight} 
+                        alt='Logo Estudio Contable IB' 
+                        id='Logo'
+                    />
+                </HashLink>
             </div> 
             <nav className={`header-nav ${menuOpen ? "open" : ""}`}>
                 <span onClick={toggleMenu} className={`material-symbols-outlined btnClose ${menuOpen ? 'open' : ''}`}>close_small</span>
@@ -42,6 +50,7 @@ function Header() {
                     <li><HashLink onClick={toggleMenu} smooth to="/#Servicios">Servicios</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/planes#Planes">Planes</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/planes#Sociedades">Constitución SAS/SRL</HashLink></li>
+                    <li><HashLink onClick={toggleMenu} smooth to="/simulador">Probá nuestro Simulador de Regímenes!</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/#SobreNosotros">Sobre Nosotros</HashLink></li>
                     <li><HashLink onClick={toggleMenu} smooth to="/contacto#FormularioDeContacto">Contacto</HashLink></li>
                 </ul>

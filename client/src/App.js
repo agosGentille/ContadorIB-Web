@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 
 import Home from './Pages/Home';
 import Planes from './Pages/Planes';
+import Simulador from './Pages/SimuladorRegimenes';
 import Contacto from './Pages/Contacto';
 import ThankYouPage from './Pages/ThankYou';
 import NotFound from './Pages/NotFound';
@@ -20,6 +21,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/planes" element={<Planes />} />
+        <Route path="/simulador" element={<Simulador />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/gracias" element={<ThankYouPage />} />
 
