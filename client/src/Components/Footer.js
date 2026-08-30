@@ -5,16 +5,16 @@ import instagram_logo from '../Images/instagram.png';
 import whatsapp_logo from '../Images/whatsapp.png';
 import linkedin_logo from '../Images/linkedin.png';
 import google_logo from '../Images/google.png';
-import logo from '../Images/B_Bellomo_EstCont_logo.JPG';
+import logo from '../Images/B_EstCont_logo.jpg';
 
 function Footer() {
 
     return(
         <footer>
             <div className="footer-header">
-                <p className="contador">Estudio Contable IB</p>
+                <p className="contador">Bellomo Estudio Contable</p>
                 <div className='Logo-Alineado-Izquierda'>
-                    <img src={logo} alt='Logo Estudio Contable IB' id='logo-footer'/>
+                    <img src={logo} alt='Logo Bellomo Estudio Contable' id='logo-footer'/>
                 </div>
             </div>
             <div className='footer-info'>
