@@ -5,7 +5,7 @@ import instagram_logo from '../Images/instagram.png';
 import whatsapp_logo from '../Images/whatsapp.png';
 import linkedin_logo from '../Images/linkedin.png';
 import google_logo from '../Images/google.png';
-import logo from '../Images/B_EstCont_logo.jpg';
+import logo from '../Images/B_EstCont_logo.jpeg';
 
 function Footer() {
 
@@ -52,7 +52,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <p className='centrado'>&copy; 2025, Estudio Contable IB. Todos los derechos reservados.</p>
+            <p className='centrado'>&copy; 2025, Bellomo Estudio Contable. Todos los derechos reservados.</p>
         </footer>
     );
 }
