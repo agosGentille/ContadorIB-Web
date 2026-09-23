@@ -13,6 +13,7 @@ import NotFound from './Pages/NotFound';
 
 import './App.css';
 import './Styles/Theme.css';
+import './Styles/Mudanza.css';
 
 function App() {
   const [redirecting, setRedirecting] = useState(false);
@@ -27,14 +28,29 @@ function App() {
   }, []);
 
   if (redirecting) {
-    return (
-      <div style={{ textAlign: "center", padding: "4rem" }}>
-        <h1>¡Nos mudamos! 🎉</h1>
-        <p>Ahora estamos en estudiocbellomo.com.ar — te llevamos para allá...</p>
+  return (
+    <div className="mudanza-page">
+      <div className="decoracion-circulo-1"></div>
+      <div className="decoracion-circulo-2"></div>
+      <div className="mudanza-container">
+        <div className="mudanza-icono">🏡</div>
+        <h1 className="mudanza-titulo">¡Nos mudamos!</h1>
+        <div className="mudanza-subrayado"></div>
+        <p className="mudanza-mensaje">
+          Ahora estamos en <strong>estudiocbellomo.com.ar</strong><br />
+          Te llevamos para allá en un segundo...
+        </p>
+        <div className="mudanza-barra-container">
+          <div className="mudanza-barra"></div>
+        </div>
+        <p className="mudanza-link-manual">
+          ¿No pasa nada? <a href="https://estudiocbellomo.com.ar">Hacé clic acá</a>
+        </p>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
+
   return (
     <Router>
       <Header />
