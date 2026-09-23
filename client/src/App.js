@@ -14,6 +14,25 @@ import './App.css';
 import './Styles/Theme.css';
 
 function App() {
+  const [redirecting, setRedirecting] = useState(false);
+
+  useEffect(() => {
+    if (window.location.hostname.includes("contadorib.com.ar")) {
+      setRedirecting(true);
+      setTimeout(() => {
+        window.location.href = "https://estudiocbellomo.com.ar";
+      }, 4000);
+    }
+  }, []);
+
+  if (redirecting) {
+    return (
+      <div style={{ textAlign: "center", padding: "4rem" }}>
+        <h1>¡Nos mudamos! 🎉</h1>
+        <p>Ahora estamos en estudiocbellomo.com.ar — te llevamos para allá...</p>
+      </div>
+    );
+  }
   return (
     <Router>
       <Header />
