@@ -29,7 +29,9 @@ app.use(cors({
     "http://localhost:3000",
     "https://contador-ib-web.vercel.app",
     "https://contadorib.com.ar",
-    "https://www.contadorib.com.ar"
+    "https://www.contadorib.com.ar",
+    "https://estudiocbellomo.com.ar",
+    "https://www.estudiocbellomo.com.ar"
   ],
   credentials: true
 })); // permite que React haga peticiones
